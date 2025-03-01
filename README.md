@@ -1,5 +1,4 @@
-### Website Cửa Hàng Mỹ Phẩm 
-
+### Website Bán Vé xem phim
 ## Requirements
 - PHP >= 8.1
 - Node >= v20.13.1
