@@ -22,7 +22,7 @@
     <div class="row">
 
         <div class="col-md-6">
-            <h2 class="font-bold">Welcome to FIVE cosmetic</h2>
+            <h2 class="font-bold">Welcome to FIVE cinema</h2>
 
             <p>
                  Save The Best For You !
@@ -43,23 +43,35 @@
         </div>
         <div class="col-md-6">
             <div class="ibox-content">
-                <form class="m-t" role="form" action="index.html">
+
+
+
+                <form class="m-t" method  = "post" role="form" action="{{ route('auth.login') }}">
+
+                    @csrf
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Username" required="">
+                        <input type="email" name = "email" class="form-control" placeholder="Username" >
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password" required="">
+                        <input type="password" name = "password" class="form-control" placeholder="Password"  >
                     </div>
+                    <!-- Tra ve Loi  -->
+
+
+
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
-                    <a href="#">
-                        <small>Forgot password?</small>
-                    </a>
 
-                    <p class="text-muted text-center">
-                        <small>Do not have an account?</small>
-                    </p>
-                    <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
                 </form>
                 <p class="m-t">
                     <small>FIVE cosmetics  EST 2004 </small>
