@@ -1,13 +1,14 @@
 <?php
 
-namespace Database\Factories;
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PhongChieu extends Migration
+return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('phong_chieu', function (Blueprint $table) {
@@ -17,8 +18,11 @@ class PhongChieu extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('phong_chieu');
     }
-}
+};

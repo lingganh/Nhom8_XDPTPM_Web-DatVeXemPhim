@@ -1,13 +1,15 @@
 <?php
 
-namespace Database\Factories;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CTPhieuNhap extends Migration
+return new class extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('ct_phieu_nhap', function (Blueprint $table) {
             $table->char('idPN', 50);
@@ -18,8 +20,11 @@ class CTPhieuNhap extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('ct_phieu_nhap');
     }
-}
+};

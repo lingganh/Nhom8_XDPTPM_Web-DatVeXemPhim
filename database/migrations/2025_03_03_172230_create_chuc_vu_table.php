@@ -1,14 +1,15 @@
 <?php
 
-namespace Database\Factories;
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChucVu extends Migration
+return new class extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('chuc_vu', function (Blueprint $table) {
             $table->string('idCV', 50)->primary();
@@ -17,8 +18,11 @@ class ChucVu extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('chuc_vu');
     }
-}
+};

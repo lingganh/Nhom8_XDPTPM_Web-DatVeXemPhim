@@ -26,6 +26,16 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
+        $this->call([
+            ChucVuSeeder::class,
+            CTHoaDonSeeder::class,
+            CTPhieuNhapSeeder::class,
+            GheSeeder::class,
+            HoaDonSeeder::class,
+            KHTKSeeder::class,
+            KhachHangSeeder::class,
+            LichChieuSeeder::class,
+        ]);
 
     }
 }

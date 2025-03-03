@@ -1,13 +1,14 @@
 <?php
 
-namespace Database\Factories;
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Ve extends Migration
+return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('ve', function (Blueprint $table) {
@@ -19,8 +20,11 @@ class Ve extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('ve');
     }
-}
+};
