@@ -15,19 +15,18 @@ class AuthController extends Controller
     {
         return view('backend.auth.login');
     }
-    public function login(AuthRequest $request) {
+    public function login(AuthRequest $request)
+    {
         $credentials = [
             'email' => $request->input('email'),
             'password' => $request->input('password'),
         ];
 
+      dd($credentials, Auth::attempt($credentials), session('error'));
+
         if (Auth::attempt($credentials)) {
-
-             return redirect()->route('dashboard.index')->with('success','Đăng nhập thành công !');
+            return redirect()->route('dashboard.index')->with('success', 'Đăng nhập thành công !');
         }
-        return redirect()->route('auth.login')->with('error','Email hoặc mật khầu không chính xác !');
-
-
-
+        return redirect()->route('auth.login')->with('error', 'Email hoặc mật khầu không chính xác !');
     }
 }

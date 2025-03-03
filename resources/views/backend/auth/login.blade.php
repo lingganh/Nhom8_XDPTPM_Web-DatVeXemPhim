@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title> FIVE cosmetics | Login  </title>
+    <title> FIVE cinema | Login  </title>
 
     <link href=" backend/css/bootstrap.min.css" rel="stylesheet">
     <link href=" backend/css/font-awesome.css" rel="stylesheet">
@@ -25,16 +25,19 @@
             <h2 class="font-bold">Welcome to FIVE cinema</h2>
 
             <p>
-                 Save The Best For You !
+                 FIVE Cinema – Magic on Screen!
+
             </p>
+             Tại FIVE Cinema, từng khung hình là một thế giới kỳ diệu, nơi cảm xúc bùng nổ và những câu chuyện trở nên sống động
 
             <p>
-                XTLTH cosmetics là cửa hàng mỹ phẩm chính hãng online cung cấp nhiều thương hiệu nổi tiếng như Vichy, Bioderma, Senka, Shiseido, Innisfree, La Roche-Posay, …
-            </p>
+             </p>
+            Ánh đèn rực rỡ, những phút giây hồi hộp, và nụ cười không ngừng – đó là những gì FIVE Cinema mang đến cho bạn
 
             <p>
-                Cửa Hàng Chuyên Bán Mỹ Phẩm Chính Hãng Chọn Lọc Các Thương Hiệu Từ Anh, Pháp, Mỹ, Nhật.
-            </p>
+                 Khám phá thế giới của riêng bạn, được kể lại qua từng khung hình tại FIVE Cinema – nơi bạn luôn là một phần của câu chuyện
+
+             </p>
 
             <p>
                 <small> Địa chỉ : Hà Nội , Việt Nam  </small>
@@ -46,7 +49,7 @@
 
 
 
-                <form class="m-t" method  = "post" role="form" action="{{ route('auth.login') }}">
+                <form class="m-t" method  = "POST" role="form" action="{{ route('auth.login') }}">
 
                     @csrf
                     <div class="form-group">
@@ -74,7 +77,7 @@
 
                 </form>
                 <p class="m-t">
-                    <small>FIVE cosmetics  EST 2004 </small>
+                    <small>FIVE cinema  EST 2004 </small>
                 </p>
             </div>
         </div>
@@ -82,7 +85,7 @@
     <hr/>
     <div class="row">
         <div class="col-md-6">
-            Copyright FIVE cosmetic
+            Copyright FIVE cinema
         </div>
         <div class="col-md-6 text-right">
             <small>© 2004-2025</small>
