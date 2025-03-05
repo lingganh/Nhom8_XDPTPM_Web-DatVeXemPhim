@@ -26,12 +26,12 @@ class AuthRequest extends FormRequest
             'password' =>  'required' ,
         ];
     }
-    public function messages ()
+    public function messages (): array
     {
         return[
             'email.required'=>'Bạn chưa nhâp vào email ! ',
-            'password.required'=>'Bạn chưa nhập vào mật khẩu !'
-
+            'password.required'=>'Bạn chưa nhập vào mật khẩu !',
+              'email.email'=>'Định dạng email chưa đúng  ! ',
         ];
     }
 }
