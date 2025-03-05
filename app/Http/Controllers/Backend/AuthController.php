@@ -25,11 +25,14 @@ class AuthController extends Controller
       //dd($credentials, Auth::attempt($credentials), session('error'));
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard.index')->with('success', 'Đăng nhập thành công !');
+            return redirect()->route('dashboard.index');
 
             //echo 1; die();
         }
-        return redirect()->route('auth.login')->with('error', 'Email hoặc mật khầu không chính xác !');
+        else {
+            return redirect()->route('auth.admin')->with('error', 'Email hoặc mật khầu không chính xác !');
+        }
+
 
 
        // echo 2; die();
