@@ -4,10 +4,11 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
-class AuthMiddleware
+
+class LoginMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,10 +17,9 @@ class AuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ( Auth::id() == null) {
-            return redirect()->route('auth.admin');//->with('error', 'Bạn cần đăng nhập để truy cập !');
+        if (Auth::id() == null) {
+            return redirect()->route('dashboard.index');//->with('success', 'Chào mừng bạn đã quay trở lại !');
         }
-
         return $next($request);
     }
 }

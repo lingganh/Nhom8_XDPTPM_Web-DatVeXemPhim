@@ -33,7 +33,7 @@
                             <li><a href="contacts.html">Contacts</a></li>
                             <li><a href="mailbox.html">Mailbox</a></li>
                             <li class="divider"></li>
-                            <li><a href="login.html">Logout</a></li>
+                            <li><a href="{{route('auth.logout')}}">Logout</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -43,11 +43,8 @@
                 <li class="active">
                     <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="index.html">Dashboard v.1</a></li>
-                        <li class="active"><a href="dashboard_2.html">Dashboard v.2</a></li>
-                        <li><a href="dashboard_3.html">Dashboard v.3</a></li>
-                        <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
-                        <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
+                        <li><a href="index.html">Dashboard  </a></li>
+
                     </ul>
                 </li>
                 <li>
@@ -367,7 +364,7 @@
 
 
                     <li>
-                        <a href="login.html">
+                        <a href="{{route('auth.logout')}}">
                             <i class="fa fa-sign-out"></i> Log out
                         </a>
                     </li>
