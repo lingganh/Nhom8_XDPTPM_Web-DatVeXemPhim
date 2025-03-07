@@ -14,4 +14,4 @@ Route::get('admin',  [AuthController::class, 'index'])->name('auth.admin');//->m
 Route::post('login',  [AuthController::class, 'login'])->name('auth.login');
 Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index')->middleware(AuthMiddleware::class);
 Route::get('logout', [AuthController:: class, 'logout'])->name('auth.logout');
-
+//Route::get('logout', [AuthController:: class, 'logout'])->name('auth.logout');
