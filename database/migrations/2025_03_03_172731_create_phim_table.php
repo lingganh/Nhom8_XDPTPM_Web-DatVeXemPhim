@@ -17,6 +17,8 @@ return new class extends Migration
             $table->integer('thoiLuong')->nullable(); // Assuming as integer
             $table->text('moTa')->nullable();
             $table->string('trangThai', 50)->nullable();
+            $table->string('Poster', 100)->nullable();
+            $table->string('Trailer', 100)->nullable();
         });
     }
 

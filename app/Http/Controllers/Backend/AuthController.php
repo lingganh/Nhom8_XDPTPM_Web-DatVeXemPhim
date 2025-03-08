@@ -23,10 +23,16 @@ class AuthController extends Controller
             'password' => $request->input('password'),
         ];
 
+
       //dd($credentials, Auth::attempt($credentials), session('error'));
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard.index');
+           // $request->session()->regenerate();
+             //$userName = Auth::user()->name;
+
+
+           // dd(Auth::user() );
+            return redirect()->route('dashboard.index')->with('success', 'Đăng Nhập Thành Công ');
 
             //echo 1; die();
         }

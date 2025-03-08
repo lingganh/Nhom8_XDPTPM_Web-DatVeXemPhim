@@ -16,8 +16,8 @@ class AuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ( Auth::id() == null) {
-            return redirect()->route('auth.admin');//->with('error', 'Bạn cần đăng nhập để truy cập !');
+        if (!Auth::check()) {
+            return redirect()->route('auth.admin')->with('error', 'Bạn cần đăng nhập để truy cập !');
         }
 
         return $next($request);

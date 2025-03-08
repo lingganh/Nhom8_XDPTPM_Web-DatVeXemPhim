@@ -17,7 +17,7 @@ class LoginMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::id() == null) {
+        if (Auth::id() != null) {
             return redirect()->route('dashboard.index');//->with('success', 'Chào mừng bạn đã quay trở lại !');
         }
         return $next($request);
