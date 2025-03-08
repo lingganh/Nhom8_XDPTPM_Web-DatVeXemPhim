@@ -16,8 +16,8 @@ namespace App\Http\Controllers\Backend;
     {
 
 
-
-        return view('backend.dashboard.index' );
+        $template = 'backend.dashboard.home.index';
+        return view('backend.dashboard.layout' );
 
     }
 
