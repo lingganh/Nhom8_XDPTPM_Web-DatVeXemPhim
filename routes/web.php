@@ -22,3 +22,8 @@ Route::get('logout', [AuthController:: class, 'logout'])->name('auth.logout');
 Route::get('user/index', [UserController ::class, 'index'])->name('user.index')->middleware(AuthMiddleware::class);
 
 
+
+
+Route::get('/login', fn() => view('auth.login'))->name('auth.login');
+
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login');

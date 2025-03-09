@@ -32,7 +32,7 @@ class AuthController extends Controller
 
 
            // dd(Auth::user() );
-            return redirect()->route('dashboard.index')->with('success', 'Đăng Nhập Thành Công ');
+           return redirect()->route('dashboard.index')->with('success', 'Đăng Nhập Thành Công ');
 
             //echo 1; die();
         }
@@ -53,3 +53,6 @@ class AuthController extends Controller
         return redirect()->route('auth.admin');
     }
 }
+?>
+
+
