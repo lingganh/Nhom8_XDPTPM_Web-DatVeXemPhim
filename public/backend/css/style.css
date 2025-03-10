@@ -70,7 +70,11 @@ h5 {
 }
 .navbar {
   border: 0;
+    position: relative;
+    z-index: 10; /* Để nhỏ hơn toaster */
 }
+
+
 .navbar-default {
   background-color: transparent;
   border-color: #2f4050;
