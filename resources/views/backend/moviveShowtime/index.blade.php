@@ -5,7 +5,7 @@
             <h2> Lịch Chiếu Phim </h2>
             <ol class="breadcrumb">
                 <li>
-                    <a href=" ">Home</a>
+                    <a href=" {{'dashboard/index'}}">Home</a>
                 </li>
                 <li class="active">
                     <strong> Movie ShowTime </strong>

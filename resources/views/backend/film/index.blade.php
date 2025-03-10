@@ -5,7 +5,7 @@
             <h2>Phim </h2>
             <ol class="breadcrumb">
                 <li>
-                    <a href=" ">Home</a>
+                    <a href="{{'dashboard/index'}} ">Home</a>
                 </li>
                 <li class="active">
                     <strong> Film List </strong>

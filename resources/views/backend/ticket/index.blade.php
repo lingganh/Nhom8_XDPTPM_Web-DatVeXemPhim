@@ -5,7 +5,7 @@
             <h2>Vé </h2>
             <ol class="breadcrumb">
                 <li>
-                    <a href=" ">Home</a>
+                    <a href=" {{'dashboard/index'}}">Home</a>
                 </li>
                 <li class="active">
                     <strong> Ticket </strong>

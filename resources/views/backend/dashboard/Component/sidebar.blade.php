@@ -16,7 +16,7 @@ FIVE Cinema
                     </div>
                 </li>
                 <li class="active">
-                    <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span>  </a>
+                    <a href="{{'dashboard/index'}}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span>  </a>
 
                 </li>
                 <li>

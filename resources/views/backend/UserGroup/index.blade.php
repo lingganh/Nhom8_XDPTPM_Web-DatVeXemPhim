@@ -5,7 +5,7 @@
             <h2>Nhóm Người Dùng </h2>
             <ol class="breadcrumb">
                 <li>
-                    <a href=" ">Home</a>
+                    <a href=" {{'dashboard/index'}}">Home</a>
                 </li>
                 <li class="active">
                     <strong> User Group List </strong>
