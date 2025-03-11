@@ -5,3 +5,34 @@
     height:120px;
     weight:auto;
 }
+table strong {
+    min-width: 100px;
+    display: inline-block;
+}
+.table > thead > tr > th ,
+.table > tbody > tr > td,
+.table > tfoot > tr > td,
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th{
+    vertical-align: middle;
+}
+.user-avatar{
+    width: 120px;
+    height: auto;
+}
+.uk-flex-space-between {
+    -ms-flex-pack: justify!important;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+.uk-flex-middle {
+    -ms-flex-align: center;
+    -webkit-align-content: center;
+    align-items: center;
+}
+.uk-flex{
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
