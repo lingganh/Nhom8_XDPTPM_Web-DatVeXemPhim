@@ -36,3 +36,19 @@ table strong {
     display: -webkit-flex;
     display: flex;
 }
+.filter .perpage{
+    display: inline-block;
+}
+.btn{
+    margin-bottom: 0px;
+    font-size: 13px;
+    height: 32px;
+}
+.filter .form-control{
+    height:32px;
+    max-width: 200px;
+}
+.mr10{
+    margin-right: 10px;
+
+}
