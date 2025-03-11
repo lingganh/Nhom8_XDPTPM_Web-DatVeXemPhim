@@ -1,5 +1,6 @@
 @extends('backend.dashboard.layout')
 @section('content')
+
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-10" style = "margin-top: 10px">
             <h2>Người Dùng </h2>
@@ -20,7 +21,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Striped Table </h5>
+                    <h5>Danh Sách Thành Viên </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -41,34 +42,54 @@
                 </div>
                 <div class="ibox-content" style="">
 
-                    <table class="table table-striped">
+                    <table class="table table-striped table table-bordered">
                         <thead>
+
                         <tr>
-                            <th>#</th>
-                            <th>Data</th>
-                            <th>User</th>
-                            <th>Value</th>
+                            <th> <input type="checkbox" id="checkAll" class="i-checks"></th>
+                            <th>Ảnh </th>
+                            <th>Thông Tin Thành Viên </th>
+                            <th>Địa Chỉ </th>
+                            <th>Tình Trạng </th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>1</td>
-                            <td><span class="line" style="display: none;">5,3,2,-1,-3,-2,2,3,5,2</span><svg class="peity" height="16" width="32"><polygon fill="#1ab394" points="0 9.375 0 0.5 3.5555555555555554 4.25 7.111111111111111 6.125 10.666666666666666 11.75 14.222222222222221 15.5 17.77777777777778 13.625 21.333333333333332 6.125 24.888888888888886 4.25 28.444444444444443 0.5 32 6.125 32 9.375"></polygon><polyline fill="transparent" points="0 0.5 3.5555555555555554 4.25 7.111111111111111 6.125 10.666666666666666 11.75 14.222222222222221 15.5 17.77777777777778 13.625 21.333333333333332 6.125 24.888888888888886 4.25 28.444444444444443 0.5 32 6.125" stroke="#169c81" stroke-width="1" stroke-linecap="square"></polyline></svg></td>
-                            <td>Samantha</td>
-                            <td class="text-navy"> <i class="fa fa-level-up"></i> 40% </td>
+                            <td> <input type="checkbox" id="check item" class="i-checks"></td>
+                           <td>
+                               <span class="image">
+                                   <img style="height:120px" src="https://voguesg.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/12/22162655/V-featured-680x1020.jpg"  alt="Ảnh đại diện "></span>
+                           </td>
+                            <td>
+                                <div class="user-items name">
+                                    Họ và Tên : Kim Tae-hyung
+                                </div>
+                                <div class="user-items mail">
+                                    Email : abc@gmal.com
+                                </div>
+                                <div class="user-items phone">
+                                    SDT : 0999999999
+                                </div>
+                            </td>
+                            <td>
+                                <div class="address-items">
+                                    Địa Chỉ  : 120 Hàng Ngang
+                                </div>
+                                <div class="address-items ">
+                                    Phường : Hàng Ngang
+                                </div>
+                                <div class="address-items ">
+                                    Quận : Hoàn Kiếm
+                                </div>
+                                <div class="address-items ">
+                                   Thành Phố : Hà Nội
+                                </div>
+                            </td>
+                            <td>
+                                <input type="checkbox" class="js-switch" checked />
+                            </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><span class="line" style="display: none;">5,3,9,6,5,9,7,3,5,2</span><svg class="peity" height="16" width="32"><polygon fill="#1ab394" points="0 15 0 7.166666666666666 3.5555555555555554 10.5 7.111111111111111 0.5 10.666666666666666 5.5 14.222222222222221 7.166666666666666 17.77777777777778 0.5 21.333333333333332 3.833333333333332 24.888888888888886 10.5 28.444444444444443 7.166666666666666 32 12.166666666666666 32 15"></polygon><polyline fill="transparent" points="0 7.166666666666666 3.5555555555555554 10.5 7.111111111111111 0.5 10.666666666666666 5.5 14.222222222222221 7.166666666666666 17.77777777777778 0.5 21.333333333333332 3.833333333333332 24.888888888888886 10.5 28.444444444444443 7.166666666666666 32 12.166666666666666" stroke="#169c81" stroke-width="1" stroke-linecap="square"></polyline></svg></td>
-                            <td>Jacob</td>
-                            <td class="text-warning"> <i class="fa fa-level-down"></i> -20% </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><span class="line" style="display: none;">1,6,3,9,5,9,5,3,9,6,4</span><svg class="peity" height="16" width="32"><polygon fill="#1ab394" points="0 15 0 13.833333333333334 3.2 5.5 6.4 10.5 9.600000000000001 0.5 12.8 7.166666666666666 16 0.5 19.200000000000003 7.166666666666666 22.400000000000002 10.5 25.6 0.5 28.8 5.5 32 8.833333333333332 32 15"></polygon><polyline fill="transparent" points="0 13.833333333333334 3.2 5.5 6.4 10.5 9.600000000000001 0.5 12.8 7.166666666666666 16 0.5 19.200000000000003 7.166666666666666 22.400000000000002 10.5 25.6 0.5 28.8 5.5 32 8.833333333333332" stroke="#169c81" stroke-width="1" stroke-linecap="square"></polyline></svg></td>
-                            <td>Damien</td>
-                            <td class="text-navy"> <i class="fa fa-level-up"></i> 26% </td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -76,4 +97,8 @@
         </div>
     </div>
 
+
 @endsection
+
+
+

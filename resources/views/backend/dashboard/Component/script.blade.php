@@ -1,4 +1,6 @@
+
 <script>
+
     $(document).ready(function() {
         $('.chart').easyPieChart({
             barColor: '#f8ac59',
@@ -200,4 +202,6 @@
 
 <!-- Sparkline demo data  -->
 <script src="backend/js/demo/sparkline-demo.js"></script>
+<!--switchery-->
+<script src="js/plugins/switchery/switchery.js"></script>
 

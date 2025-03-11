@@ -9,3 +9,18 @@
 
 <link href="backend/css/animate.css" rel="stylesheet">
 <link href="backend/css/style.css" rel="stylesheet">
+<link href="backend/css/stylecustomize.css" rel="stylesheet">
+<link rel="stylesheet" href="node_modules/switchery/dist/switchery.min.css">
+<script src="backend/js/jquery-3.1.1.min.js"></script>
+ <link rel="stylesheet" href="node_modules/switchery/switchery.min.css">
+
+
+<script src="node_modules/switchery/switchery.min.js"></script>
+<script>
+    import Switchery from "switchery";
+
+    $(document).ready(function() {
+        var elem = document.querySelector('.js-switch');
+        var init = new Switchery(elem, { color: '#1AB394' });
+    });
+</script>
