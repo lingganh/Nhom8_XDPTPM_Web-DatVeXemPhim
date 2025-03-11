@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="node_modules/switchery/dist/switchery.min.css">
 <script src="backend/js/jquery-3.1.1.min.js"></script>
  <link rel="stylesheet" href="node_modules/switchery/switchery.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <script src="node_modules/switchery/switchery.min.js"></script>
 <script>

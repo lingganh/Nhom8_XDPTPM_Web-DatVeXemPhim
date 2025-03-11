@@ -20,7 +20,7 @@ FIVE Cinema
 
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label"> Quản Lý Thành Viên </span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa-solid fa-user"></i><span class="nav-label"> Quản Lý Thành Viên </span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="{{ route ('user.index') }}"> QL Thành Viên </a></li>
                         <li><a href="{{ route ('usergroup.index') }}">QL Nhóm Thành Viên</a></li>
@@ -28,7 +28,7 @@ FIVE Cinema
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route ('film.index ') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Phim </span></a>
+                    <a href="{{ route ('film.index ') }}"><i class="fa-solid fa-film"></i> <span class="nav-label">Phim </span></a>
                 </li>
                 <li>
                     <a href="{{ route ('revenue.index ') }}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Doanh Thu </span> </a>
@@ -39,10 +39,10 @@ FIVE Cinema
 
                 </li>
                 <li>
-                    <a href="{{ route ('movieShowtime.index ') }}"><i class="fa fa-pie-chart"></i> <span class="nav-label">Lịch Chiếu </span>  </a>
+                    <a href="{{ route ('movieShowtime.index ') }}"><i class="fa-regular fa-calendar"></i> <span class="nav-label">Lịch Chiếu </span>  </a>
                 </li>
                 <li>
-                    <a href=" {{ route ('ticket.index ') }}"><i class="fa fa-flask"></i> <span class="nav-label">Vé</span></a>
+                    <a href=" {{ route ('ticket.index ') }}"><i class="fa-solid fa-ticket"></i> <span class="nav-label">Vé</span></a>
                 </li>
 
 
