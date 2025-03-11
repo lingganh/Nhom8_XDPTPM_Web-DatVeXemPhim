@@ -40,53 +40,58 @@
                         </a>
                     </div>
                 </div>
+
                 <div class="ibox-content" style="">
+                    <div class="filter-box">
+                        <div class="perpage">
+                            <select class="form-control input-sm m-b-xs">
+                                @for($i=20 ;$i<=200;$i++)
+                                <option value="{{$i}}">{{$i}}Ban Ghi</option>
+                                @endfor
+                            </select>
+                        </div>
+                    </div>
+                    <table class="table table-striped table table-bordered"  >
+                        <thead class="text-center">
 
-                    <table class="table table-striped table table-bordered">
-                        <thead>
-
-                        <tr>
-                            <th> <input type="checkbox" id="checkAll" class="i-checks"></th>
-                            <th>Ảnh </th>
-                            <th>Thông Tin Thành Viên </th>
-                            <th>Địa Chỉ </th>
-                            <th>Tình Trạng </th>
+                        <tr >
+                            <th class="text-center" > <input type="checkbox" id="checkAll" class="i-checks"></th>
+                            <th class="text-center"> Ảnh </th>
+                            <th class="text-center">Họ Tên  </th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">SDT</th>
+                            <th class="text-center">Địa Chỉ</th>
+                            <th class="text-center">Tình Trạng </th>
+                            <th class="text-center">Thao Tác </th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-center">
                         <tr>
                             <td> <input type="checkbox" id="check item" class="i-checks"></td>
-                           <td>
+                           <td class="user-avatar">
                                <span class="image">
                                    <img style="height:120px" src="https://voguesg.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/12/22162655/V-featured-680x1020.jpg"  alt="Ảnh đại diện "></span>
                            </td>
                             <td>
-                                <div class="user-items name">
-                                    Họ và Tên : Kim Tae-hyung
-                                </div>
-                                <div class="user-items mail">
-                                    Email : abc@gmal.com
-                                </div>
-                                <div class="user-items phone">
-                                    SDT : 0999999999
-                                </div>
+                                  Kim Tae-hyung
+                            </td><td>
+                                      bighit@gmail.com
+
                             </td>
                             <td>
-                                <div class="address-items">
-                                    Địa Chỉ  : 120 Hàng Ngang
-                                </div>
-                                <div class="address-items ">
-                                    Phường : Hàng Ngang
-                                </div>
-                                <div class="address-items ">
-                                    Quận : Hoàn Kiếm
-                                </div>
-                                <div class="address-items ">
-                                   Thành Phố : Hà Nội
-                                </div>
+                                      0999999999
+
                             </td>
                             <td>
+                               120 Hàng Ngang p Hàng Ngang Hoàn Kiếm Hà Nội
+
+                            </td>
+                            <td >
                                 <input type="checkbox" class="js-switch" checked />
+                            </td>
+                            <td >
+                                 <a href="" class="btn btn-success"><i class ="fa fa-edit"></i></a>
+                                <a href="" class="btn btn-danger"><i class ="fa fa-trash"></i></a>
                             </td>
                         </tr>
 
