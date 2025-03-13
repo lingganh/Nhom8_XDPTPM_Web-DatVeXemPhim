@@ -39,6 +39,9 @@ table strong {
 .filter .perpage{
     display: inline-block;
 }
+.filter {
+    margin-bottom: 15px;
+}
 .btn{
     margin-bottom: 0px;
     font-size: 13px;

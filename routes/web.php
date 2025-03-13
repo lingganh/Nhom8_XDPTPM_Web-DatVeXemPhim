@@ -1,11 +1,13 @@
 <?php
 
+use HomeController\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\{Http\Controllers\Backend\AuthController,
     Http\Controllers\Backend\CommentsController,
     Http\Controllers\Backend\DashboardController,
     Http\Controllers\Backend\FilmController,
     Http\Controllers\Backend\UserGroupController,
+    Http\Controllers\Controller,
     Http\Middleware\AuthMiddleware,
     Http\Middleware\LoginMiddleware,
     Http\Controllers\Backend};
@@ -39,3 +41,7 @@ Route::get('revenue/index', [Backend\RevenueController::class, 'index'])->name('
 
 //ticket
 Route::get('ticket/index', [Backend\ticketController::class, 'index'])->name('ticket.index ')->middleware(AuthMiddleware::class);
+
+
+// FE _home
+Route::get('', [Controller::class, 'index']);
