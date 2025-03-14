@@ -23,7 +23,7 @@
                                 <h6>Thông tin</h6>
                                 <ul>
                                     <li><a href="index.html"> Trang Chủ </a> </li>
-                                    <li><a href="about.html">Quay Lại</a> </li>
+                                    <li><a href="about.html">Về Chúng Tôi</a> </li>
                                     <li><a href="#">Phim truyền hình</a> </li>
                                     <li><a href="#">Blogs</a> </li>
                                     <li><a href="sign_in.html">Đăng Nhập </a></li>

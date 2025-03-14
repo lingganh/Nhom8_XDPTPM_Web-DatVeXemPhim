@@ -3,9 +3,9 @@
     <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
         <div class="container">
             <h1><a class="navbar-brand" href="index.html">
-                    <img src="frontend/MyShowz-Movie-ticket-booking-website-master1\MyShowz-Movie-ticket-booking-website-master\.vs\MyShowz-Movie-ticket-booking-website-master\v17\img\logo.jpg.png"
-                         alt="Five Star " style="height:120px;">
-
+                    <img src="https://img.icons8.com/?size=100&id=f37TKteMvQFo&format=png&color=000000"
+                         alt="Five Star " style="height:20px;">
+                    FIVE STAR
                 </a></h1>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -24,7 +24,7 @@
                         <a class="nav-link" href="movies.html">Phim</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Quay Lại</a>
+                        <a class="nav-link" href="about.html">Về Chúng Tôi</a>
                     </li>
 
 
