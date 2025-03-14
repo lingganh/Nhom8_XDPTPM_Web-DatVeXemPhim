@@ -10,7 +10,11 @@
 
 @extends('frontend.layout.component.nav')
 <!-- footer-66 -->
-<br>
+<header>
+
+</header>
+ 
+
 <div class="content">
     @yield('content')
 </div>

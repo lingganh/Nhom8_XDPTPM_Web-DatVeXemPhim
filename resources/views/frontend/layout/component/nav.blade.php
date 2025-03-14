@@ -3,9 +3,12 @@
     <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
         <div class="container">
             <h1><a class="navbar-brand" href="index.html">
+
                     <img src="https://img.icons8.com/?size=100&id=f37TKteMvQFo&format=png&color=000000"
-                         alt="Five Star " style="height:20px;">
-                    FIVE STAR
+                         alt="Five Star " style="height:40px;">
+                    <h1 data-text="Five Star" class="text0">
+                        Five Star
+                    </h1>
                 </a></h1>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -99,3 +102,5 @@
 
     <!--/nav-->
 </header>
+<script src="frontend/assets/js/theme-change.js"></script>
+<script src="frontend/assets/js/owl.carousel.js"></script>

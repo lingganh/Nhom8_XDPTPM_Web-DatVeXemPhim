@@ -1,0 +1,48 @@
+.text0 {
+    display: inline-block;
+    position: relative;
+    font-size:  30px;
+
+    cursor: pointer;
+    color: #e8e8e8;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.text0::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: transparent;
+    background: linear-gradient(to right,
+    #ff00ff, #00ffff);
+    background-clip: text;
+    transition: width 0.3s;
+}
+
+.text0:hover::before {
+    width: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1; /* Cho phép content mở rộng */
+    padding: 20px; /* Tùy chỉnh padding nếu cần */
+    /* Bạn có thể thêm các thuộc tính khác như margin, background-color, v.v. */
+}
+
+footer {
+    /* CSS cho footer của bạn */
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 10px 0;
+}
