@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('trangThai', 50)->nullable();
             $table->string('Poster', 100)->nullable();
             $table->string('Trailer', 100)->nullable();
+            $table->string('imgBanner', 100)->nullable();
+
         });
     }
 

@@ -13,7 +13,7 @@
 <header>
 
 </header>
- 
+
 
 <div class="content">
     @yield('content')

@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             HoaDonSeeder::class,
             KHTKSeeder::class,
             KhachHangSeeder::class,
-            LichChieuSeeder::class,
+            PhimSeeder::class,
         ]);
 
     }
