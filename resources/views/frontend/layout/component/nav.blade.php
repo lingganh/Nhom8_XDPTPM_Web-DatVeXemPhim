@@ -79,7 +79,7 @@
                 <div class="Login_SignUp" id="login"
                      style="font-size: 2rem ; display: inline-block; position: relative;">
                     <!-- <li class="nav-item"> -->
-                    <a class="nav-link" href="sign_in.html"><i class="fa fa-user-circle-o"></i></a>
+                    <a class="nav-link" href=" {{route('signin.index')}}"><i class="fa fa-user-circle-o"></i></a>
                     <!-- </li> -->
                 </div>
             </div>

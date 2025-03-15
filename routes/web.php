@@ -8,6 +8,7 @@ use App\{Http\Controllers\Backend\AuthController,
     Http\Controllers\Backend\FilmController,
     Http\Controllers\Backend\UserGroupController,
     Http\Controllers\Controller,
+    Http\Controllers\Frontend\SignInController,
     Http\Middleware\AuthMiddleware,
     Http\Middleware\LoginMiddleware,
     Http\Controllers\Backend};
@@ -45,3 +46,11 @@ Route::get('ticket/index', [Backend\ticketController::class, 'index'])->name('ti
 
 // FE _home
 Route::get('', [Controller::class, 'index']);
+
+//List Film
+Route::get('film/index', [ListFilmController::class, 'index'])->name('film.index');
+
+
+//Sign In
+
+Route::get('signin/index', [SignInController::class, 'index'])->name('signin.index');

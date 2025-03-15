@@ -38,7 +38,7 @@
                             <h3 class="hny-title">Phim nổi tiếng</h3>
                         </div>
                         <div class="headerhny-right text-lg-right">
-                            <h4><a class="show-title" href="">Tất cả chương trình</a></h4>
+                            <h4><a class="show-title" href="{{ route ('film.index') }}">Tất cả chương trình</a></h4>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                     @foreach ($phims as $phim)
                         <div class="item vhny-grid">
                             <div class="box16">
-                                <a href="movies.html">
+                                <a href="{{ route ('film.index') }}">
                                     <figure>
                                         <img class="img-fluid" src="{{ $phim->Poster }}" alt="{{ $phim->tenPhim }}">
                                     </figure>
@@ -66,4 +66,5 @@
                     @endforeach
                 </div>
         </div>
+    <div>
  @endsection

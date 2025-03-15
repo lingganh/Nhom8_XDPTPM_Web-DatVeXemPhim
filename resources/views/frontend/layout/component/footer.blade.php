@@ -4,7 +4,24 @@
             <div class="container py-lg-4">
                 <div class="text-txt">
                     <div class="right-side">
-
+                        <div class="row footer-about">
+                            <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
+                                <a href="movies.html"><img class="img-fluid" src="assets/images/banner1.jpg"
+                                                           alt=""></a>
+                            </div>
+                            <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
+                                <a href="movies.html"><img class="img-fluid" src="assets/images/banner2.jpg"
+                                                           alt=""></a>
+                            </div>
+                            <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
+                                <a href="movies.html"><img class="img-fluid" src="assets/images/banner3.jpg"
+                                                           alt=""></a>
+                            </div>
+                            <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
+                                <a href="movies.html"><img class="img-fluid" src="assets/images/banner4.jpg"
+                                                           alt=""></a>
+                            </div>
+                        </div>
                         <div class="row footer-links">
 
 
@@ -20,10 +37,10 @@
                                 </ul>
                             </div>
                             <div class="col-md-3 col-sm-6 sub-two-right mt-5">
-                                <h6>Thông tin</h6>
+                                <h6>thông tin</h6>
                                 <ul>
                                     <li><a href="index.html"> Trang Chủ </a> </li>
-                                    <li><a href="about.html">Về Chúng Tôi</a> </li>
+                                    <li><a href="about.html">Quay Lại</a> </li>
                                     <li><a href="#">Phim truyền hình</a> </li>
                                     <li><a href="#">Blogs</a> </li>
                                     <li><a href="sign_in.html">Đăng Nhập </a></li>
@@ -60,7 +77,7 @@
             <div class="container">
                 <div class="copyright-footer">
                     <div class="columns text-lg-left">
-                        <p>&copy; Copyright five Star 2025  </p>
+                        <p>&copy;  CopyRight Five Star 2025 </p>
                     </div>
 
                     <ul class="social text-lg-right">
