@@ -15,12 +15,11 @@ return new class extends Migration
             $table->char('M_id', 5)->primary();
             $table->string('tenPhim', 100)->nullable();
             $table->integer('thoiLuong')->nullable(); // Assuming as integer
-            $table->text('moTa')->nullable();
-            $table->string('trangThai', 50)->nullable();
-            $table->string('Poster', 100)->nullable();
+             $table->string('trangThai', 50)->nullable();
+            $table->string('Poster', 2048)->nullable();
             $table->string('Trailer', 100)->nullable();
-            $table->string('imgBanner', 100)->nullable();
-
+            $table->string('moTa', 1000)->nullable();
+            $table->string('imgBanner', 2048)->nullable();
         });
     }
 

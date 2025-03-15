@@ -26,61 +26,44 @@
                 @endforeach
             </div>
         </div>
-        <!--PHIM NOI TIENG -->
-        <section class="w3l-grids">
-            <div class="grids-main py-5">
-                <div class="container py-lg-3">
-                    <div class="headerhny-title">
-                        <div class="w3l-title-grids">
-                            <div class="headerhny-left">
-                                <h3 class="hny-title">Phim nổi tiếng</h3>
-                            </div>
-                            <div class="headerhny-right text-lg-right">
-                                <h4><a class="show-title" href="movies.html">Tất cả chương trình</a></h4>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <!--PHIM Đang chiếu  -->
-        <section class="w3l-grids">
-            <div class="grids-main py-5">
-                <div class="container py-lg-3">
-                    <div class="headerhny-title">
-                        <div class="w3l-title-grids">
-                            <div class="headerhny-left">
-                                <h3 class="hny-title">Phim đang chiếu</h3>
-                            </div>
-                            <div class="headerhny-right text-lg-right">
-                                <h4><a class="show-title" href="movies.html">Tất cả chương trình</a></h4>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!--PHIM sAP CHIEU  -->
-        <section class="w3l-grids">
-            <div class="grids-main py-5">
-                <div class="container py-lg-3">
-                    <div class="headerhny-title">
-                        <div class="w3l-title-grids">
-                            <div class="headerhny-left">
-                                <h3 class="hny-title">Phim sắp chiếu </h3>
-                            </div>
-                            <div class="headerhny-right text-lg-right">
-                                <h4><a class="show-title" href="movies.html">Tất cả chương trình</a></h4>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
 
     </section>
+
+    <section class="w3l-grids">
+        <div class="grids-main py-5">
+            <div class="container py-lg-3">
+                <div class="headerhny-title">
+                    <div class="w3l-title-grids">
+                        <div class="headerhny-left">
+                            <h3 class="hny-title">Phim nổi tiếng</h3>
+                        </div>
+                        <div class="headerhny-right text-lg-right">
+                            <h4><a class="show-title" href="">Tất cả chương trình</a></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3l-populohny-grids">
+                    @foreach ($phims as $phim)
+                        <div class="item vhny-grid">
+                            <div class="box16">
+                                <a href="movies.html">
+                                    <figure>
+                                        <img class="img-fluid" src="{{ $phim->Poster }}" alt="{{ $phim->tenPhim }}">
+                                    </figure>
+                                    <div class="box-content">
+                                        <h3 class="title">{{ $phim->tenPhim }}</h3>
+                                        <h4>
+                            <span class="post">
+                                <span class="fa fa-clock-o"></span> {{ $phim->thoiLuong }} Min
+                            </span>
+                                            <span class="post fa fa-heart text-right"></span>
+                                        </h4>
+                                    </div>
+                                    <span class="fa fa-play video-icon" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+        </div>
  @endsection
