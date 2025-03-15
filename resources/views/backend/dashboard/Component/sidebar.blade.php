@@ -28,7 +28,7 @@ FIVE Cinema
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route ('film.index ') }}"><i class="fa-solid fa-film"></i> <span class="nav-label">Phim </span></a>
+                    <a href="{{ route ('films.index ') }}"><i class="fa-solid fa-film"></i> <span class="nav-label">Phim </span></a>
                 </li>
                 <li>
                     <a href="{{ route ('revenue.index ') }}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Doanh Thu </span> </a>

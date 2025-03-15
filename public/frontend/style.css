@@ -40,9 +40,3 @@ body {
     /* Bạn có thể thêm các thuộc tính khác như margin, background-color, v.v. */
 }
 
-footer {
-    /* CSS cho footer của bạn */
-    background-color: #f0f0f0;
-    text-align: center;
-    padding: 10px 0;
-}

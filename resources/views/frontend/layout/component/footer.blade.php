@@ -72,12 +72,11 @@
                 </div>
             </div>
         </div>
-        </div>
         <div class="below-section">
             <div class="container">
                 <div class="copyright-footer">
                     <div class="columns text-lg-left">
-                        <p>&copy;  CopyRight Five Star 2025 </p>
+                        <p>&copy; Do Nhóm five Star hoàn thành </p>
                     </div>
 
                     <ul class="social text-lg-right">
@@ -94,6 +93,8 @@
                 </div>
             </div>
         </div>
+        </div>
+
         <!-- move top -->
         <button onclick="topFunction()" id="movetop" title="Go to top">
             <span class="fa fa-arrow-up" aria-hidden="true"></span>

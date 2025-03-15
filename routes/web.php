@@ -12,6 +12,7 @@ use App\{Http\Controllers\Backend\AuthController,
     Http\Middleware\AuthMiddleware,
     Http\Middleware\LoginMiddleware,
     Http\Controllers\Backend};
+use App\Http\Controllers\Frontend\ListFilmController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,7 +28,7 @@ Route::get('logout', [AuthController:: class, 'logout'])->name('auth.logout');
 Route::get('user/index', [Backend\UserController ::class, 'index'])->name('user.index')->middleware(AuthMiddleware::class);
 Route::get('usergroup/index', [UserGroupController ::class, 'index'])->name('usergroup.index')->middleware(AuthMiddleware::class);
 // Film
-Route::get('film/index', [FilmController::class, 'index'])->name('film.index ')->middleware(AuthMiddleware::class);
+Route::get('films/index', [FilmController::class, 'index'])->name('films.index ')->middleware(AuthMiddleware::class);
 
  //movie showtimes
 Route::get('movieShowtime/index', [ Backend\movieShowtimeController::class, 'index'])->name('movieShowtime.index ')->middleware(AuthMiddleware::class);
