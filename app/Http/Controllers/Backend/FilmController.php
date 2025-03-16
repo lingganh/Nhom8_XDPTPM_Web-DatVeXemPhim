@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\Support\Facades\DB;
+
 class FilmController
 {
     public function __construct()
@@ -11,6 +13,11 @@ class FilmController
 
     public function index(){
 
-        return view('backend.film.index');
+        $phims = DB::table('phim')
+            ->whereIn('trangThai', ['Đang chiếu', 'Sắp chiếu'])
+            ->get();
+        return view('backend.film.index', compact('phims'));
+
+
     }
 }

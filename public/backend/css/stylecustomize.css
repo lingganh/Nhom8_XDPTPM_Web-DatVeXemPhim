@@ -55,3 +55,129 @@ table strong {
     margin-right: 10px;
 
 }
+
+ .w3l-grids {
+     /* Optional: Add some padding or margin to the section */
+     padding: 20px 0;
+ }
+
+.grids-main {
+    /* Optional: Add background color or padding */
+}
+
+.container {
+    /* Optional: Adjust container width and padding */
+}
+
+.w3l-populohny-grids {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between items */
+}
+
+.item.vhny-grid {
+    /* Optional: Add styling to each item */
+}
+
+.box16 {
+    position: relative;
+    overflow: hidden; /* Hide overflow from hover effects */
+}
+
+.box16 figure {
+    margin: 0; /* Remove default figure margin */
+}
+
+.box16 img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.box16:hover img {
+    transform: scale(1.1); /* Zoom on hover */
+}
+
+.box-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    color: white;
+    padding: 15px;
+    transform: translateY(100%); /* Initially hide content */
+    transition: transform 0.3s ease;
+}
+
+.box16:hover .box-content {
+    transform: translateY(0); /* Show content on hover */
+}
+
+.box-content .title {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.box-content h4 {
+    margin-bottom: 10px;
+}
+
+.box-content .post {
+    display: block;
+    font-size: 0.9rem;
+}
+
+.movie-buttons {
+    text-align: center;
+}
+
+.movie-buttons .button {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    margin: 5px;
+    background-color: #007bff; /* Primary color */
+}
+
+.movie-buttons .button:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #007bff;
+    border-radius: 10rem;
+    z-index: -2;
+}
+
+.movie-buttons .button:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: darken(#007bff, 15%);
+    transition: all 0.3s;
+    border-radius: 10rem;
+    z-index: -1;
+}
+
+.movie-buttons .button:hover {
+    color: #fff;
+}
+
+.movie-buttons .button:hover:before {
+    width: 100%;
+}

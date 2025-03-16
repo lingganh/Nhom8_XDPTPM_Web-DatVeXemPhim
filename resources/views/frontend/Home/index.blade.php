@@ -6,7 +6,7 @@
                 @foreach ($phims as $phim)
                     <div class="item">
                         <li>
-                            <div class="slider-info banner-view bg" style="background-image: url('{{ $phim->imgBanner }}');">
+                            <div class="slider-info banner-view bg" style="background-image: url('{{ $phim->Poster }}');">
                                 <div class="banner-info">
                                     <h3>{{ $phim->tenPhim }}</h3>
                                     <p>{{ $phim->moTa }}</p>
@@ -29,42 +29,103 @@
 
     </section>
 
+
+
+<!--phim sắp chiếu -->
+        <section class="w3l-grids">
+            <div class="grids-main py-5">
+                <div class="container py-lg-3">
+                    <div class="headerhny-title">
+                        <div class="w3l-title-grids">
+                            <div class="headerhny-left">
+                                <h3 class="hny-title">Phim đang chiếu </h3>
+                            </div>
+                            <div class="headerhny-right text-lg-right">
+                                <h4><a class="show-title" href="{{ route('film.index') }}">Tất cả chương trình</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3l-populohny-grids">
+                        @php
+                            $upcomingMovies = $phims->where('trangThai', 'Sắp chiếu')->take(4);
+                        @endphp
+                        @foreach ($upcomingMovies as $phim)
+                            <div class="item vhny-grid">
+                                <div class="box16">
+                                    <a href="{{ route('film.index') }}">
+                                        <figure>
+                                            <img class="img-fluid" src="{{ $phim->imgBanner }}" alt="{{ $phim->tenPhim }}">
+                                        </figure>
+                                        <div class="box-content">
+                                            <h3 class="title">{{ $phim->tenPhim }}</h3>
+                                            <h4>
+                                        <span class="post">
+                                            <span class="fa fa-clock-o"></span> {{ $phim->thoiLuong }} Min
+                                        </span>
+                                                <span class="post fa fa-heart text-right"></span>
+                                            </h4>
+
+                                            <div class="movie-buttons">
+
+
+                                                <a href="" class="button btn-primary">Đặt Vé </a>
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!--phim đang chiếu -->
     <section class="w3l-grids">
         <div class="grids-main py-5">
             <div class="container py-lg-3">
                 <div class="headerhny-title">
                     <div class="w3l-title-grids">
                         <div class="headerhny-left">
-                            <h3 class="hny-title">Phim nổi tiếng</h3>
+                            <h3 class="hny-title">Phim sắp chiếu </h3>
                         </div>
                         <div class="headerhny-right text-lg-right">
-                            <h4><a class="show-title" href="{{ route ('film.index') }}">Tất cả chương trình</a></h4>
+                            <h4><a class="show-title" href="{{ route('film.index') }}">Tất cả chương trình</a></h4>
                         </div>
                     </div>
                 </div>
                 <div class="w3l-populohny-grids">
-                    @foreach ($phims as $phim)
+                    @php
+                        $upcomingMovies = $phims->where('trangThai', 'Đang chiếu')->take(4);
+                    @endphp
+                    @foreach ($upcomingMovies as $phim)
                         <div class="item vhny-grid">
                             <div class="box16">
-                                <a href="{{ route ('film.index') }}">
+                                <a href="{{ route('film.index') }}">
                                     <figure>
-                                        <img class="img-fluid" src="{{ $phim->Poster }}" alt="{{ $phim->tenPhim }}">
+                                        <img class="img-fluid" src="{{ $phim->imgBanner  }}" alt="{{ $phim->tenPhim }}">
                                     </figure>
                                     <div class="box-content">
                                         <h3 class="title">{{ $phim->tenPhim }}</h3>
                                         <h4>
-                            <span class="post">
-                                <span class="fa fa-clock-o"></span> {{ $phim->thoiLuong }} Min
-                            </span>
+                                        <span class="post">
+                                            <span class="fa fa-clock-o"></span> {{ $phim->thoiLuong }} Min
+                                        </span>
                                             <span class="post fa fa-heart text-right"></span>
                                         </h4>
+
+                                        <div class="movie-buttons">
+
+                                            <a href="" class="button btn-primary">Xem Chi Tiết </a>
+                                        </div>
                                     </div>
-                                    <span class="fa fa-play video-icon" aria-hidden="true"></span>
                                 </a>
                             </div>
                         </div>
                     @endforeach
                 </div>
+            </div>
         </div>
-    <div>
- @endsection
+    </section>
+@endsection

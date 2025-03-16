@@ -39,4 +39,73 @@ body {
     padding: 20px; /* Tùy chỉnh padding nếu cần */
     /* Bạn có thể thêm các thuộc tính khác như margin, background-color, v.v. */
 }
+ .movie-buttons {
+     display: none;
+     margin-top: 10px;
+     text-align: center;
+ }
+
+.box16:hover .movie-buttons {
+    display: block;
+}
+
+.box16 {
+    position: relative;
+}
+
+.box-content {
+    position: relative;
+}
+
+.movie-buttons .button {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    margin: 5px; /* Added margin for spacing */
+}
+
+.movie-buttons .button:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10rem;
+    z-index: -2;
+}
+
+.movie-buttons .button:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    transition: all 0.3s;
+    border-radius: 10rem;
+    z-index: -1;
+}
+
+.movie-buttons .button:hover {
+    color: #fff;
+}
+
+.movie-buttons .button:hover:before {
+    width: 100%;
+}
+
+
+
+.movie-buttons .btn-primary:after {
+    background-color: #007bff;
+}
 
