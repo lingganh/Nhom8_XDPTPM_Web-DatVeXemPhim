@@ -19,11 +19,35 @@ class DatabaseSeeder extends Seeder
 
 
         DB::table('users')->insert([
-            'name' => 'admin',
+           [ 'name' => 'admin',
             'email' => 'admin01@gmail.com',
             'password' =>  bcrypt('admin123')
-
-
+            ],
+            [
+                'name' => 'LinhHoang',
+                'email' => 'LinhHoang12@gmail.com',
+                'password' =>  bcrypt('Lenin')
+            ],
+            [
+                'name' => 'XuLee',
+                'email' => 'XuLee01@gmail.com',
+                'password' =>  bcrypt('hihi12')
+            ],
+            [
+                'name' => 'RoseTra',
+                'email' => 'TraRose8@gmail.com',
+                'password' =>  bcrypt('Rose4')
+            ],
+            [
+                'name' => 'TungTung',
+                'email' => 'TungNguyen2@gmail.com',
+                'password' =>  bcrypt('phutang1')
+            ],
+            [
+                'name' => 'BuiHoa',
+                'email' => 'Hoabui82@gmail.com',
+                'password' =>  bcrypt('Hoa13')
+            ],
         ]);
 
         $this->call([
