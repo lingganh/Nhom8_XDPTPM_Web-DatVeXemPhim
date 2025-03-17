@@ -11,6 +11,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="frontend/assets/css/style-starter.css">
     <link rel="stylesheet" type="text/css" href="frontend/assets/css/sign-in.css">
+    <link rel="stylesheet" type="text/css" href="frontend/style.css">
 </head>
 
 <body>
@@ -19,8 +20,12 @@
     <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
         <div class="container">
             <h1><a class="navbar-brand" href="index.html">
-                    <img src="C:\Users\dell\Downloads\MyShowz-Movie-ticket-booking-website-master1\MyShowz-Movie-ticket-booking-website-master\.vs\MyShowz-Movie-ticket-booking-website-master\v17\img\logo.jpg.png"
-                         alt="Five Star " style="height:120px;">
+                    <img src="https://img.icons8.com/?size=100&id=f37TKteMvQFo&format=png&color=000000"
+                         alt="Five Star " style="height:40px;">
+                    <h1 data-text="Five Star" class="text0">
+                        Five Star
+                    </h1>
+
 
                 </a></h1>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -51,7 +56,7 @@
 
 <div class="container_signup_signin" id="container_signup_signin">
     <div class="form-container sign-up-container">
-        <form name="sign-up-form" action="#" onsubmit="return signUpValidateForm()">
+        <form name="sign-up-form" action=""  >
             <h1>Create Account</h1>
             <div class="social-container">
                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -59,15 +64,25 @@
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <span>Hoặc sử dụng email của bạn để đăng ký</span>
+            @csrf
             <input name="sign-up-name" type="text" placeholder="Tên " />
             <input name="sign-up-email" type="email" placeholder="Email" />
             <input name="sign-up-passwd" type="password" placeholder="Password" />
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <button>Đăng ký</button>
         </form>
     </div>
+    <!-- ĐN -->
     <div class="form-container sign-in-container">
-        <form name="sign-in-form" style="color: var(--theme-title);" action="#"
-              onsubmit="return signInValidateForm()">
+        <form name="sign-in-form" style="color: var(--theme-title);" action="{{route('five.signIn')}}" method="POST">
             <h1>Đăng Nhập</h1>
             <div class="social-container">
                 <a href="#" class="social" style="color: var(--theme-title);"><i class="fab fa-facebook-f"></i></a>
@@ -76,10 +91,22 @@
                 <a href="#" class="social" style="color: var(--theme-title);"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <span>Hoặc sử dụng tài khoản của bạn</span>
-            <input name="sign-in-email" type="email" placeholder="Email" />
-            <input name="sign-in-passwd" type="password" placeholder="Mật Khẩu" />
+
+            @csrf
+
+            <input name="email" type="email" placeholder="Email" />
+            <input name="password" type="password" placeholder="Mật Khẩu" />
             <a href="#">Quên mật khẩu?</a>
-            <button>Đăng Ký</button>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <button>Đăng Nhập</button>
         </form>
     </div>
     <div class="overlay-container">
@@ -87,21 +114,23 @@
             <div class="overlay-panel overlay-left">
                 <h1>Chào mừng trở lại!</h1>
                 <p>Để giữ kết nối với chúng tôi, vui lòng đăng nhập bằng thông tin đăng nhập của bạn</p>
-                <button class="ghost" id="signIn">Đăng Ký</button>
+                <button class="ghost" id="signIn">Đăng Nhập</button>
             </div>
+            <!-- ĐN -->
             <div class="overlay-panel overlay-right">
                 <h1>Xin Chào Bạn</h1>
                 <p>Đăng ký và đặt vé ngay bây giờ!!!</p>
+
                 <button class="ghost" id="signUp">Đăng Ký</button>
             </div>
         </div>
     </div>
 </div>
 
-<script type="text/javascript" src="assets/js/as-alert-message.min.js"></script>
-<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="frontend/assets/js/as-alert-message.min.js"></script>
+<script src="frontend/assets/js/jquery-3.3.1.min.js"></script>
 <!--/theme-change-->
-<script src="assets/js/theme-change.js"></script>
+<script src="frontend/assets/js/theme-change.js"></script>
 <!-- disable body scroll which navbar is in active -->
 <script>
     $(function () {
@@ -138,9 +167,9 @@
         });
     });
 </script>
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="frontend/assets/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="assets/js/sign-in.js"></script>
+<script type="text/javascript" src="frontend/assets/js/sign-in.js"></script>
 
 </body>
 

@@ -46,7 +46,7 @@ Route::get('ticket/index', [Backend\ticketController::class, 'index'])->name('ti
 
 
 // FE _home
-Route::get('', [Controller::class, 'index']);
+Route::get('', [Controller::class, 'index'])->name('home.index');
 
 //List Film
 Route::get('/film', [ListFilmController::class, 'index'])->name('film.index');
@@ -55,7 +55,7 @@ Route::get('/film', [ListFilmController::class, 'index'])->name('film.index');
 //Sign In
 
 Route::get('/signin', [SignInController::class, 'index'])->name('signin.index');
-
+Route::post('/signIn',  [SignInController::class, 'signin'])->name('five.signIn');
 
 
 

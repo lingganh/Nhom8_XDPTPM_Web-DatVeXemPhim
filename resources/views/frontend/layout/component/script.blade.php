@@ -214,6 +214,7 @@
 </script>
 <!-- disable body scroll which navbar is in active -->
 <!--/MENU-JS-->
+<!--/MENU-JS-->
 <script>
     $(window).on("scroll", function () {
         var scroll = $(window).scrollTop();
@@ -240,3 +241,7 @@
         });
     });
 </script>
+<script src="frontend/assets/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="frontend/assets/js/sign-in.js"></script>
+
