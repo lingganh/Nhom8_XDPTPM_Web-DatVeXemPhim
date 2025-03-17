@@ -12,6 +12,6 @@ class SignInController
     public function index()
     {
 
-        return view('frontend.Sign In.index'  );
+        return view('frontend.Home.signIn'  );
     }
 }

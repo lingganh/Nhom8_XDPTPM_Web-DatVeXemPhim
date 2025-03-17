@@ -49,16 +49,14 @@ Route::get('ticket/index', [Backend\ticketController::class, 'index'])->name('ti
 Route::get('', [Controller::class, 'index']);
 
 //List Film
-Route::get('film/index', [ListFilmController::class, 'index'])->name('film.index');
+Route::get('/film', [ListFilmController::class, 'index'])->name('film.index');
 
 
 //Sign In
 
-Route::get('signin/index', [SignInController::class, 'index'])->name('signin.index');
+Route::get('/signin', [SignInController::class, 'index'])->name('signin.index');
 
 
 
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

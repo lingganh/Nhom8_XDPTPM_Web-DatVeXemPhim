@@ -13,6 +13,6 @@ class ListFilmController extends Controller
 
     public function index()
     {
-        return view('frontend.ListFilm.index');
+        return view('frontend.Home.listFilm');
     }
 }
