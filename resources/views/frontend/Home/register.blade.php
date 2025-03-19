@@ -55,24 +55,18 @@
 </header>
 
 <div class="container_signup_signin" id="container_signup_signin">
-     <!-- ĐN -->
-    <div class="form-container sign-in-container">
-        <form name="sign-in-form" style="color: var(--theme-title);" action="{{route('five.signIn')}}" method="POST">
-            <h1>Đăng Nhập</h1>
-            <div class="social-container">
-                <a href="#" class="social" style="color: var(--theme-title);"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social" style="color: var(--theme-title);"><i
-                        class="fab fa-google-plus-g"></i></a>
-                <a href="#" class="social" style="color: var(--theme-title);"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-            <span>Hoặc sử dụng tài khoản của bạn</span>
+    <div class="form-container sign-up-container">
+        <form name="sign-up-form" action="{{route('register')}}" method="post"
+              class="sign-up-form"  >
+            <h1>Create Account</h1>
 
-            @csrf
+              @csrf
+            <input name="name" type="text" placeholder="Tên " />
+            <input name=" email" type="email" placeholder="Email" />
+            <input name="password" type="password" placeholder="Password" />
+            <input name="password_confirmation" type="password" placeholder="Confirmation Password" />
 
-            <input name="email" type="email" placeholder="Email" />
-            <input name="password" type="password" placeholder="Mật Khẩu" />
-            <a href="#">Quên mật khẩu?</a>
-            @if ($errors->any())
+        @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -81,10 +75,11 @@
                     </ul>
                 </div>
             @endif
-            <button>Đăng Nhập</button>
+            <button>Đăng ký </button>
         </form>
     </div>
-    <div class="overlay-container">
+    <!-- ĐN -->
+     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-left">
                 <h1>Chào mừng trở lại!</h1>
@@ -106,42 +101,10 @@
 <script src="frontend/assets/js/jquery-3.3.1.min.js"></script>
 <!--/theme-change-->
 <script src="frontend/assets/js/theme-change.js"></script>
-<!-- disable body scroll which navbar is in active -->
-<script>
-    $(function () {
-        $('.navbar-toggler').click(function () {
-            $('body').toggleClass('noscroll');
-        })
-    });
-</script>
+
 <!-- disable body scroll which navbar is in active -->
 <!--/MENU-JS-->
-<script>
-    $(window).on("scroll", function () {
-        var scroll = $(window).scrollTop();
 
-        if (scroll >= 80) {
-            $("#site-header").addClass("nav-fixed");
-        } else {
-            $("#site-header").removeClass("nav-fixed");
-        }
-    });
-
-    //Main navigation Active Class Add Remove
-    $(".navbar-toggler").on("click", function () {
-        $("header").toggleClass("active");
-    });
-    $(document).on("ready", function () {
-        if ($(window).width() > 991) {
-            $("header").removeClass("active");
-        }
-        $(window).on("resize", function () {
-            if ($(window).width() > 991) {
-                $("header").removeClass("active");
-            }
-        });
-    });
-</script>
 <script src="frontend/assets/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="frontend/assets/js/sign-in.js"></script>

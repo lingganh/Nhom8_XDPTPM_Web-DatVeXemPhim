@@ -22,10 +22,7 @@ class DatabaseSeeder extends Seeder
            [ 'name' => 'admin',
             'email' => 'admin03@gmail.com',
             'password' =>  bcrypt('admin123'),
-               'phone' => '0987654321',
-               'address' => 'Số nhà 09, phố Tô Vĩnh Diễn, phường Khương Trung, quận Thanh Xuân, thành phố Hà Nội.',
-               'birthday' => '12/8/1999',
-               'image' => 'https://kenh14cdn.com/203336854389633024/2022/11/5/ffwx553ayaatr1-16676177837411790950491.jpg'
+
             ],
             [
                 'name' => 'LinhHoang',
