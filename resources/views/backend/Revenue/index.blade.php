@@ -1,20 +1,47 @@
 @extends('backend.dashboard.layout')
 @section('content')
-    <div class="row wrapper border-bottom white-bg page-heading">
-        <div class="col-lg-10" style = "margin-top: 10px">
-            <h2>Doanh Thu </h2>
-            <ol class="breadcrumb">
-                <li>
-                    <a href="{{'dashboard/index'}} ">Home</a>
-                </li>
-                <li class="active">
-                    <strong> Revenue </strong>
-                </li>
-            </ol>
-        </div>
-        <div class="col-lg-2">
+    <div class="container">
+        <h2>Thống kê Doanh Thu</h2>
 
-        </div>
+        <p><strong>Tổng doanh thu:</strong> {{ number_format($tongDoanhThu, 0, ',', '.') }} VNĐ</p>
+
+        <h3>Doanh thu theo ngày</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Ngày</th>
+                <th>Doanh thu</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($doanhThuTheoNgay as $item)
+                <tr>
+                    <td>{{ $item->ngay }}</td>
+                    <td>{{ number_format($item->doanhthu, 0, ',', '.') }} VNĐ</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+
+        <h3>Thống kê vé</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Trạng thái</th>
+                <th>Số lượng vé</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($veBanRa as $item)
+                <tr>
+                    <td>{{ $item->trangThai }}</td>
+                    <td>{{ $item->soLuong }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
+    <script src="{{ asset('backend/assets/js/doanhthu.js') }}"></script>
+
 
 @endsection
