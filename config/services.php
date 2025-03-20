@@ -34,10 +34,5 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
-    'brevo' => [
-        'key' => env('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'),
-        'curl' => [
-            CURLOPT_CAINFO => "C:\laragon\bin\python\python-3.13\Lib\site-packages\certifi\cacert.pem",
-        ],
-    ],
+
 ];

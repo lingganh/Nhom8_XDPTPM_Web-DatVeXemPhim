@@ -64,6 +64,6 @@ Route::post('/register',  [SignInController::class, 'register']);
 
 Route::get('/verify-otp', [SignInController::class, 'showVerifyFrom'])->name('verify-otp');
 Route::post('/verify-otp',  [SignInController::class, 'verifyOtp']) ;
-Route::post('/resend-otp',  [SignInController::class, 'resendOtp'])->name('resend-otp');
-Route::get('/logout', [SignInController:: class, 'logout'])->name('logout');
+Route::post('/resend-otp',  [SignInController::class, 'resendOtp'])->name('resend-otp'); ;
 
+Route::get('/logout', [SignInController:: class, 'logout'])->name('logout');

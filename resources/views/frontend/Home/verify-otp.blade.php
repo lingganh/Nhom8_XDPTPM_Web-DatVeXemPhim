@@ -30,7 +30,7 @@
                 </a></h1>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             </div>
-            <!-- toggle switch for light and dark theme -->
+             <!-- toggle switch for light and dark theme -->
             <div class="mobile-position">
                 <nav class="navigation">
                     <div class="theme-switch-wrapper">
