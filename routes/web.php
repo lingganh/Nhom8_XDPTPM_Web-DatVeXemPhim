@@ -22,7 +22,7 @@ Route::get('admin',  [AuthController::class, 'index'])->name('auth.admin');//->m
 Route::post('login',  [AuthController::class, 'login'])->name('auth.login');
 Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index')->middleware(AuthMiddleware::class);
 Route::get('logout', [AuthController:: class, 'logout'])->name('auth.logout');
-//Route::get('logout', [AuthController:: class, 'logout'])->name('auth.logout');
+
 
 // USER
 Route::get('user/index', [Backend\UserController ::class, 'index'])->name('user.index')->middleware(AuthMiddleware::class);
@@ -66,7 +66,7 @@ Route::get('/verify-otp', [SignInController::class, 'showVerifyForm'])->name('ve
 Route::post('/verify', [SignInController::class, 'verifyOtp'])->name('verify');
 Route::post('/resend-otp',  [SignInController::class, 'resendOtp'])->name('resend-otp'); ;
 
-Route::get('/logout', [SignInController:: class, 'logout'])->name('logout');
+Route::get('/logoutuser', [SignInController:: class, 'logout'])->name('logout');
 //Test
 Route::get('/test-email', function () {
     $details = ['message' => 'Email test từ Laravel'];
