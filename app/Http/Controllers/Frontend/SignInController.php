@@ -48,31 +48,37 @@ class SignInController
 
     public function register(RegisterRequest $request)
     {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|confirmed',
+        ]);
         $otp = rand(100000, 999999); // Tạo OTP ngẫu nhiên
+        $otpExpiresAt = now()->addMinutes(10); // Cộng thêm thời gian hiệu lực OTP
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password), // Mã hóa mật khẩu
-            'otp' => rand(100000, 999999),
+            'otp' => $otp,
 
-            'otp_expires_at' => now()->addMinutes(10), // Thời hạn OTP là 10 phút
+            'otp_expires_at' =>  $otpExpiresAt, // Thời hạn OTP là 10 phút
         ]);
 
         $brevoApiKey = "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";
-        $senderEmail = "dueling0809@gmail.com";
+        $senderEmail = "885fae005@smtp-brevo.com";
 
         $response = Http::withHeaders([
             'accept' => 'application/json',
             'api-key' => $brevoApiKey,
             'content-type' => 'application/json',
         ])->post('https://api.brevo.com/v3/smtp/email', [
-            'sender' => ['name' => 'Unity Coding', 'email' => $senderEmail],
+            'sender' => ['name' => 'FIVE star cinema ', 'email' => $senderEmail],
             'to' => [
                 ['email' => $user->email, 'name' => $user->name]
             ],
             'subject' => 'Ma Kich Hoat',
-            'htmlContent' => "<h1> Mã xác thực của bạn : </h1>{$otp}",
+            'htmlContent' => "<h1> Mã xác thực của bạn : {$otp} </h1>",
         ]);
 
         if ($response->failed()) {
@@ -95,40 +101,42 @@ class SignInController
 
     public function verifyOtp(VerifyOtpRequest $request)
     {
+        $request->validate([
+
+            'email' => 'required|email',
+            'otp' => 'required|digits:6',
+        ]);
+
         $user = User::where('email', $request->email)->first();
 
-        // Kiểm tra email hợp lệ và OTP
-        if (!$user) {
-            return back()->withErrors(['email' => 'Email không hợp lệ!']);
-        }
-
-        if (!Hash::check($request->otp, $user->otp)) {
+        // Kiểm tra OTP (nếu không mã hóa)
+        if ($user->otp != (int)$request->otp) { // Chuyển đổi $request->otp thành số
             return back()->withErrors(['otp' => 'Mã OTP sai!']);
         }
 
-        // Kiểm tra thời gian hết hạn OTP
-        if (Carbon::now()->isAfter($user->otp_expires_at)) {
-            return back()->withErrors(['otp' => 'Mã OTP đã hết hạn!']);
-        }
 
-        // Xác thực thành công, cập nhật thông tin người dùng
         $user->update([
-            'email_verified_at' => Carbon::now(),
-            'otp' => null,
-            'otp_expires_at' => null,
+            'email_verified_at'=>Carbon::now(),
+            'otp'=>null,
+            'otp_expires_at'=>null,
         ]);
-
         Auth::login($user);
-        return redirect()->route('home')->with('success', "Xác thực thành công");
+
+        return redirect()->route('home.index')->with('success' ,"Xác thực thành công");
     }
 
     public function showVerifyForm()
     {
         $email = session('otp_email');
+        if (!$email) {
+            return redirect()->route('register.index')->withErrors(['email' => 'Vui lòng đăng ký lại để nhận OTP!']);
+        }
+
         return view('frontend.Home.verify-otp', compact('email'));
     }
 
-    public function resendOTP(ResendOtpRequest $request)
+
+    public function resendOtp(ResendOtpRequest $request)
     {
         $user = User::where('email', $request->email)->first();
 
@@ -136,21 +144,21 @@ class SignInController
             return back()->withErrors(['email' => 'Email không tồn tại!']);
         }
 
-        $otp = rand(100000, 999999); // Tạo OTP mới
+        $otp = rand(100000, 999999);
 
         $user->update([
-            'otp' => Hash::make($otp), // Mã hóa OTP mới
-            'otp_expires_at' => now()->addMinutes(10), // Cập nhật thời gian hết hạn
+            'otp' => $otp, // Lưu OTP không mã hóa
+            'otp_expires_at' => now()->addMinutes(10),
         ]);
 
         $brevoApiKey = "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";
-        $senderEmail = "dueling0809@gmail.com";
+        $senderEmail = "885fae005@smtp-brevo.com";
         $response = Http::withHeaders([
             'accept' => 'application/json',
             'api-key' => $brevoApiKey,
             'content-type' => 'application/json',
         ])->post('https://api.brevo.com/v3/smtp/email', [
-            'sender' => ['name' => 'Unity Coding', 'email' => $senderEmail],
+            'sender' => ['name' => 'FIVE STAR CINEMA', 'email' => $senderEmail],
             'to' => [
                 ['email' => $user->email, 'name' => $user->name]
             ],
