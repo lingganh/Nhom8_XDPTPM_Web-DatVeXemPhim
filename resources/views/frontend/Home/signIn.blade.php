@@ -59,13 +59,6 @@
     <div class="form-container sign-in-container">
         <form name="sign-in-form" style="color: var(--theme-title);" action="{{route('five.signIn')}}" method="POST">
             <h1>Đăng Nhập</h1>
-            <div class="social-container">
-                <a href="#" class="social" style="color: var(--theme-title);"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social" style="color: var(--theme-title);"><i
-                        class="fab fa-google-plus-g"></i></a>
-                <a href="#" class="social" style="color: var(--theme-title);"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-            <span>Hoặc sử dụng tài khoản của bạn</span>
 
             @csrf
 
@@ -96,7 +89,7 @@
                 <h1>Xin Chào Bạn</h1>
                 <p>Đăng ký và đặt vé ngay bây giờ!!!</p>
 
-                <button class="ghost" id="signUp">Đăng Ký</button>
+                <button class="ghost" id="signUp" onclick="window.location.href='{{ route('register') }}'">Đăng Ký</button>
             </div>
         </div>
     </div>
@@ -142,9 +135,6 @@
         });
     });
 </script>
-<script src="frontend/assets/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="frontend/assets/js/sign-in.js"></script>
 
 </body>
 
