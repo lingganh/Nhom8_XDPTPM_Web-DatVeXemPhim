@@ -62,7 +62,7 @@
 
               @csrf
             <input name="name" type="text" placeholder="Tên " />
-            <input name=" email" type="email" placeholder="Email" />
+            <input name="email" type="email" placeholder="Email" />
             <input name="password" type="password" placeholder="Password" />
             <input name="password_confirmation" type="password" placeholder="Confirmation Password" />
 

@@ -67,3 +67,12 @@ Route::post('/verify-otp',  [SignInController::class, 'verifyOtp']) ;
 Route::post('/resend-otp',  [SignInController::class, 'resendOtp'])->name('resend-otp'); ;
 
 Route::get('/logout', [SignInController:: class, 'logout'])->name('logout');
+//Test
+Route::get('/test-email', function () {
+    $details = ['message' => 'Email test từ Laravel'];
+    \Mail::raw($details['message'], function ($message) {
+        $message->to('dieulinh120411@gmail.com')
+            ->subject('Test Email');
+    });
+    return 'Đã gửi email thành công!';
+});
