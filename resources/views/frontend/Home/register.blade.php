@@ -55,18 +55,19 @@
 </header>
 
 <div class="container_signup_signin" id="container_signup_signin">
-    <div class="form-container sign-up-container">
-        <form name="sign-up-form" action="{{route('register')}}" method="post"
-              class="sign-up-form"  >
-            <h1>Create Account</h1>
+    <!-- ĐN -->
+    <div class="form-container sign-in-container">
+        <form name="sign-in-form" action="{{route('register')}}" method="post"
+              class="sign-in-form"  >
+            <h1>Đăng Ký</h1>
 
-              @csrf
+            @csrf
             <input name="name" type="text" placeholder="Tên " />
-            <input name=" email" type="email" placeholder="Email" />
+            <input name="email" type="email" placeholder="Email" />
             <input name="password" type="password" placeholder="Password" />
             <input name="password_confirmation" type="password" placeholder="Confirmation Password" />
 
-        @if ($errors->any())
+            @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -77,37 +78,67 @@
             @endif
             <button>Đăng ký </button>
         </form>
+
     </div>
-    <!-- ĐN -->
-     <div class="overlay-container">
+    <div class="overlay-container">
         <div class="overlay">
-            <div class="overlay-panel overlay-left">
-                <h1>Chào mừng trở lại!</h1>
-                <p>Để giữ kết nối với chúng tôi, vui lòng đăng nhập bằng thông tin đăng nhập của bạn</p>
-                <button class="ghost" id="signIn">Đăng Nhập</button>
-            </div>
+
             <!-- ĐN -->
             <div class="overlay-panel overlay-right">
-                <h1>Xin Chào Bạn</h1>
-                <p>Đăng ký và đặt vé ngay bây giờ!!!</p>
+                <h1>Nếu bạn đã có tài khoản</h1>
+                <p>Đăng nhập và đặt vé ngay bây giờ!!!</p>
 
-                <button class="ghost" id="signUp">Đăng Ký</button>
+                <button class="ghost" id="signUp" onclick="window.location.href='{{ route('signin.index') }}'">Đăng Nhập</button>
             </div>
         </div>
     </div>
 </div>
 
+</div>
+
+
+
+
 <script type="text/javascript" src="frontend/assets/js/as-alert-message.min.js"></script>
 <script src="frontend/assets/js/jquery-3.3.1.min.js"></script>
 <!--/theme-change-->
 <script src="frontend/assets/js/theme-change.js"></script>
-
+<!-- disable body scroll which navbar is in active -->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
 <!-- disable body scroll which navbar is in active -->
 <!--/MENU-JS-->
+<script>
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
 
-<script src="frontend/assets/js/bootstrap.min.js"></script>
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
 
-<script type="text/javascript" src="frontend/assets/js/sign-in.js"></script>
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+</script>
 
 </body>
 

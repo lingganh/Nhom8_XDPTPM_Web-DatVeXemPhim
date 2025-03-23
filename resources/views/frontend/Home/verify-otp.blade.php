@@ -49,18 +49,17 @@
 </header>
 
 <div class="container_signup_signin" id="container_signup_signin">
-    <form action="{{route('verify-otp')}}" method="post">
-        @csrf
-        <input type="hidden" name="email" value="{{$email}}">
+    <form action="{{ route('verify') }}" method="post">
+        <input type="hidden" name="email" value="{{ $email }}">
         <br><br>
         <label for="otp">OTP</label>
         <input type="text" name="otp" id="otp" placeholder="Enter OTP" required>
+        @csrf
         <button type="submit">Verify</button>
     </form>
-    <form action="{{route('resend-otp')}}" method="post">
-        @csrf
-        <input type="hidden" name="email" value="{{$email}}">
 
+    <form action="{{ route('resend-otp') }}" method="post">
+        @csrf
         <button type="submit">Resend OTP</button>
     </form>
 </div>
