@@ -1,47 +1,48 @@
 @extends('backend.dashboard.layout')
+
 @section('content')
-    <div class="container">
-        <h2>Thống kê Doanh Thu</h2>
+   <div class="container-fluid">
+     <style type="text/css">
+    p.title_thongke {
+        text-align: center;
+        font-size: 20px;
+        font-weight:bold
+    }
+    </style>
+    <div class="row">
+        <p class="title_thongke">Thống kê đơn hàng doanh số</p>
+        <form autocomplete="off">
+            @csrf
+            <div class="col-md-2">
+                <p>
+                    Từ ngày:
+                    <input type="text" id="datepicker" class="form-control">
+                </p>
+                <input type="button" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="Lọc kết quả">
+            </div>
 
-        <p><strong>Tổng doanh thu:</strong> {{ number_format($tongDoanhThu, 0, ',', '.') }} VNĐ</p>
+            <div class="col-md-2">
+                <p>
+                    Đến ngày:
+                    <input type="text" id="datepicker2" class="form-control">
+                </p>
+            </div>
 
-        <h3>Doanh thu theo ngày</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Ngày</th>
-                <th>Doanh thu</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($doanhThuTheoNgay as $item)
-                <tr>
-                    <td>{{ $item->ngay }}</td>
-                    <td>{{ number_format($item->doanhthu, 0, ',', '.') }} VNĐ</td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+            <div class="col-md-2">
+                <p>Lọc theo:</p>
+                <select class="dashboard-filter form-control">
+                    <option value="">-- Chọn --</option>
+                    <option value="ngay">7 ngày qua</option>
+                    <option value="thangtruoc">Tháng trước</option>
+                    <option value="thangnay">Tháng này</option>
+                    <option value="365ngayqua">365 ngày qua</option>
+                </select>
+            </div>
+        </form>
 
-        <h3>Thống kê vé</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Trạng thái</th>
-                <th>Số lượng vé</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($veBanRa as $item)
-                <tr>
-                    <td>{{ $item->trangThai }}</td>
-                    <td>{{ $item->soLuong }}</td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+
     </div>
-    <script src="{{ asset('backend/assets/js/doanhthu.js') }}"></script>
-
-
+       <div class="col-md-12">
+           <div id="myfirstchart" style="height: 250px;"></div>
+       </div>
 @endsection

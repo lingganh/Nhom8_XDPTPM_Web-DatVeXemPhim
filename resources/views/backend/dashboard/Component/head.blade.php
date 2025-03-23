@@ -4,16 +4,11 @@
 
 <title>FIVE cinema | Dashboard  </title>
 
-<link href="backend/css/bootstrap.min.css" rel="stylesheet">
-<link href="backend/font-awesome/css/font-awesome.css" rel="stylesheet">
-
-<link href="backend/css/animate.css" rel="stylesheet">
-<link href="backend/css/style.css" rel="stylesheet">
-<link href="backend/css/stylecustomize.css" rel="stylesheet">
-<link rel="stylesheet" href="node_modules/switchery/dist/switchery.min.css">
-<script src="backend/js/jquery-3.1.1.min.js"></script>
- <link rel="stylesheet" href="node_modules/switchery/switchery.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="{{ asset('backend/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('backend/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+<link href="{{ asset('backend/css/animate.css') }}" rel="stylesheet">
+<link href="{{ asset('backend/css/style.css') }}" rel="stylesheet">
+<link href="{{ asset('backend/css/stylecustomize.css') }}" rel="stylesheet">
 
 <script src="node_modules/switchery/switchery.min.js"></script>
 <script>
