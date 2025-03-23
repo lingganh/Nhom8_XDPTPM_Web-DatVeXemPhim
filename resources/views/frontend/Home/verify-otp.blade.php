@@ -56,12 +56,10 @@
         <input type="text" name="otp" id="otp" placeholder="Enter OTP" required>
         @csrf
         <button type="submit">Verify</button>
+        <a href ="{{route('resend-otp')}}"> Resend OTP </a>
     </form>
 
-    <form action="{{ route('resend-otp') }}" method="post">
-        @csrf
-        <button type="submit">Resend OTP</button>
-    </form>
+
 </div>
 
 <script type="text/javascript" src="frontend/assets/js/as-alert-message.min.js"></script>
