@@ -17,6 +17,14 @@ return new class extends Migration
             $table->string('idGhe', 5);
             $table->decimal('giaVe', 15, 2)->nullable();
             $table->string('trangThai', 50)->nullable();
+            $table->timestamps(); // Thêm cột timestamps (created_at và updated_at)
+
+            // Thêm khóa ngoại cho idLC (liên kết với bảng lich_chieu)
+            $table->foreign('idLC')->references('idLC')->on('lich_chieu')->onDelete('cascade');
+
+            // Thêm khóa ngoại cho idGhe (liên kết với bảng ghe)
+            $table->foreign('idGhe')->references('idG')->on('ghe')->onDelete('cascade');
+
         });
     }
 

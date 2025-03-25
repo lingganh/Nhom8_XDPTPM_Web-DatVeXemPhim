@@ -12,6 +12,7 @@ class HoaDonSeeder extends Seeder
         DB::table('hoa_don')->insert([
             ['idHD' => 'HD01', 'idKH' => 'KH01', 'tongTien' => 100000, 'NgayXuat' => now()],
             ['idHD' => 'HD02', 'idKH' => 'KH02', 'tongTien' => 75000, 'NgayXuat' => now()],
+            ['idHD' => 'HD03', 'idKH' => 'KH03', 'tongTien' => 150000, 'NgayXuat' => now()],
         ]);
     }
 }

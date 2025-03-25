@@ -13,6 +13,7 @@ use App\{Http\Controllers\Backend\AuthController,
     Http\Middleware\LoginMiddleware,
     Http\Controllers\Backend};
 use App\Http\Controllers\Frontend\ListFilmController;
+use App\Http\Controllers\Backend\RevenueController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -54,17 +55,24 @@ Route::get('/film', [ListFilmController::class, 'index'])->name('film.index');
 
 //Sign In
 
-Route::get('/signin', [SignInController::class, 'showLoginForm'])->name('signin.index');
-Route::post('/signin',  [SignInController::class, 'signin'])->name('five.signIn');
+Route::get('/signin', [SignInController::class, 'index'])->name('signin.index');
+Route::post('/signIn',  [SignInController::class, 'signin'])->name('five.signIn');
 
-// Register verify OTP
-Route::get('/register', [SignInController::class, 'showRegisterForm'])->name('register');
 
-Route::post('/register',  [SignInController::class, 'register']);
+
+//Route::get('/api/get-revenue-by-product', [RevenueController::class, 'getRevenueByProduct']);
+
+route::get('filter-by-date', [revenueController::class, 'filterByDate']);
+
+
+
+
+ 
+
 
 Route::get('/verify-otp', [SignInController::class, 'showVerifyForm'])->name('verify-otp');
 Route::post('/verify', [SignInController::class, 'verifyOtp'])->name('verify');
-Route::post('/resend-otp',  [SignInController::class, 'resendOtp'])->name('resend-otp'); ;
+Route::post('/resend-otp',  [SignInController::class, 'resendOtp'])->name('resend-otp'); 
 
 Route::get('/logoutuser', [SignInController:: class, 'logout'])->name('logout');
 //Test
@@ -76,3 +84,4 @@ Route::get('/test-email', function () {
     });
     return 'Đã gửi email thành công!';
 });
+//>>>>>>> 8247ef7b195442dbc313326304a2be3db9d89fff

@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ct_hoa_don', function (Blueprint $table) {
-            $table->char('idHD', 5);
-            $table->char('idsp', 5);
-            $table->integer('SL')->nullable();
+        Schema::create('san_pham', function (Blueprint $table) {
+            $table->char('idsp', 5)->primary();
+            $table->string('tenSP', 100);
             $table->float('donGia')->nullable();
-            $table->primary(['idHD', 'idsp']);
+            $table->timestamps();
         });
     }
 
@@ -25,7 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ct_hoa_don');
+        Schema::dropIfExists('san_pham');
     }
-
 };
