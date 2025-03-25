@@ -55,8 +55,8 @@ Route::get('/film', [ListFilmController::class, 'index'])->name('film.index');
 
 //Sign In
 
-Route::get('/signin', [SignInController::class, 'index'])->name('signin.index');
-Route::post('/signIn',  [SignInController::class, 'signin'])->name('five.signIn');
+Route::get('/signin', [SignInController::class, 'showLoginForm'])->name('signin.index');
+Route::post('/signin',  [SignInController::class, 'signin'])->name('five.signIn');
 
 
 
@@ -67,12 +67,13 @@ route::get('filter-by-date', [revenueController::class, 'filterByDate']);
 
 
 
- 
-
+// Register verify OTP
+Route::get('/register', [SignInController::class, 'showRegisterForm'])->name('register');
+Route::post('/register',  [SignInController::class, 'register']);
 
 Route::get('/verify-otp', [SignInController::class, 'showVerifyForm'])->name('verify-otp');
 Route::post('/verify', [SignInController::class, 'verifyOtp'])->name('verify');
-Route::post('/resend-otp',  [SignInController::class, 'resendOtp'])->name('resend-otp'); 
+Route::post('/resend-otp',  [SignInController::class, 'resendOtp'])->name('resend-otp');
 
 Route::get('/logoutuser', [SignInController:: class, 'logout'])->name('logout');
 //Test
@@ -84,4 +85,4 @@ Route::get('/test-email', function () {
     });
     return 'Đã gửi email thành công!';
 });
-//>>>>>>> 8247ef7b195442dbc313326304a2be3db9d89fff
+
