@@ -28,7 +28,7 @@
                     @foreach ($phims as $phim)
                         <div class="item vhny-grid">
                             <div class="box16">
-                                <a href="{{ route('film.index') }}">
+                                <a  >
                                     <figure>
                                         <img class="img-fluid" src="{{ $phim->Poster }}" alt="{{ $phim->tenPhim }}">
                                     </figure>
@@ -41,14 +41,24 @@
                                          </h4>
 
                                         <div class="movie-buttons">
+                                            <div class="box">
 
+                                                <button popovertarget="modal" class="button btn-primary"> Chi Tiết </button>>
 
-                                            <a href="" class="button btn-primary">Chi Tiết  </a>
+                                                <div id="modal" popover>
+
+                                                    <h1>TEST</h1>
+
+                                                    <button popovertarget="modal" > Ẩn </button>>
+
+                                                </div>
+                                            </div>
+
                                             <a href="" class="button btn-primary">Sửa </a>
                                             <a href="" class="button btn-primary">Xóa </a>
                                         </div>
                                     </div>
-                                </a>
+{{--                                </a>--}}
                             </div>
                         </div>
                     @endforeach

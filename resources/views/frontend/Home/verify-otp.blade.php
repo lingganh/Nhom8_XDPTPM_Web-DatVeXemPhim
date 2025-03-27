@@ -56,7 +56,9 @@
             OTP
         </h1>
         <br><br>
+
         <input type="text" name="otp" id="otp" placeholder="Mã OTP của bạn " required>
+
         <br>
         @csrf
         <button type="submit">Xác Thực</button>
@@ -123,4 +125,5 @@
         color: #aaa; /* Màu xám nhạt hơn, bạn có thể điều chỉnh mã màu này */
         opacity: 0.7; /* Điều chỉnh độ mờ nếu muốn */
     }
+
 </style>
