@@ -51,12 +51,17 @@
 <div class="container_signup_signin" id="container_signup_signin">
     <form action="{{ route('verify') }}" method="post">
         <input type="hidden" name="email" value="{{ $email }}">
+
+        <h1 data-text="OTP" class="text0">
+            OTP
+        </h1>
         <br><br>
-        <label for="otp">OTP</label>
-        <input type="text" name="otp" id="otp" placeholder="Enter OTP" required>
+        <input type="text" name="otp" id="otp" placeholder="Mã OTP của bạn " required>
+        <br>
         @csrf
-        <button type="submit">Verify</button>
-        <a href="#" id="resendOtpLink">Resend OTP</a>
+        <button type="submit">Xác Thực</button>
+
+        <a href="#" id="resendOtpLink">Gửi lại OTP</a>
 
 
         <script>
@@ -102,3 +107,20 @@
 </body>
 
 </html>
+<style>
+    .container_signup_signin {
+        width: 400px; /* Giảm chiều rộng, bạn có thể điều chỉnh giá trị này */
+        /* Các thuộc tính CSS khác của container có thể đã được định nghĩa trước đó */
+        margin: 50px auto; /* Điều chỉnh margin để căn giữa nếu cần */
+        padding: 30px; /* Có thể giảm padding nếu cần */
+        /* Ví dụ các thuộc tính khác có thể có:
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        */
+    }
+    input[name="otp"]::placeholder {
+        color: #aaa; /* Màu xám nhạt hơn, bạn có thể điều chỉnh mã màu này */
+        opacity: 0.7; /* Điều chỉnh độ mờ nếu muốn */
+    }
+</style>
