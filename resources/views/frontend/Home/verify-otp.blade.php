@@ -56,7 +56,32 @@
         <input type="text" name="otp" id="otp" placeholder="Enter OTP" required>
         @csrf
         <button type="submit">Verify</button>
-        <a href ="{{route('resend-otp')}}"> Resend OTP </a>
+        <a href="#" id="resendOtpLink">Resend OTP</a>
+
+
+        <script>
+            document.getElementById('resendOtpLink').addEventListener('click', function(event) {
+                event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+
+                fetch('{{ route('resend-otp') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Thêm CSRF token
+                    }
+                    // Bạn có thể thêm body nếu cần gửi thêm dữ liệu
+                })
+                    .then(response => response.json()) // Hoặc response.text() tùy thuộc vào phản hồi của server
+                    .then(data => {
+                        console.log(data);
+                        // Xử lý phản hồi từ server (ví dụ: hiển thị thông báo thành công)
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        // Xử lý lỗi
+                    });
+            });
+        </script>
     </form>
 
 

@@ -111,7 +111,7 @@ class SignInController
 
         // Kiểm tra OTP (nếu không mã hóa)
         if ($user->otp != (int)$request->otp) { // Chuyển đổi $request->otp thành số
-            return back()->withErrors(['otp' => 'Mã OTP sai!']);
+            return redirect()->route('verify-otp')->with('error', 'OTP sai  ! ');
         }
 
 
@@ -123,6 +123,7 @@ class SignInController
         Auth::login($user);
 
         return redirect()->route('home.index')->with('success' ,"Xác thực thành công");
+
     }
 
     public function showVerifyForm()
@@ -141,7 +142,7 @@ class SignInController
         $user = User::where('email', $request->email)->first();
 
         if (!$user) {
-            return back()->withErrors(['email' => 'Email không tồn tại!']);
+            return redirect()->route('verify-otp')->with('error', 'Email không tồn tại ! ');
         }
 
         $otp = rand(100000, 999999);
@@ -169,9 +170,9 @@ class SignInController
         if ($response->failed()) {
             // Ghi log lỗi nếu gửi không thành công
             Log::error('Gửi lại OTP thất bại', $response->json());
-            return back()->withErrors(['email' => 'Không thể gửi lại mã OTP. Vui lòng thử lại sau.']);
+            return redirect()->route('verify-otp')->with('error', 'Không thể gửi lại mã OTP. Vui lòng thử lại sau.');
         }
 
-        return back()->with('success', "Mã OTP mới đã được gửi đến email của bạn. Vui lòng kiểm tra email");
+        return redirect()->route('verify-otp')->with('success', "Mã OTP mới đã được gửi đến email của bạn. Vui lòng kiểm tra email");
     }
 }
