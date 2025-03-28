@@ -62,9 +62,9 @@ Route::post('/signin',  [SignInController::class, 'signin'])->name('five.signIn'
 
 //Route::get('/api/get-revenue-by-product', [RevenueController::class, 'getRevenueByProduct']);
 
-route::get('filter-by-date', [revenueController::class, 'filterByDate']);
-
-
+route::post('/filter-by-date', [RevenueController::class, 'filter_by_date']);
+route::post('/dashboard-filter', [RevenueController::class, 'dashboard_filter']);
+route::post('/days-order', [RevenueController::class, 'days_order']);
 
 
 // Register verify OTP

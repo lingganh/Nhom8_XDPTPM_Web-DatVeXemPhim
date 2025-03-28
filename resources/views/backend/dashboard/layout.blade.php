@@ -3,16 +3,12 @@
 
 <head>
     @include('backend.dashboard.Component.head')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
 </head>
 
 
 <body>
+
 
     @include('backend.dashboard.Component.sidebar')
      <div id="page-wrapper" class="gray-bg">
@@ -48,7 +44,10 @@
 
 
    <script type="text/javascript">
-       var chart = new Morris.Line({
+       $(document).ready(function() {
+            chart30daysorder();
+
+       var chart = new Morris.Bar({
            element: 'myfirstchart',
            parseTime: false, // Không dùng kiểu datetime
            hideHover: 'auto',
@@ -58,25 +57,63 @@
            labels: ['Đơn hàng', 'Doanh số', 'Lợi nhuận', 'Số lượng'],
            lineColors: ['#2196F3', '#FF9800', '#4CAF50', '#F44336'],
        });
+           function chart30daysorder() {
+               var _token = $('input[name="_token"]').val();
 
-       // Cập nhật biểu đồ khi có dữ liệu mới
-       $('#btn-dashboard-filter').click(function() {
-           var _token = $('input[name="_token"]').val();
-           var from_date = $('#datepicker').val();
-           var to_date = $('#datepicker2').val();
+               $.ajax({
+                   url: "/days-order",
+                   method: "POST",
+                   dataType: "JSON",
+                   data: { _token: _token },
+                   success: function (data) {
+                       chart.setData(data);
+                   },
+                   error: function (xhr, status, error) {
+                       console.error("Lỗi khi lấy dữ liệu:", error);
+                   }
+               });
+           }
 
-           $.ajax({
-               url: "{{ url('/filter-by-date') }}",
-               method: "POST",
-               dataType: "JSON",
-               data: { from_date: from_date, to_date: to_date, _token: _token },
-               success: function(data) {
-                   chart.setData(data); // Cập nhật dữ liệu biểu đồ
-               },
-               error: function(xhr) {
-                   console.error(xhr.responseText); // In lỗi nếu có
-               }
+           $('.dashboard-filter').change(function() {
+
+               var dashboard_value = $(this).val();
+               var _token = $('input[name="_token"]').val();
+
+               $.ajax({
+                   url: "/dashboard_filter",
+                   method: "POST",
+                   dataType: "JSON",
+                   data: { dashboard_value: dashboard_value, _token: _token },
+                   success: function(data) {
+                       chart.setData(data);
+                   },
+                   error: function(xhr, status, error) {
+                       console.error("Lỗi khi lấy dữ liệu:", error);
+                   }
+               });
            });
+
+           $('#btn-dashboard-filter').click(function() {
+               chart30daysorder();
+              // alert('ok');
+               var _token = $('input[name="_token"]').val();
+               var from_date = $('#datepicker').val();
+               var to_date = $('#datepicker2').val();
+
+               $.ajax({
+                   url: "/filter-by-date",
+                   method: "POST",
+                   dataType: "JSON",
+                   data: { from_date: from_date, to_date: to_date, _token: _token },
+                   success: function(data) {
+                       chart.setData(data);
+                   },
+                   error: function(xhr, status, error) {
+                       console.error("Lỗi khi lấy dữ liệu:", error);
+                   }
+               });
+           });
+
        });
 
    </script>
