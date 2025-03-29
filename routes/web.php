@@ -32,7 +32,7 @@ Route::get('usergroup', [UserGroupController ::class, 'index'])->name('usergroup
 Route::get('films', [FilmController::class, 'index'])->name('films.index ')->middleware(AuthMiddleware::class);
 
  //movie showtimes
-Route::get('movieShowtime', [ Backend\movieShowtimeController::class, 'index'])->name('movieShowtime.index ')->middleware(AuthMiddleware::class);
+Route::get('movieShowtime', [Backend\movieShowtimeController::class, 'index'])->name('movieShowtime.index ')->middleware(AuthMiddleware::class);
 
 
 // Comments
@@ -85,4 +85,5 @@ Route::get('/test-email', function () {
     });
     return 'Đã gửi email thành công!';
 });
+
 

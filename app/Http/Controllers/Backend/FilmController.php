@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Support\Facades\DB;
 
+
 class FilmController
 {
     public function __construct()
@@ -20,4 +21,5 @@ class FilmController
 
 
     }
+
 }

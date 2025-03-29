@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -50,49 +50,28 @@
 
 <div class="container_signup_signin" id="container_signup_signin">
     <form action="{{ route('verify') }}" method="post">
-        <input type="hidden" name="email" value="{{ $email }}">
+
 
         <h1 data-text="OTP" class="text0">
             OTP
         </h1>
         <br><br>
-
+        <input   name="email" value="{{ $email }}">
         <input type="text" name="otp" id="otp" placeholder="Mã OTP của bạn " required>
 
         <br>
         @csrf
         <button type="submit">Xác Thực</button>
-
-        <a href="#" id="resendOtpLink">Gửi lại OTP</a>
-
-
-        <script>
-            document.getElementById('resendOtpLink').addEventListener('click', function(event) {
-                event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
-
-                fetch('{{ route('resend-otp') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Thêm CSRF token
-                    }
-                    // Bạn có thể thêm body nếu cần gửi thêm dữ liệu
-                })
-                    .then(response => response.json()) // Hoặc response.text() tùy thuộc vào phản hồi của server
-                    .then(data => {
-                        console.log(data);
-                        // Xử lý phản hồi từ server (ví dụ: hiển thị thông báo thành công)
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        // Xử lý lỗi
-                    });
-            });
-        </script>
     </form>
 
 
 </div>
+
+<form action="{{ route('resend-otp') }}" method="post" class="resend-form">
+    @csrf
+
+    <button type="submit" class="resend-btn">Gửi lại OTP</button>
+</form>
 
 <script type="text/javascript" src="frontend/assets/js/as-alert-message.min.js"></script>
 <script src="frontend/assets/js/jquery-3.3.1.min.js"></script>
@@ -105,10 +84,6 @@
 <script src="frontend/assets/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="frontend/assets/js/sign-in.js"></script>
-
-</body>
-
-</html>
 <style>
     .container_signup_signin {
         width: 400px; /* Giảm chiều rộng, bạn có thể điều chỉnh giá trị này */
@@ -125,5 +100,28 @@
         color: #aaa; /* Màu xám nhạt hơn, bạn có thể điều chỉnh mã màu này */
         opacity: 0.7; /* Điều chỉnh độ mờ nếu muốn */
     }
+    .resend-btn {
+        background-color: #FF5722;
 
+        border: none;
+
+        border-radius: 5px;
+        cursor: pointer;
+        position: relative;
+        top: -150px;  /* Dịch lên trên */
+
+        background: none;
+
+        color: #007bff; /* Màu xanh giống link */
+
+        font-size: 16px;
+        padding: 0;
+    }
+    .resend-btn:hover {
+        color: #0056b3; /* Màu xanh đậm hơn khi hover */
+    }
 </style>
+</body>
+
+</html>
+

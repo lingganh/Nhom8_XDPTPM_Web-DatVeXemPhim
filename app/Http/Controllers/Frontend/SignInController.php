@@ -6,6 +6,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\VerifyOtpRequest;
 use App\Http\Requests\ResendOtpRequest;
+use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -53,16 +54,16 @@ class SignInController
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed',
         ]);
-        $otp = rand(100000, 999999); // Tạo OTP ngẫu nhiên
-        $otpExpiresAt = now()->addMinutes(10); // Cộng thêm thời gian hiệu lực OTP
+        $otp = rand(100000, 999999);
+        $otpExpiresAt = now()->addMinutes(10);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password), // Mã hóa mật khẩu
+            'password' => bcrypt($request->password),
             'otp' => $otp,
 
-            'otp_expires_at' =>  $otpExpiresAt, // Thời hạn OTP là 10 phút
+            'otp_expires_at' =>  $otpExpiresAt,
         ]);
 
         $brevoApiKey = "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";
@@ -109,7 +110,7 @@ class SignInController
 
         $user = User::where('email', $request->email)->first();
 
-        // Kiểm tra OTP (nếu không mã hóa)
+
         if ($user->otp != (int)$request->otp) { // Chuyển đổi $request->otp thành số
             return redirect()->route('verify-otp')->with('error', 'OTP sai  ! ');
         }
@@ -137,42 +138,50 @@ class SignInController
     }
 
 
-    public function resendOtp(ResendOtpRequest $request)
+    public function resendOtp(Request $request)
     {
-        $user = User::where('email', $request->email)->first();
+        $email = session('otp_email');
 
-        if (!$user) {
-            return redirect()->route('verify-otp')->with('error', 'Email không tồn tại ! ');
-        }
+        //dd(1);
+        $user = User::where('email', $email)->first();
 
-        $otp = rand(100000, 999999);
+
+       // dd($user);
+        // Tạo OTP mới
+        $newOtp = rand(100000, 999999);
+        $newOtpExpiresAt = now()->addMinutes(10);
+
 
         $user->update([
-            'otp' => $otp, // Lưu OTP không mã hóa
-            'otp_expires_at' => now()->addMinutes(10),
+            'otp' => $newOtp,
+            'otp_expires_at' => $newOtpExpiresAt,
         ]);
 
         $brevoApiKey = "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";
         $senderEmail = "885fae005@smtp-brevo.com";
+
         $response = Http::withHeaders([
             'accept' => 'application/json',
             'api-key' => $brevoApiKey,
             'content-type' => 'application/json',
-        ])->post('https://api.brevo.com/v3/smtp/email', [
-            'sender' => ['name' => 'FIVE STAR CINEMA', 'email' => $senderEmail],
+               ])->post('https://api.brevo.com/v3/smtp/email', [
+            'sender' => ['name' => 'FIVE star cinema ', 'email' => $senderEmail],
             'to' => [
                 ['email' => $user->email, 'name' => $user->name]
             ],
-            'subject' => 'Cập nhật mã OTP',
-            'htmlContent' => "<h1> Mã xác thực mới của bạn : </h1>{$otp}",
+            'subject' => 'Ma OTP MOI ',
+            'htmlContent' => "<h1> Mã xác thực MỚI của bạn : {$newOtp} </h1>",
         ]);
 
         if ($response->failed()) {
-            // Ghi log lỗi nếu gửi không thành công
-            Log::error('Gửi lại OTP thất bại', $response->json());
-            return redirect()->route('verify-otp')->with('error', 'Không thể gửi lại mã OTP. Vui lòng thử lại sau.');
+            Log::error('Gửi OTP thất bại', $response->json());
+            return back()->withErrors(['email' => 'Không thể gửi email xác thực. Vui lòng thử lại sau.']);
         }
+        session(['otp_email' => $user->email]);
 
-        return redirect()->route('verify-otp')->with('success', "Mã OTP mới đã được gửi đến email của bạn. Vui lòng kiểm tra email");
+        return back()->with('success', "Mã OTP mới đã được gửi đến email của bạn. Vui lòng kiểm tra email");
+
     }
+
+    
 }
