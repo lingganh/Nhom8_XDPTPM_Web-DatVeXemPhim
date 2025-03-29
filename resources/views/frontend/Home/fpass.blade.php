@@ -30,7 +30,7 @@
                 </a></h1>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             </div>
-             <!-- toggle switch for light and dark theme -->
+            <!-- toggle switch for light and dark theme -->
             <div class="mobile-position">
                 <nav class="navigation">
                     <div class="theme-switch-wrapper">
@@ -49,28 +49,24 @@
 </header>
 
 <div class="container_signup_signin" id="container_signup_signin">
-    <form action="{{ route('verify') }}" method="post">
+    <form action=" " method="post">
 
 
-        <h1 data-text="OTP" class="text0">
-            OTP
-        </h1>
+        <h3>
+            QUÊN MẬT KHẨU
+        </h3>
+        
         <br><br>
-        <input   name="email" value="{{ $email }}">
-        <input type="text" name="otp" id="otp" placeholder="Mã OTP của bạn " required>
-
+        <input name="email" type="email" placeholder="Nhập vào Email của bạn " required>
         <br>
         @csrf
-        <button type="submit">Xác Thực</button>
+        <button type="submit">Gửi OTP </button>
     </form>
 
 
 </div>
 
-<form action="{{ route('resend-otp') }}" method="post" class="resend-form">
-    @csrf
-    <button type="submit" class="resend-btn">Gửi lại OTP</button>
-</form>
+
 
 <script type="text/javascript" src="frontend/assets/js/as-alert-message.min.js"></script>
 <script src="frontend/assets/js/jquery-3.3.1.min.js"></script>

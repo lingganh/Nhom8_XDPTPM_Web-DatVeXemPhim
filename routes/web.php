@@ -8,6 +8,7 @@ use App\{Http\Controllers\Backend\AuthController,
     Http\Controllers\Backend\FilmController,
     Http\Controllers\Backend\UserGroupController,
     Http\Controllers\Controller,
+    Http\Controllers\Frontend\forgotpassword,
     Http\Controllers\Frontend\SignInController,
     Http\Middleware\AuthMiddleware,
     Http\Middleware\LoginMiddleware,
@@ -87,3 +88,5 @@ Route::get('/test-email', function () {
 });
 
 
+// Forgot password
+Route::get('/fpass', [forgotpassword::class, 'index'])->name('fpass');
