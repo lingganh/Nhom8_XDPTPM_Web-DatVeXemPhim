@@ -21,7 +21,9 @@ CREATE TABLE IF NOT EXISTS "users"(
   "password" varchar not null,
   "remember_token" varchar,
   "created_at" datetime,
-  "updated_at" datetime
+  "updated_at" datetime,
+  "role" int,
+  "otp" int
 );
 CREATE UNIQUE INDEX "users_email_unique" on "users"("email");
 CREATE TABLE IF NOT EXISTS "password_reset_tokens"(
