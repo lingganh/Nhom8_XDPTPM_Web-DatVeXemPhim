@@ -141,17 +141,12 @@ class SignInController
     public function resendOtp(Request $request)
     {
         $email = session('otp_email');
-
         //dd(1);
         $user = User::where('email', $email)->first();
-
-
-       // dd($user);
+        //dd($user);
         // Tạo OTP mới
         $newOtp = rand(100000, 999999);
         $newOtpExpiresAt = now()->addMinutes(10);
-
-
         $user->update([
             'otp' => $newOtp,
             'otp_expires_at' => $newOtpExpiresAt,

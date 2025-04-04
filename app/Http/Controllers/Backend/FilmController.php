@@ -19,6 +19,7 @@ class FilmController
             ->get();
         return view('backend.film.index', compact('phims'));
 
+        //$showDetails = DB::table('phim')->where('M_id', $idP);
 
     }
 

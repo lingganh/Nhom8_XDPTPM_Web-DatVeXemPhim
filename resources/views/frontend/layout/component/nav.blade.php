@@ -102,5 +102,7 @@
 
     <!--/nav-->
 </header>
+
 <script src="frontend/assets/js/theme-change.js"></script>
 <script src="frontend/assets/js/owl.carousel.js"></script>
+

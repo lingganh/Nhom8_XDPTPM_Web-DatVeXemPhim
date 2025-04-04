@@ -110,3 +110,12 @@ body {
 }
 
 
+.alert-success { /* Hoặc class bạn đang sử dụng */
+    z-index: 1001;
+    position: relative; /* Hoặc absolute, fixed tùy theo bố cục */
+    /* Thêm các thuộc tính CSS khác để стилизует thông báo */
+}
+
+#site-header.fixed-top {
+    z-index: 1000;
+}
