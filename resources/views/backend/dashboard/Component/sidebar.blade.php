@@ -7,7 +7,7 @@
                     <div class="dropdown profile-element"> <span>
 
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"> Xin Chào ,  {{Auth::user()->name}}</strong>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"> Xin Chào ,  {{Auth::user()->name ?? ''}}</strong>
 
 
 
@@ -31,7 +31,7 @@ FIVE Cinema
                     <a href="{{ route ('films.index ') }}"><i class="fa-solid fa-film"></i> <span class="nav-label">Phim </span></a>
                 </li>
                 <li>
-                    <a href="{{ route ('revenue.index ') }}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Doanh Thu </span> </a>
+                    <a href="{{ route('admin.revenue.index') }}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Doanh Thu </span> </a>
 
                 </li>
                 <li>

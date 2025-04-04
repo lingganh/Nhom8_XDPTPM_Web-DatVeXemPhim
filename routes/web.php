@@ -68,6 +68,11 @@ route::post('/dashboard-filter', [RevenueController::class, 'dashboard_filter'])
 route::post('/days-order', [RevenueController::class, 'days_order']);
 
 
+// revenue
+Route::get('admin/revenue', [Backend\RevenueController::class, 'index_statistic'])->name('admin.revenue.index')->middleware(AuthMiddleware::class);
+
+// revenue
+Route::get('movie-index', [Backend\movieShowtimeController::class, 'movieIndex'])->name('user.movieIndex');
 // Register verify OTP
 Route::get('/register', [SignInController::class, 'showRegisterForm'])->name('register');
 Route::post('/register',  [SignInController::class, 'register']);

@@ -133,5 +133,63 @@ class RevenueController extends Controller
 //
 //            return view('backend.revenue.index', compact('labels', 'values'));
 //        }
+    public function index_statistic(Request $request)
+    {
+        if ($request->start) {
+            $data_start = Carbon::createFromFormat('Y-m-d', $request->start)->startOfDay();
+            $data_end = Carbon::createFromFormat('Y-m-d', $request->end)->endOfDay();
+        } else {
+            $data_start = Carbon::today('Asia/Ho_Chi_Minh')->startOfDay();
+            $data_end = Carbon::now('Asia/Ho_Chi_Minh')->endOfDay();
+        }
+
+        $data_start_str = $data_start->format('Y-m-d H:i:s');
+        $data_end_str = $data_end->format('Y-m-d H:i:s');
+
+        $hoa_don = HoaDon::with('CT_HoaDon_Relation')
+            ->whereBetween('NgayXuat', [$data_start_str, $data_end_str])
+            ->get();
+
+        $allDates = [];
+        $currentDate = $data_start->copy();
+        while ($currentDate <= $data_end) {
+            $allDates[$currentDate->format('Y-m-d')] = [
+                'tongTien' => 0,
+                'soLuong' => 0
+            ];
+            $currentDate->addDay();
+        }
+        $revenueByDate = $hoa_don->groupBy(function ($item) {
+            return Carbon::parse($item->NgayXuat)->format('Y-m-d');
+        })->map(function ($items) {
+            $soLuong = 0;
+            foreach ($items as $item) {
+                if ($item->CT_HoaDon_Relation) {
+                    $soLuong = $item->CT_HoaDon_Relation->SL;
+                }
+            }
+
+            return [
+                'tongTien' => $items->sum('tongTien'),
+                'soLuong' => $soLuong
+            ];
+        })->toArray();
+        $revenueByDate = array_merge($allDates, $revenueByDate);
+        ksort($revenueByDate);
+
+        $chart_date = [];
+        $chart_value = [];
+        $chart_quantity = [];
+        foreach ($revenueByDate as $key => $val) {
+            $chart_date[] = Carbon::createFromFormat('Y-m-d', $key)->format('d-m-Y');
+            $chart_value[] = (float)$val['tongTien'];
+            $chart_quantity[] = (int)$val['soLuong'];
+        }
+
+        $start = $request->start ?? now()->format('Y-m-d');
+        $end = $request->end ?? now()->format('Y-m-d');
+
+        return view('backend.Revenue.index', compact('hoa_don', 'revenueByDate', 'chart_date', 'chart_value', 'start', 'end', 'chart_quantity'));
+    }
    }
 
