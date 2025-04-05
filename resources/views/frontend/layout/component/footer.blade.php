@@ -76,7 +76,7 @@
             <div class="container">
                 <div class="copyright-footer">
                     <div class="columns text-lg-left">
-                        <p>&copy; Do Nhóm five Star hoàn thành </p>
+                        <p>&copy; Copyright five Star 2025 </p>
                     </div>
 
                     <ul class="social text-lg-right">

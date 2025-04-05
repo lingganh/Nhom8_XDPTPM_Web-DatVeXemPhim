@@ -119,3 +119,36 @@ body {
 #site-header.fixed-top {
     z-index: 1000;
 }
+.movies-container { /* Thay thế bằng class thực tế của phần tử cha */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Điều chỉnh 200px theo kích thước bạn muốn */
+    gap: 15px; /* Khoảng cách giữa các item (tùy chọn) */
+}
+
+.item.vhny-grid {
+    overflow: hidden;
+}
+
+.item.vhny-grid figure {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.item.vhny-grid figure img.img-fluid {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* CSS cho container của thông báo toast */
+.fl-container {
+
+    top: 60px;
+
+}
+/* CSS cho thanh điều hướng  */
+.navbar {
+    border: 0;
+    position: relative;
+    z-index: 10;
+}
