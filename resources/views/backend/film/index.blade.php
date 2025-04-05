@@ -63,7 +63,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="phimChiTietModalLabel">Chi tiết phim</h4>
+                    <h4 class="modal-title" id="phimChiTietModalLabel">Chi tiết phim  </h4> <br>
                     <h3 class="title" id ="Tenphim"> <br>  {{ $phim->tenPhim }}   </h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -79,7 +79,7 @@
                         </div>
                         <hr>
                         <h3 style="color:#c6006a">
-                            <span class="fa fa-clock-o"> Thời Lượng</span> <span id="phimThoiLuong">{{ $phim->thoiLuong }} Min </span>
+                            <span class="fa fa-clock-o"> Thời Lượng</span> <span id="phimThoiLuong"> {{ $phim->thoiLuong }}</span> Min
                         </h3>
                         <a><b>Trạng Thái :</b> <span id="phimTrangThai">{{$phim->trangThai}}</span></a> <br>
                         <a><b>Mô tả : </b><span id="phimMoTa">{{$phim->moTa}}</span></a>
@@ -104,7 +104,7 @@
         var allPhims = @json($phims);
         $(document).ready(function() {
             $('.show-details').click(function() {
-                var phimId = $(this).data('phim-id'); // Sửa lại dòng này
+                var phimId = $(this).data('phim-id');
                 console.log('M_id của phim đã chọn:', phimId);
                 var phimId = $(this).data('phim-id');
 

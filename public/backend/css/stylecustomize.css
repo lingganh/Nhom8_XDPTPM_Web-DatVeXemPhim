@@ -214,7 +214,7 @@ table strong {
 
 /*  ảnh poster */
 #phimChiTietModal .modal-body .image-container .imgP {
-    max-width: 70%;
+    max-width: 30%;
     height: auto;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -222,7 +222,7 @@ table strong {
 
 
 #phimChiTietModal .modal-body .image-container .imgB {
-    max-width: 30%;
+    max-width: 50%;
     height: auto;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
