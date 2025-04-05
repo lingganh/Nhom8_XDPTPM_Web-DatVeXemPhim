@@ -30,7 +30,7 @@
                             <div class="box16">
                                 <a  >
                                     <figure>
-                                        <img class="img-fluid" src="{{ $phim->Poster }}" alt="{{ $phim->tenPhim }}">
+                                        <img class="img-fluid" src="{{ $phim->imgBanner }}" alt="{{ $phim->tenPhim }}">
                                     </figure>
                                     <div class="box-content">
                                         <h3 class="title">{{ $phim->tenPhim }}</h3>
@@ -64,33 +64,30 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="phimChiTietModalLabel">Chi tiết phim</h4>
-                    <h3 class="title">{{ $phim->tenPhim }}</h3>
+                    <h3 class="title" id ="Tenphim"> <br>  {{ $phim->tenPhim }}   </h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body "  >
                     <div id="thongTinChiTietPhim">
                         <h3 style="color:#c6006a">Ảnh  </h3>
                         <div class="image-container">
-                        <img  class="imgB" src="{{ $phim->imgBanner }}" alt="{{ $phim->tenPhim }}">
+                        <img  class="imgB"  id="phimPoster" src="{{ $phim->imgBanner }}" alt="{{ $phim->tenPhim }}">
 
-                        <img    class="imgP"  src="{{ $phim->Poster }}" alt="{{ $phim->tenPhim }}">
+                        <img    class="imgP"  id="phimBanner" src="{{ $phim->Poster }}" alt="{{ $phim->tenPhim }}">
                         </div>
                         <hr>
                         <h3 style="color:#c6006a">
-                            <span class="fa fa-clock-o"> Thời Lượng</span> {{ $phim->thoiLuong }} Min
+                            <span class="fa fa-clock-o"> Thời Lượng</span> <span id="phimThoiLuong">{{ $phim->thoiLuong }} Min </span>
                         </h3>
-
-                        <a ><b>Trạng Thái :</b> {{$phim->trangThai}}</a> <br>
-                        <a ><b>Mô tả : </b>{{$phim->moTa}} </a>
+                        <a><b>Trạng Thái :</b> <span id="phimTrangThai">{{$phim->trangThai}}</span></a> <br>
+                        <a><b>Mô tả : </b><span id="phimMoTa">{{$phim->moTa}}</span></a>
                         <hr>
                         <h3 style="color:#c6006a">Trailer  </h3>
                         <div id="small-dialog"  >
-                            <iframe width="560" height="315" src="{{$phim->Trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <iframe id="phimTrailer" width="560" height="315" src="{{$phim->Trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-
-
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -101,5 +98,28 @@
     </div>
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        var allPhims = @json($phims);
+        $(document).ready(function() {
+            $('.show-details').click(function() {
+                var phimId = $(this).data('phim-id'); // Sửa lại dòng này
+                console.log('M_id của phim đã chọn:', phimId);
+                var phimId = $(this).data('phim-id');
+
+                var selectedPhim = allPhims.find(phim => phim.M_id == phimId);
+                if (selectedPhim) {
+                    $('#Tenphim').text(selectedPhim.tenPhim);
+                    $('#phimBanner').attr('src', selectedPhim.imgBanner).attr('alt', selectedPhim.tenPhim);
+                    $('#phimPoster').attr('src', selectedPhim.Poster).attr('alt', selectedPhim.tenPhim);
+                    $('#phimThoiLuong').text(selectedPhim.thoiLuong);
+                    $('#phimTrangThai').text(selectedPhim.trangThai);
+                    $('#phimMoTa').text(selectedPhim.moTa);
+                    $('#phimTrailer').attr('src', selectedPhim.Trailer);
+                }
+            });
+        });
+    </script>
 @endsection
 

@@ -331,4 +331,8 @@ table strong {
     line-height: 1.7;
     text-align: justify;
 }
-
+.item .box16 figure img.img-fluid {
+    height: 350px;
+    object-fit: cover;
+    width: 100%;
+}

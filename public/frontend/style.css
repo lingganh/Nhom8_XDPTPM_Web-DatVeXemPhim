@@ -152,3 +152,8 @@ body {
     position: relative;
     z-index: 10;
 }
+.item .box16 figure img.img-fluid {
+    height: 350px;
+    object-fit: cover;
+    width: 100%;
+}
