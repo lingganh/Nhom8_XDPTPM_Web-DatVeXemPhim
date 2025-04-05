@@ -63,13 +63,34 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="phimChiTietModalLabel">Chi tiết phim</h5>
+                    <h4 class="modal-title" id="phimChiTietModalLabel">Chi tiết phim</h4>
+                    <h3 class="title">{{ $phim->tenPhim }}</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div id="thongTinChiTietPhim">
+                        <h3 style="color:#c6006a">Ảnh  </h3>
+                        <div class="image-container">
+                        <img  class="imgB" src="{{ $phim->imgBanner }}" alt="{{ $phim->tenPhim }}">
+
+                        <img    class="imgP"  src="{{ $phim->Poster }}" alt="{{ $phim->tenPhim }}">
+                        </div>
+                        <hr>
+                        <h3 style="color:#c6006a">
+                            <span class="fa fa-clock-o"> Thời Lượng</span> {{ $phim->thoiLuong }} Min
+                        </h3>
+
+                        <a ><b>Trạng Thái :</b> {{$phim->trangThai}}</a> <br>
+                        <a ><b>Mô tả : </b>{{$phim->moTa}} </a>
+                        <hr>
+                        <h3 style="color:#c6006a">Trailer  </h3>
+                        <div id="small-dialog"  >
+                            <iframe width="560" height="315" src="{{$phim->Trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -81,3 +102,4 @@
 
 
 @endsection
+
