@@ -14,12 +14,10 @@ class FilmController
 
     public function index(){
 
-        $phims = DB::table('phim')
-            ->whereIn('trangThai', ['Đang chiếu', 'Sắp chiếu'])
-            ->get();
+        $phims = DB::table('phim')->get();
         return view('backend.film.index', compact('phims'));
 
-        //$showDetails = DB::table('phim')->where('M_id', $idP);
+
 
     }
 

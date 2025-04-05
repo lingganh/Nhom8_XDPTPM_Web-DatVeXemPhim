@@ -42,13 +42,15 @@
 
                                         <div class="movie-buttons">
                                             <div class="box">
-                                                <button class="button btn-primary show-details" data-phim-id="{{ $phim->M_id }}">Chi Tiết</button>
+                                                <button type="button" class="button btn-primary show-details" data-toggle="modal" data-target="#phimChiTietModal" data-phim-id="{{ $phim->M_id }}">
+                                                    Chi Tiết
+                                                </button>
                                             </div>
                                             <a href="" class="button btn-primary">Sửa </a>
                                             <a href="" class="button btn-primary">Xóa </a>
                                         </div>
                                     </div>
-                                {{--                                </a>--}}
+
                             </div>
                         </div>
                     @endforeach
@@ -77,34 +79,5 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready(function() {
-            $('.show-details').click(function() {
-                var phimId = $(this).data('M_id');
-                layVaHienThiChiTietPhim(phimId);
-                $('#phimChiTietModal').modal('show');
-            });
 
-            function layVaHienThiChiTietPhim(id) {
-                $.ajax({
-                    url: '/api/phim/' + id, // Đảm bảo route này tồn tại trong api.php
-                    method: 'GET',
-                    success: function(data) {
-                        // Cập nhật nội dung modal với dữ liệu nhận được
-                        $('#phimChiTietModalLabel').text(data.tenPhim); // Ví dụ: Cập nhật tiêu đề modal
-                        $('#thongTinChiTietPhim').html(`
-                        <img class="img-fluid modal-poster" src="${data.Poster}" alt="${data.tenPhim}" style="margin-bottom: 10px;">
-                        <p>Thời lượng: ${data.thoiLuong} Min</p>
-                        <p>Mô tả: ${data.moTa || 'Không có mô tả'}</p>
-                        // Thêm các thông tin chi tiết khác bạn muốn hiển thị
-                        `);
-                    },
-                    error: function(error) {
-                        console.error('Lỗi khi lấy chi tiết phim:', error);
-                        $('#thongTinChiTietPhim').html('<p class="text-danger">Không thể tải thông tin chi tiết phim.</p>');
-                    }
-                });
-            }
-        });
-    </script>
 @endsection
