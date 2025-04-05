@@ -31,7 +31,7 @@ Route::get('user', [Backend\UserController ::class, 'index'])->name('user.index'
 Route::get('usergroup', [UserGroupController ::class, 'index'])->name('usergroup.index')->middleware(AuthMiddleware::class);
 // Film
 Route::get('films', [FilmController::class, 'index'])->name('films.index ')->middleware(AuthMiddleware::class);
-Route::get('films/{id}', 'FilmController@getPhimDetails');
+Route::post('filmsupdate/{id}', [FilmController::class, 'update'])->middleware(AuthMiddleware::class);
  //movie showtimes
 Route::get('movieShowtime', [Backend\movieShowtimeController::class, 'index'])->name('movieShowtime.index ')->middleware(AuthMiddleware::class);
 

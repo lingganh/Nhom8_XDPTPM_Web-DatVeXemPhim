@@ -46,7 +46,9 @@
                                                     Chi Tiết
                                                 </button>
                                             </div>
-                                            <a href="" class="button btn-primary">Sửa </a>
+                                            <button type="button" class="button btn-primary show-edit" data-toggle="modal" data-target="#phimSuaModal" data-phim-id="{{ $phim->M_id }}">
+                                                Sửa
+                                            </button>
                                             <a href="" class="button btn-primary">Xóa </a>
                                         </div>
                                     </div>
@@ -58,12 +60,12 @@
             </div>
         </div>
     </section>
-
+<!-- modal hiện -->
     <div class="modal fade" id="phimChiTietModal" tabindex="-1" role="dialog" aria-labelledby="phimChiTietModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="phimChiTietModalLabel">Chi tiết phim  </h4> <br>
+
                     <h3 class="title" id ="Tenphim"> <br>  {{ $phim->tenPhim }}   </h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -97,9 +99,64 @@
         </div>
     </div>
 
-
+    <!-- modal sửa -->
+    <div class="modal fade" id="phimSuaModal" tabindex="-1" role="dialog" aria-labelledby="phimSuaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="maPhim">Sửa thông tin phim  </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formSuaPhim">
+                        <div class="form-group">
+                            <label for="tenPhim">Tên phim</label>
+                            <input type="text" class="form-control" id="tenPhim" name="tenPhim" >
+                        </div>
+                        <div class="form-group">
+                            <label for="imgBanner">Ảnh Banner</label>
+                            <input type="text" class="form-control" id="imgBanner" name="imgBanner">
+                        </div>
+                        <div class="form-group">
+                            <label for="Poster">Poster</label>
+                            <input type="text" class="form-control" id="Poster" name="Poster">
+                        </div>
+                        <div class="form-group">
+                            <label for="thoiLuong">Thời lượng (phút)</label>
+                            <input type="number" class="form-control" id="thoiLuong" name="thoiLuong">
+                        </div>
+                        <div class="form-group">
+                            <label for="moTa">Mô tả</label>
+                            <textarea class="form-control" id="moTa" name="moTa"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="Trailer">Trailer URL</label>
+                            <input type="text" class="form-control" id="Trailer" name="Trailer">
+                        </div>
+                        <label for="trangThai">Trạng thái</label>
+                        <select class="form-control" id="trangThai" name="trangThai">
+                            <option value="Đang chiếu">Đang chiếu</option>
+                            <option value="Sắp chiếu">Sắp chiếu</option>
+                            <option value="Đã chiếu">Đã chiếu</option>
+                        </select>
+                        <input type="hidden" id="M_id" name="M_id">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" id="btnLuuSuaPhim">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+
+
+
+    <!-- JS cho modal xem ct -->
     <script>
         var allPhims = @json($phims);
         $(document).ready(function() {
@@ -118,6 +175,56 @@
                     $('#phimMoTa').text(selectedPhim.moTa);
                     $('#phimTrailer').attr('src', selectedPhim.Trailer);
                 }
+            });
+        });
+        <!-- JS cho modal sửa -->
+        $(document).ready(function() {
+
+            $(document).ready(function () {
+                $('.show-edit').click(function () {
+                    var phimid = $(this).data('phim-id');
+                    console.log('M_id của phim đã chọn:', phimid);
+
+
+                    var selectedP = allPhims.find(phim => phim.M_id == phimid);
+
+                    if (selectedP) {
+                        $('#maPhim').val(selectedP.M_id);
+                        $('#tenPhim').val(selectedP.tenPhim);
+                        $('#imgBanner').val(selectedP.imgBanner);
+                        $('#Poster').val(selectedP.Poster);
+                        $('#thoiLuong').val(selectedP.thoiLuong);
+                        $('#moTa').val(selectedP.moTa);
+                        $('#Trailer').val(selectedP.Trailer);
+                        $('#trangThai').val(selectedP.trangThai);
+
+                    } else {
+                        console.log('Không tìm thấy phim có ID:', phimid);
+                    }
+                });
+
+                $('#btnLuuSuaPhim').click(function () {
+
+                    var formData = $('#formSuaPhim').serialize();
+                    var phimId = $('#M_id').val();
+
+                    console.log('Dữ liệu gửi đi:', formData);
+                    $.ajax({
+                        url: 'filmsupdate' + '/' + phimid,
+                        type: 'POST',
+                        data: formData,
+                        success: function(response) {
+                            console.log('Cập nhật thành công:', response);
+                            $('#phimSuaModal').modal('hide');
+
+                        },
+                        error: function(error) {
+                            console.error('Lỗi cập nhật:', error);
+
+                        }
+                    });
+
+                });
             });
         });
     </script>
