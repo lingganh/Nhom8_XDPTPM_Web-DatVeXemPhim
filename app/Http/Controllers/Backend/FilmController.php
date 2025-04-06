@@ -27,9 +27,9 @@ class FilmController
         $phim = DB::table('phim')->findOrFail($id);
         return response()->json($phim);
     }
-    public function update(Request $request)
+    public function update(Request $request ,$id)
     {
-        $phimId = $request->input('M_id');
+        $phimId = $id;
         $phim = DB::table('phim')::findOrFail($phimId);
         $phim->update($request->except('M_id'));
 

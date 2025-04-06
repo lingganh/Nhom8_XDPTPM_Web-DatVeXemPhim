@@ -206,11 +206,11 @@
                 $('#btnLuuSuaPhim').click(function () {
 
                     var formData = $('#formSuaPhim').serialize();
-                    var phimId = $('#M_id').val();
-
+                    var phimId = $('#maPhim').val();
+                    console.log('fghjk',phimId);
                     console.log('Dữ liệu gửi đi:', formData);
                     $.ajax({
-                        url: 'filmsupdate' + '/' + phimid,
+                        url: 'filmsupdate/' + phimId,
                         type: 'POST',
                         data: formData,
                         success: function(response) {
@@ -224,8 +224,7 @@
                         }
                     });
 
-                });
-            });
+                });            });
         });
     </script>
 @endsection
