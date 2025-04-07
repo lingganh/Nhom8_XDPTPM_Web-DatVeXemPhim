@@ -41,7 +41,7 @@
                                 <h3 class="hny-title">Phim đang chiếu </h3>
                             </div>
                             <div class="headerhny-right text-lg-right">
-                                <h4><a class="show-title" href="{{ route('film.index') }}">Tất cả chương trình</a></h4>
+                                <h4><a class="show-title" href="{{ route('movies.index') }}">Tất cả chương trình</a></h4>
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                             <h3 class="hny-title">Phim sắp chiếu </h3>
                         </div>
                         <div class="headerhny-right text-lg-right">
-                            <h4><a class="show-title" href="{{ route('film.index') }}">Tất cả chương trình</a></h4>
+                            <h4><a class="show-title" href="{{ route('movies.index') }}">Tất cả chương trình</a></h4>
                         </div>
                     </div>
                 </div>

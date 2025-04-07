@@ -15,7 +15,9 @@ use App\{Http\Controllers\Backend\AuthController,
     Http\Controllers\Backend};
 use App\Http\Controllers\Frontend\ListFilmController;
 use App\Http\Controllers\Backend\RevenueController;
-
+use App\Http\Controllers\Frontend\moviesController;
+Route::get('/movies', [moviesController::class, 'index'])->name('movies.index');
+Route::get('/movies/{M_id}', [moviesController::class, 'show'])->name('frontend.movies.show');
 Route::get('/', function () {
     return view('welcome');
 });

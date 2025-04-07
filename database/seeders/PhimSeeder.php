@@ -9,7 +9,7 @@ class PhimSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('phim')->insert(values: [
+        DB::table('phim')->insert( [
             [
                 'M_id' => 'F001',
                 'tenPhim' => 'Vong Nhi',
