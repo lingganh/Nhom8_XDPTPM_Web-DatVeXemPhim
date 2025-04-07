@@ -20,7 +20,9 @@
     <section class="w3l-grids">
         <div class="grids-main py-5">
             <div class="container py-lg-3">
-
+                <a href="" class="btn btn-success mr5" style="margin-left:1100px">  Thêm Mới <i class="fa fa-plus"></i></a>
+                <br>
+                <br>
                 <div class="w3l-populohny-grids">
                     @php
                         $upcomingMovies = $phims->where('trangThai', 'Sắp chiếu') ;
@@ -155,6 +157,13 @@
             </div>
         </div>
         </div>
+    </div>
+    <!-- Modal xóa -->
+
+
+
+    <!-- Modal Thêm -->
+
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
