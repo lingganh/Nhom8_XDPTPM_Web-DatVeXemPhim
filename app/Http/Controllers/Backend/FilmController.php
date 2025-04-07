@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Film;
-use http\Client\Request;
 use Illuminate\Support\Facades\DB;
+ use Illuminate\Http\Request;
 
 
 class FilmController
@@ -27,12 +27,11 @@ class FilmController
         $phim = DB::table('phim')->findOrFail($id);
         return response()->json($phim);
     }
-    public function update(Request $request ,$id)
+    public function update(Request $request, $id)
     {
-        $phimId = $id;
-        $phim = DB::table('phim')::findOrFail($phimId);
-        $phim->update($request->except('M_id'));
-
-        return redirect()->route('films')->with('success', 'Thông tin phim đã được cập nhật thành công!');
+        $phim = Film::findOrFail($id);
+        $data = $request->all();
+        $phim->update($data);
+        return redirect()->route('films.index ')->with('success', 'Cập nhật phim thành công!');
     }
 }

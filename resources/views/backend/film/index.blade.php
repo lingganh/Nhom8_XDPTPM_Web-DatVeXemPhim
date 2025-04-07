@@ -110,7 +110,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="formSuaPhim">
+                    <form id="formSuaPhim" method="POST" action ="">
+                        @csrf
+
                         <div class="form-group">
                             <label for="tenPhim">Tên phim</label>
                             <input type="text" class="form-control" id="tenPhim" name="tenPhim" >
@@ -142,14 +144,20 @@
                             <option value="Đã chiếu">Đã chiếu</option>
                         </select>
                         <input type="hidden" id="M_id" name="M_id">
+                        <button type ="submit" class="btn btn-primary" id="btnLuuSuaPhim">Lưu</button>
+
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary" id="btnLuuSuaPhim">Lưu</button>
                 </div>
             </div>
         </div>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -159,6 +167,8 @@
     <!-- JS cho modal xem ct -->
     <script>
         var allPhims = @json($phims);
+        var baseUrl = window.location.origin + '/';
+
         $(document).ready(function() {
             $('.show-details').click(function() {
                 var phimId = $(this).data('phim-id');
@@ -178,6 +188,7 @@
             });
         });
         <!-- JS cho modal sửa -->
+
         $(document).ready(function() {
 
             $(document).ready(function () {
@@ -197,34 +208,17 @@
                         $('#moTa').val(selectedP.moTa);
                         $('#Trailer').val(selectedP.Trailer);
                         $('#trangThai').val(selectedP.trangThai);
+                        $('#formSuaPhim').attr('action', baseUrl + 'filmsupdate/' + phimid);
 
                     } else {
                         console.log('Không tìm thấy phim có ID:', phimid);
                     }
                 });
 
-                $('#btnLuuSuaPhim').click(function () {
 
-                    var formData = $('#formSuaPhim').serialize();
-                    var phimId = $('#maPhim').val();
-                    console.log('fghjk',phimId);
-                    console.log('Dữ liệu gửi đi:', formData);
-                    $.ajax({
-                        url: 'filmsupdate/' + phimId,
-                        type: 'POST',
-                        data: formData,
-                        success: function(response) {
-                            console.log('Cập nhật thành công:', response);
-                            $('#phimSuaModal').modal('hide');
-
-                        },
-                        error: function(error) {
-                            console.error('Lỗi cập nhật:', error);
-
-                        }
                     });
 
-                });            });
+
         });
     </script>
 @endsection
