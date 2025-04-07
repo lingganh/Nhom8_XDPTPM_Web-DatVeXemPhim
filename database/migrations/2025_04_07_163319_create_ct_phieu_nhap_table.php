@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('phim', function (Blueprint $table) {
-            $table->dropTimestamps();
-
+        Schema::create('ct_phieu_nhap', function (Blueprint $table) {
+            $table->string('idPN');
+            $table->string('idsp');
+            $table->integer('SL')->nullable();
+            $table->float('donGia')->nullable();
+            $table->primary(['idPN', 'idsp']);
         });
     }
 
@@ -22,9 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('phim', function (Blueprint $table) {
-            $table->timestamps();
-
-        });
+        Schema::dropIfExists('ct_phieu_nhap');
     }
 };

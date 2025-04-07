@@ -10,8 +10,8 @@ class LichChieuSeeder extends Seeder
     public function run()
     {
         DB::table('lich_chieu')->insert([
-            ['idLC' => 'LC01', 'PC_id' => 'PC01', 'M_id' => 'M01', 'ngayChieu' => '2025-01-05', 'gioBD' => '2025-01-05 18:00:00', 'thoiLong' => 120],
-            ['idLC' => 'LC02', 'PC_id' => 'PC02', 'M_id' => 'M02', 'ngayChieu' => '2025-01-06', 'gioBD' => '2025-01-06 20:00:00', 'thoiLong' => 150],
+            [ 'PC_id' => '1', 'M_id' => '1', 'ngayChieu' => '2025-01-05', 'gioBD' => '2025-01-05 18:00:00', 'thoiLuong' => 120],
+            [ 'PC_id' => '2', 'M_id' => '2', 'ngayChieu' => '2025-01-06', 'gioBD' => '2025-01-06 20:00:00', 'thoiLuong' => 150],
         ]);
     }
 }

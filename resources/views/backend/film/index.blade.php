@@ -20,7 +20,7 @@
     <section class="w3l-grids">
         <div class="grids-main py-5">
             <div class="container py-lg-3">
-                <a href="" class="btn btn-success mr5" style="margin-left:1100px">  Thêm Mới <i class="fa fa-plus"></i></a>
+                <a href="" class="btn btn-success mr5" style="margin-left:1100px" data-toggle="modal" data-target="#phimThemModal">  Thêm Mới <i class="fa fa-plus"></i></a>
                 <br>
                 <br>
                 <div class="w3l-populohny-grids">
@@ -163,8 +163,61 @@
 
 
     <!-- Modal Thêm -->
-
-        @if (session('success'))
+    <div class="modal fade" id="phimThemModal" tabindex="-1" role="dialog" aria-labelledby="phimThemModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="phimThemModalLabel">Thêm phim mới</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formThemPhim" method="POST" action="{{ route('films.store') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="tenPhim">Tên phim</label>
+                            <input type="text" class="form-control" id="tenPhim" name="tenPhim" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="M_id">Mã phim</label>
+                            <input type="text" class="form-control" id="M_id" name="M_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imgBanner">Ảnh Banner</label>
+                            <input type="text" class="form-control" id="imgBanner" name="imgBanner">
+                        </div>
+                        <div class="form-group">
+                            <label for="Poster">Poster</label>
+                            <input type="text" class="form-control" id="Poster" name="Poster">
+                        </div>
+                        <div class="form-group">
+                            <label for="thoiLuong">Thời lượng (phút)</label>
+                            <input type="number" class="form-control" id="thoiLuong" name="thoiLuong">
+                        </div>
+                        <div class="form-group">
+                            <label for="moTa">Mô tả</label>
+                            <textarea class="form-control" id="moTa" name="moTa"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="Trailer">Trailer URL</label>
+                            <input type="text" class="form-control" id="Trailer" name="Trailer">
+                        </div>
+                        <label for="trangThai">Trạng thái</label>
+                        <select class="form-control" id="trangThai" name="trangThai">
+                            <option value="Đang chiếu">Đang chiếu</option>
+                            <option value="Sắp chiếu">Sắp chiếu</option>
+                            <option value="Đã chiếu">Đã chiếu</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary" form="formThemPhim">Thêm</button>
+                </div>
+            </div>
+        </div>
+    </div>        @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
