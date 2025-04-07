@@ -144,14 +144,16 @@
                             <option value="Đã chiếu">Đã chiếu</option>
                         </select>
                         <input type="hidden" id="M_id" name="M_id">
-                        <button type ="submit" class="btn btn-primary" id="btnLuuSuaPhim">Lưu</button>
 
+
+                         <div class="modal-footer">
+                    <button  type ="submit" class="btn btn-primary" id="btnLuuSuaPhim">Lưu</button>
                     </form>
-                </div>
-                <div class="modal-footer">
+
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                 </div>
             </div>
+        </div>
         </div>
         @if (session('success'))
             <div class="alert alert-success">
