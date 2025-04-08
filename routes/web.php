@@ -32,6 +32,9 @@ Route::get('logout', [AuthController:: class, 'logout'])->name('auth.logout');
 // USER
 Route::get('user', [Backend\UserController ::class, 'index'])->name('user.index')->middleware(AuthMiddleware::class);
 Route::get('usergroup', [UserGroupController ::class, 'index'])->name('usergroup.index')->middleware(AuthMiddleware::class);
+Route::post('user', [Backend\UserController::class, 'create'])->name('user.create')->middleware(AuthMiddleware::class);
+Route::put('user/{user}', [Backend\UserController::class, 'update'])->name('user.update')->middleware(AuthMiddleware::class);
+Route::delete('user/{user}', [Backend\UserController::class, 'delete'])->name('user.destroy')->middleware(AuthMiddleware::class);
 // Film
 Route::get('films', [FilmController::class, 'index'])->name('films.index')->middleware(AuthMiddleware::class);
  Route::post('filmsupdate/{id}', [FilmController::class, 'update'])->middleware(AuthMiddleware::class);
@@ -54,7 +57,7 @@ Route::get('ticket', [Backend\ticketController::class, 'index'])->name('ticket.i
 
 
 // FE _home
-Route::get('', [Controller::class, 'index'])->name('home.index');
+Route::get('', [Controller::class, 'show'])->name('home.index');
 
 //List Film
 Route::get('/film', [ListFilmController::class, 'index'])->name('film.index');

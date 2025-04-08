@@ -46,21 +46,7 @@ FIVE Cinema
                 </li>
 
 
-                <li>
-                    <a  ><i class="fa fa-files-o"></i> <span class="nav-label">Các Trang Khác </span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href=" ">Search results</a></li>
-                        <li><a href=" ">Lockscreen</a></li>
-                        <li><a href=" ">Invoice</a></li>
-                        <li><a href=" ">Login</a></li>
-                        <li><a href=" ">Login v.2</a></li>
-                        <li><a href=" ">Forget password</a></li>
-                        <li><a href=" ">Register</a></li>
-                        <li><a href=" ">404 Page</a></li>
-                        <li><a href=" ">500 Page</a></li>
-                        <li><a href=" ">Empty page</a></li>
-                    </ul>
-                </li>
+
                 <li>
 
                 </li>
