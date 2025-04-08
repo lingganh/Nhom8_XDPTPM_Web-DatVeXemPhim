@@ -14,14 +14,36 @@ class FilmController
 
     }
 
-    public function index(){
 
-        $phims = Film::all();
-        return view('backend.film.index', compact('phims'));
+        public function index(Request $request){
+            try {
+                $query = $request->input('query');
+
+                if ($query) {
+                    $phims = Film::where('tenPhim', 'like', '%' . $query . '%')
+                        ->orWhere('moTa', 'like', '%' . $query . '%')
+                        ->orWhere('thoiLuong', 'like', '%' . $query . '%')
+                        ->orWhere('trangThai', 'like', '%' . $query . '%')
+                        ->orWhere('M_id', 'like', '%' . $query . '%')
+                        ->get();
+                    if($phims->isEmpty()){
+                        $phims = Film::all();
+
+                    }
+                } else {
+                    $phims = Film::all();
+                }
+
+                return view('backend.film.index', compact('phims'));
+            } catch (\Exception $e) {
+                // Ghi log lỗi
+                return view('backend.film.index')->with('error', 'Đã xảy ra lỗi khi tải danh sách phim.');
+            }
+        }
 
 
 
-    }
+
     public function getPhimDetails($id)
     {
         $phim = DB::table('phim')->findOrFail($id);
@@ -52,4 +74,5 @@ class FilmController
 
         return redirect()->route('films.index ')->with('success', 'Xóa phim thành công!');
     }
+
 }

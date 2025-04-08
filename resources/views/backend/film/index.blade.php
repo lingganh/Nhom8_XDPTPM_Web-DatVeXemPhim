@@ -20,13 +20,28 @@
     <section class="w3l-grids">
         <div class="grids-main py-5">
             <div class="container py-lg-3">
-                <a href="" class="btn btn-success mr5" style="margin-left:1100px" data-toggle="modal" data-target="#phimThemModal">  Thêm Mới <i class="fa fa-plus"></i></a>
-                <br>
+                <div class="container py-lg-3">
+                    <a href="" class="btn btn-success mr5" style="margin-left:1000px" data-toggle="modal" data-target="#phimThemModal">  Thêm Mới <i class="fa fa-plus"></i></a>
+                    <br><br>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <form action="{{ route('films.index ') }}" method="GET">
+                                <input type="text" id="searchInput" class="form-control mb-3" placeholder="Tìm kiếm phim..." name="query" value="{{ request()->query('query') }}">
+                        </div>
+                        <div class="col-md-3">
+                            <button id="searchButton" type="submit" class="btn btn-primary">Tìm kiếm</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="searchResults" class="w3l-populohny-grids">
+                    </div>
+                </div>
+                 <br>
                 <br>
                 <div class="w3l-populohny-grids">
-                    @php
-                        $upcomingMovies = $phims->where('trangThai', 'Sắp chiếu') ;
-                    @endphp
+
+
+
                     @foreach ($phims as $phim)
                         <div class="item vhny-grid">
                             <div class="box16">
@@ -58,6 +73,9 @@
                             </div>
                         </div>
                     @endforeach
+
+
+
                 </div>
             </div>
         </div>
@@ -320,6 +338,8 @@
             });
 
         });
+        <!-- js cho tk-->
+
     </script>
 @endsection
 
