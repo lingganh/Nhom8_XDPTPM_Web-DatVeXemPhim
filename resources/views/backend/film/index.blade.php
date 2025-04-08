@@ -173,16 +173,13 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="formThemPhim" method="POST" action="{{ route('films.store') }}">
+                    <form id="formThemPhim" method="POST" action="{{route('films.create')}} ">
                         @csrf
                         <div class="form-group">
                             <label for="tenPhim">Tên phim</label>
                             <input type="text" class="form-control" id="tenPhim" name="tenPhim" required>
                         </div>
-                        <div class="form-group">
-                            <label for="M_id">Mã phim</label>
-                            <input type="text" class="form-control" id="M_id" name="M_id" required>
-                        </div>
+
                         <div class="form-group">
                             <label for="imgBanner">Ảnh Banner</label>
                             <input type="text" class="form-control" id="imgBanner" name="imgBanner">

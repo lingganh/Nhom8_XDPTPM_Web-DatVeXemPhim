@@ -34,4 +34,20 @@ class FilmController
         $phim->update($data);
         return redirect()->route('films.index ')->with('success', 'Cập nhật phim thành công!');
     }
+    public function create (Request $request)
+    {
+       //  dd(request());
+        $data = $request->all();
+       // dd($data);
+        Film::create($data);
+        return redirect()->route('films.index ')->with('success', 'Thêm phim thành công!');
+    }
+    public function delete (Request $request)
+    {
+        //  dd(request());
+        $data = $request->all();
+        // dd($data);
+        Film::create($data);
+        return redirect()->route('films.index ')->with('success', 'Thêm phim thành công!');
+    }
 }

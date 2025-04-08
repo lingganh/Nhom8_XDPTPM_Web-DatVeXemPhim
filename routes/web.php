@@ -32,7 +32,10 @@ Route::get('usergroup', [UserGroupController ::class, 'index'])->name('usergroup
 // Film
 Route::get('films', [FilmController::class, 'index'])->name('films.index ')->middleware(AuthMiddleware::class);
  Route::post('filmsupdate/{id}', [FilmController::class, 'update']);
- //movie showtimes
+ Route::post('filmscreate', [FilmController::class, 'create'])->name('films.create')->middleware(AuthMiddleware::class);
+Route::get('filmsdelete', [FilmController::class, 'delete'])->name('films.delete')->middleware(AuthMiddleware::class);
+
+//movie showtimes
 Route::get('movieShowtime', [Backend\movieShowtimeController::class, 'index'])->name('movieShowtime.index ')->middleware(AuthMiddleware::class);
 
 
