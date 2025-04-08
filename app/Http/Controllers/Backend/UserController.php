@@ -42,4 +42,29 @@ class UserController {
             return view('backend.user.index')->with('error', 'Đã xảy ra lỗi khi tải danh sách người dùng.');
         }
     }
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $data = $request->all();
+        $user->update($data);
+        return redirect()->route('user.index')->with('success', 'Cập nhật user thành công!');
+    }
+    public function create (Request $request)
+    {
+        //  dd(request());
+        $data = $request->all();
+        // dd($data);
+        User::create($data);
+        return redirect()->route('user.index')->with('success', 'Thêm user thành công!');
+    }
+    public function delete ($id)
+    {
+        //  dd(request());
+
+        // dd($data);
+
+        User::destroy($id);
+
+        return redirect()->route('user.index')->with('success', 'Xóa user thành công!');
+    }
 }
