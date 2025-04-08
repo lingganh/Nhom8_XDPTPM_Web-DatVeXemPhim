@@ -1,8 +1,7 @@
 <?php
 
-use HomeController\HomeController;
-use Illuminate\Support\Facades\Route;
-use App\{Http\Controllers\Backend\AuthController,
+use App\{Http\Controllers\Backend,
+    Http\Controllers\Backend\AuthController,
     Http\Controllers\Backend\CommentsController,
     Http\Controllers\Backend\DashboardController,
     Http\Controllers\Backend\FilmController,
@@ -10,12 +9,14 @@ use App\{Http\Controllers\Backend\AuthController,
     Http\Controllers\Controller,
     Http\Controllers\Frontend\forgotpassword,
     Http\Controllers\Frontend\SignInController,
-    Http\Middleware\AuthMiddleware,
-    Http\Middleware\LoginMiddleware,
-    Http\Controllers\Backend};
-use App\Http\Controllers\Frontend\ListFilmController;
+    Http\Middleware\AuthMiddleware};
+
 use App\Http\Controllers\Backend\RevenueController;
+use App\Http\Controllers\Frontend\ListFilmController;
 use App\Http\Controllers\Frontend\moviesController;
+use HomeController\HomeController;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/movies', [moviesController::class, 'index'])->name('movies.index');
 Route::get('/movies/{M_id}', [moviesController::class, 'show'])->name('frontend.movies.show');
 Route::get('/', function () {
@@ -32,7 +33,7 @@ Route::get('logout', [AuthController:: class, 'logout'])->name('auth.logout');
 Route::get('user', [Backend\UserController ::class, 'index'])->name('user.index')->middleware(AuthMiddleware::class);
 Route::get('usergroup', [UserGroupController ::class, 'index'])->name('usergroup.index')->middleware(AuthMiddleware::class);
 // Film
-Route::get('films', [FilmController::class, 'index'])->name('films.index ')->middleware(AuthMiddleware::class);
+Route::get('films', [FilmController::class, 'index'])->name('films.index')->middleware(AuthMiddleware::class);
  Route::post('filmsupdate/{id}', [FilmController::class, 'update'])->middleware(AuthMiddleware::class);
  Route::post('filmscreate', [FilmController::class, 'create'])->name('films.create')->middleware(AuthMiddleware::class);
 Route::get('filmsdelete/{id}', [FilmController::class, 'delete'])->name('films.delete')->middleware(AuthMiddleware::class);

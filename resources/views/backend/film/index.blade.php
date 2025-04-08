@@ -36,7 +36,7 @@
                     <div id="searchResults" class="w3l-populohny-grids">
                     </div>
                 </div>
-                 <br>
+                <br>
                 <br>
                 <div class="w3l-populohny-grids">
 
@@ -80,7 +80,7 @@
             </div>
         </div>
     </section>
-<!-- modal hiện -->
+    <!-- modal hiện -->
     <div class="modal fade" id="phimChiTietModal" tabindex="-1" role="dialog" aria-labelledby="phimChiTietModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -95,9 +95,9 @@
                     <div id="thongTinChiTietPhim">
                         <h3 style="color:#c6006a">Ảnh  </h3>
                         <div class="image-container">
-                        <img  class="imgB"  id="phimPoster" src="{{ $phim->imgBanner }}" alt="{{ $phim->tenPhim }}">
+                            <img  class="imgB"  id="phimPoster" src="{{ $phim->imgBanner }}" alt="{{ $phim->tenPhim }}">
 
-                        <img    class="imgP"  id="phimBanner" src="{{ $phim->Poster }}" alt="{{ $phim->tenPhim }}">
+                            <img    class="imgP"  id="phimBanner" src="{{ $phim->Poster }}" alt="{{ $phim->tenPhim }}">
                         </div>
                         <hr>
                         <h3 style="color:#c6006a">
@@ -166,15 +166,15 @@
                         <input type="hidden" id="M_id" name="M_id">
 
 
-                         <div class="modal-footer">
-                    <button  type ="submit" class="btn btn-primary" id="btnLuuSuaPhim">Lưu</button>
+                        <div class="modal-footer">
+                            <button  type ="submit" class="btn btn-primary" id="btnLuuSuaPhim">Lưu</button>
                     </form>
 
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
     </div>
     <!-- Modal xóa -->
 
@@ -193,7 +193,7 @@
                 <div class="modal-footer">
 
                     <form id="formXoaPhim" method="GET" action ="">
-                    @csrf
+                        @csrf
                         @method('DELETE')
 
                         <button type="submit" class="btn btn-danger" id="confirmDeleteBtn">Xóa</button>
@@ -228,18 +228,6 @@
                         </div>
                         <div class="form-group">
                             <label for="Poster">Poster</label>
-                            <input type="text" class="form-control" id="Poster" name="Poster">
-                        </div>
-                        <div class="form-group">
-                            <label for="thoiLuong">Thời lượng (phút)</label>
-                            <input type="number" class="form-control" id="thoiLuong" name="thoiLuong">
-                        </div>
-                        <div class="form-group">
-                            <label for="moTa">Mô tả</label>
-                            <textarea class="form-control" id="moTa" name="moTa"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="Trailer">Trailer URL</label>
                             <input type="text" class="form-control" id="Trailer" name="Trailer">
                         </div>
                         <label for="trangThai">Trạng thái</label>
@@ -257,89 +245,88 @@
             </div>
         </div>
     </div>        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
         @endif
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
 
 
 
-    <!-- JS cho modal xem ct -->
-    <script>
-        var allPhims = @json($phims);
-        var baseUrl = window.location.origin + '/';
+        <!-- JS cho modal xem ct -->
+        <script>
+            var allPhims = @json($phims);
+            var baseUrl = window.location.origin + '/';
 
-        $(document).ready(function() {
-            $('.show-details').click(function() {
-                var phimId = $(this).data('phim-id');
-                console.log('M_id của phim đã chọn:', phimId);
-                var phimId = $(this).data('phim-id');
+            $(document).ready(function() {
+                $('.show-details').click(function() {
+                    var phimId = $(this).data('phim-id');
+                    console.log('M_id của phim đã chọn:', phimId);
+                    var phimId = $(this).data('phim-id');
 
-                var selectedPhim = allPhims.find(phim => phim.M_id == phimId);
-                if (selectedPhim) {
-                    $('#Tenphim').text(selectedPhim.tenPhim);
-                    $('#phimBanner').attr('src', selectedPhim.imgBanner).attr('alt', selectedPhim.tenPhim);
-                    $('#phimPoster').attr('src', selectedPhim.Poster).attr('alt', selectedPhim.tenPhim);
-                    $('#phimThoiLuong').text(selectedPhim.thoiLuong);
-                    $('#phimTrangThai').text(selectedPhim.trangThai);
-                    $('#phimMoTa').text(selectedPhim.moTa);
-                    $('#phimTrailer').attr('src', selectedPhim.Trailer);
-                }
-            });
-        });
-        <!-- JS cho modal sửa -->
-
-        $(document).ready(function() {
-
-            $(document).ready(function () {
-                $('.show-edit').click(function () {
-                    var phimid = $(this).data('phim-id');
-                    console.log('M_id của phim đã chọn:', phimid);
-
-
-                    var selectedP = allPhims.find(phim => phim.M_id == phimid);
-
-                    if (selectedP) {
-                        $('#maPhim').val(selectedP.M_id);
-                        $('#tenPhim').val(selectedP.tenPhim);
-                        $('#imgBanner').val(selectedP.imgBanner);
-                        $('#Poster').val(selectedP.Poster);
-                        $('#thoiLuong').val(selectedP.thoiLuong);
-                        $('#moTa').val(selectedP.moTa);
-                        $('#Trailer').val(selectedP.Trailer);
-                        $('#trangThai').val(selectedP.trangThai);
-                        $('#formSuaPhim').attr('action', baseUrl + 'filmsupdate/' + phimid);
-
-                    } else {
-                        console.log('Không tìm thấy phim có ID:', phimid);
+                    var selectedPhim = allPhims.find(phim => phim.M_id == phimId);
+                    if (selectedPhim) {
+                        $('#Tenphim').text(selectedPhim.tenPhim);
+                        $('#phimBanner').attr('src', selectedPhim.imgBanner).attr('alt', selectedPhim.tenPhim);
+                        $('#phimPoster').attr('src', selectedPhim.Poster).attr('alt', selectedPhim.tenPhim);
+                        $('#phimThoiLuong').text(selectedPhim.thoiLuong);
+                        $('#phimTrangThai').text(selectedPhim.trangThai);
+                        $('#phimMoTa').text(selectedPhim.moTa);
+                        $('#phimTrailer').attr('src', selectedPhim.Trailer);
                     }
                 });
+            });
+            <!-- JS cho modal sửa -->
+
+            $(document).ready(function() {
+
+                $(document).ready(function () {
+                    $('.show-edit').click(function () {
+                        var phimid = $(this).data('phim-id');
+                        console.log('M_id của phim đã chọn:', phimid);
 
 
+                        var selectedP = allPhims.find(phim => phim.M_id == phimid);
+
+                        if (selectedP) {
+                            $('#maPhim').val(selectedP.M_id);
+                            $('#tenPhim').val(selectedP.tenPhim);
+                            $('#imgBanner').val(selectedP.imgBanner);
+                            $('#Poster').val(selectedP.Poster);
+                            $('#thoiLuong').val(selectedP.thoiLuong);
+                            $('#moTa').val(selectedP.moTa);
+                            $('#Trailer').val(selectedP.Trailer);
+                            $('#trangThai').val(selectedP.trangThai);
+                            $('#formSuaPhim').attr('action', baseUrl + 'filmsupdate/' + phimid);
+
+                        } else {
+                            console.log('Không tìm thấy phim có ID:', phimid);
+                        }
                     });
 
 
-        });
-        <!-- JS cho xoa-->
-        $(document).ready(function() {
+                });
 
-            $(document).ready(function () {
-                $('.delete').click(function () {
-                    var phimid = $(this).data('phim-id');
-                    console.log('M_id của phim đã chọn xoa :', phimid);
-                    $('#formXoaPhim').attr('action', baseUrl + 'filmsdelete/' + phimid);
+
+            });
+            <!-- JS cho xoa-->
+            $(document).ready(function() {
+
+                $(document).ready(function () {
+                    $('.delete').click(function () {
+                        var phimid = $(this).data('phim-id');
+                        console.log('M_id của phim đã chọn xoa :', phimid);
+                        $('#formXoaPhim').attr('action', baseUrl + 'filmsdelete/' + phimid);
+
+                    });
 
                 });
 
             });
+            <!-- js cho tk-->
 
-        });
-        <!-- js cho tk-->
-
-    </script>
-@endsection
-
+        </script>
+        @endsection
