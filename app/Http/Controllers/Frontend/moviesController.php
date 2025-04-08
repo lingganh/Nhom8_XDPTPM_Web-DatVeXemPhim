@@ -27,6 +27,7 @@ class moviesController extends Controller
             abort(404);  // Nếu không tìm thấy phim, trả về lỗi 404
         }
 
+
         return view('frontend.movies.show', compact('film'));
     }
 }

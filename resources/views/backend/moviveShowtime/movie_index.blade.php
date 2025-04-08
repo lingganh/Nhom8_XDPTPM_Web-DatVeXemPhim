@@ -65,15 +65,7 @@
                                 </div>
                                 <div class="movie-browser-info">
                                     <h3>{{$phim->tenPhim}}</h3>
-                                    <div class="movie-browser-meta">
-                                        <div class="movie-browser-duration">
-                                            <i class="fas fa-clock"></i>
-                                            <span>{{$phim->thoiLuong}} phút</span>
-                                        </div>
-                                        <div class="movie-browser-description" title="{{$phim->moTa}}">
-                                            <p>{{Str::limit($phim->moTa, 100, '...')}}</p>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         @endforeach

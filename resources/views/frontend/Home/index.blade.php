@@ -41,7 +41,7 @@
                                 <h3 class="hny-title">Phim đang chiếu </h3>
                             </div>
                             <div class="headerhny-right text-lg-right">
-                                <h4><a class="show-title" href="{{ route('movies.index') }}">Tất cả chương trình</a></h4>
+                                <h4><a class="show-title" href="{{route('user.movieIndex')}}">Tất cả chương trình</a></h4>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                                             <div class="movie-buttons">
 
 
-                                                <a href="" class="button btn-primary">Đặt Vé </a>
+                                                <a href="{{ route('frontend.movies.show', ['M_id' => $phim->M_id]) }}" class="button btn-primary">Đặt Vé </a>
 
                                             </div>
                                         </div>
@@ -91,7 +91,7 @@
                             <h3 class="hny-title">Phim sắp chiếu </h3>
                         </div>
                         <div class="headerhny-right text-lg-right">
-                            <h4><a class="show-title" href="{{ route('movies.index') }}">Tất cả chương trình</a></h4>
+                            <h4><a class="show-title" href="{{route('user.movieIndex')}}">Tất cả chương trình</a></h4>
                         </div>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
 
                                         <div class="movie-buttons">
 
-                                            <a href="" class="button btn-primary">Xem Chi Tiết </a>
+                                            <a href="{{ route('frontend.movies.show', ['M_id' => $phim->M_id]) }}" class="button btn-primary">Xem Chi Tiết </a>
                                         </div>
                                     </div>
                                 </a>
