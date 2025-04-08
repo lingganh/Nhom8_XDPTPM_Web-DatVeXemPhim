@@ -15,13 +15,14 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'email' => 'admin03@gmail.com',
+                'email' => 'admin0@gmail.com',
                 'name' => 'admin',
                 'password' => bcrypt('password'),
                 'address' => null,
                 'birthday' => null,
                 'image' => null,
                 'phone' => null,
+                'role'=>1,
             ],
             [
                 'email' => 'LinhHoang12@gmail.com',
@@ -31,6 +32,7 @@ class DatabaseSeeder extends Seeder
                 'birthday' => '1997-02-05',
                 'image' => 'https://kenh14cdn.com/...jpg',
                 'phone' => '0123456789',
+                'role'=>1,
             ],
             [
                 'name' => 'XuLee',
@@ -40,6 +42,7 @@ class DatabaseSeeder extends Seeder
                 'address' => 'Thôn sú 2, xã Lâm Động, huyện Thủy Nguyên, thành phố Hải Phòng.',
                 'birthday' => '1996-05-12',  // Chỉnh format ngày đúng (YYYY-MM-DD)
                 'image' => 'https://kenh14cdn.com/...jpg',
+                'role'=>1,
             ],
             [
                 'name' => 'RoseTra',
@@ -49,6 +52,7 @@ class DatabaseSeeder extends Seeder
                 'address' => '123/3 đường Lê Lợi, phường Bến Nghé, Quận 1, TP HCM',
                 'birthday' => '2000-05-15',
                 'image' => 'https://kenh14cdn.com/...jpg',
+                'role'=>1,
             ],
             [
                 'name' => 'TungTung',
@@ -58,6 +62,7 @@ class DatabaseSeeder extends Seeder
                 'address' => '123/5B đường Lê Lợi, Phường 6, Tuy Hòa, Phú Yên',
                 'birthday' => '2006-09-08',
                 'image' => 'https://kenh14cdn.com/...jpg',
+                'role'=>2,
             ],
             [
                 'name' => 'BuiHoa',
@@ -67,19 +72,24 @@ class DatabaseSeeder extends Seeder
                 'address' => '27 Phan Chu Trinh, Hoàn Kiếm, Hà Nội',
                 'birthday' => '2001-09-28',
                 'image' => 'https://kenh14cdn.com/...jpg',
+                'role'=>2,
             ],
         ]);
 
         // Gọi các Seeder khác
         $this->call([
-            ChucVuSeeder::class,
+
             CTHoaDonSeeder::class,
             CTPhieuNhapSeeder::class,
             GheSeeder::class,
             HoaDonSeeder::class,
-            KHTKSeeder::class,
-            KhachHangSeeder::class,
+
+            StatisticSeeder::class,
+            SanPhamSeeder::class,
             PhimSeeder::class,
+            PhongChieuSeeder::class,
+            LichChieuSeeder::class,
+
         ]);
     }
 }

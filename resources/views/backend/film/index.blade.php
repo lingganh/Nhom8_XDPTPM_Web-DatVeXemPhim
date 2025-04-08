@@ -6,7 +6,7 @@
             <h2>Phim </h2>
             <ol class="breadcrumb">
                 <li>
-                    <a href="{{'dashboard/index'}} ">Home</a>
+                    <a href="{{'dashboard.index'}} ">Home</a>
                 </li>
                 <li class="active">
                     <strong> Film List </strong>
@@ -20,11 +20,28 @@
     <section class="w3l-grids">
         <div class="grids-main py-5">
             <div class="container py-lg-3">
-
+                <div class="container py-lg-3">
+                    <a href="" class="btn btn-success mr5" style="margin-left:1000px" data-toggle="modal" data-target="#phimThemModal">  Thêm Mới <i class="fa fa-plus"></i></a>
+                    <br><br>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <form action="{{ route('films.index ') }}" method="GET">
+                                <input type="text" id="searchInput" class="form-control mb-3" placeholder="Tìm kiếm phim..." name="query" value="{{ request()->query('query') }}">
+                        </div>
+                        <div class="col-md-3">
+                            <button id="searchButton" type="submit" class="btn btn-primary">Tìm kiếm</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="searchResults" class="w3l-populohny-grids">
+                    </div>
+                </div>
+                 <br>
+                <br>
                 <div class="w3l-populohny-grids">
-                    @php
-                        $upcomingMovies = $phims->where('trangThai', 'Sắp chiếu') ;
-                    @endphp
+
+
+
                     @foreach ($phims as $phim)
                         <div class="item vhny-grid">
                             <div class="box16">
@@ -42,20 +59,23 @@
 
                                         <div class="movie-buttons">
                                             <div class="box">
-                                                <button type="button" class="button btn-primary show-details" data-toggle="modal" data-target="#phimChiTietModal" data-phim-id="{{ $phim->M_id }}">
-                                                    Chi Tiết
-                                                </button>
+                                                <button type="button" class="btn btn-info show-details" data-toggle="modal" data-target="#phimChiTietModal" data-phim-id="{{ $phim->M_id }}">Chi Tiết</button>
                                             </div>
-                                            <button type="button" class="button btn-primary show-edit" data-toggle="modal" data-target="#phimSuaModal" data-phim-id="{{ $phim->M_id }}">
+                                            <br>
+                                            <button type="button" class="btn btn-success show-edit" data-toggle="modal" data-target="#phimSuaModal" data-phim-id="{{ $phim->M_id }}">
                                                 Sửa
                                             </button>
-                                            <a href="" class="button btn-primary">Xóa </a>
+                                            <a>&ensp;</a>
+                                            <button  type="button" class="btn btn-danger delete "  data-toggle="modal"  data-target="#deleteConfirmationModal" data-phim-id="{{ $phim->M_id }}">Xóa  </button>
                                         </div>
                                     </div>
 
                             </div>
                         </div>
                     @endforeach
+
+
+
                 </div>
             </div>
         </div>
@@ -110,7 +130,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="formSuaPhim">
+                    <form id="formSuaPhim" method="POST" action ="">
+                        @csrf
+
                         <div class="form-group">
                             <label for="tenPhim">Tên phim</label>
                             <input type="text" class="form-control" id="tenPhim" name="tenPhim" >
@@ -142,16 +164,106 @@
                             <option value="Đã chiếu">Đã chiếu</option>
                         </select>
                         <input type="hidden" id="M_id" name="M_id">
+
+
+                         <div class="modal-footer">
+                    <button  type ="submit" class="btn btn-primary" id="btnLuuSuaPhim">Lưu</button>
                     </form>
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Modal xóa -->
+
+    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Xác nhận xóa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa phim này không?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary" id="btnLuuSuaPhim">Lưu</button>
+
+                    <form id="formXoaPhim" method="GET" action ="">
+                    @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="btn btn-danger" id="confirmDeleteBtn">Xóa</button>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal Thêm -->
+    <div class="modal fade" id="phimThemModal" tabindex="-1" role="dialog" aria-labelledby="phimThemModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="phimThemModalLabel">Thêm phim mới</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formThemPhim" method="POST" action="{{route('films.create')}} ">
+                        @csrf
+                        <div class="form-group">
+                            <label for="tenPhim">Tên phim</label>
+                            <input type="text" class="form-control" id="tenPhim" name="tenPhim" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="imgBanner">Ảnh Banner</label>
+                            <input type="text" class="form-control" id="imgBanner" name="imgBanner">
+                        </div>
+                        <div class="form-group">
+                            <label for="Poster">Poster</label>
+                            <input type="text" class="form-control" id="Poster" name="Poster">
+                        </div>
+                        <div class="form-group">
+                            <label for="thoiLuong">Thời lượng (phút)</label>
+                            <input type="number" class="form-control" id="thoiLuong" name="thoiLuong">
+                        </div>
+                        <div class="form-group">
+                            <label for="moTa">Mô tả</label>
+                            <textarea class="form-control" id="moTa" name="moTa"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="Trailer">Trailer URL</label>
+                            <input type="text" class="form-control" id="Trailer" name="Trailer">
+                        </div>
+                        <label for="trangThai">Trạng thái</label>
+                        <select class="form-control" id="trangThai" name="trangThai">
+                            <option value="Đang chiếu">Đang chiếu</option>
+                            <option value="Sắp chiếu">Sắp chiếu</option>
+                            <option value="Đã chiếu">Đã chiếu</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary" form="formThemPhim">Thêm</button>
+                </div>
+            </div>
+        </div>
+    </div>        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 
 
 
@@ -159,6 +271,8 @@
     <!-- JS cho modal xem ct -->
     <script>
         var allPhims = @json($phims);
+        var baseUrl = window.location.origin + '/';
+
         $(document).ready(function() {
             $('.show-details').click(function() {
                 var phimId = $(this).data('phim-id');
@@ -178,6 +292,7 @@
             });
         });
         <!-- JS cho modal sửa -->
+
         $(document).ready(function() {
 
             $(document).ready(function () {
@@ -197,35 +312,34 @@
                         $('#moTa').val(selectedP.moTa);
                         $('#Trailer').val(selectedP.Trailer);
                         $('#trangThai').val(selectedP.trangThai);
+                        $('#formSuaPhim').attr('action', baseUrl + 'filmsupdate/' + phimid);
 
                     } else {
                         console.log('Không tìm thấy phim có ID:', phimid);
                     }
                 });
 
-                $('#btnLuuSuaPhim').click(function () {
 
-                    var formData = $('#formSuaPhim').serialize();
-                    var phimId = $('#maPhim').val();
-                    console.log('fghjk',phimId);
-                    console.log('Dữ liệu gửi đi:', formData);
-                    $.ajax({
-                        url: 'filmsupdate/' + phimId,
-                        type: 'POST',
-                        data: formData,
-                        success: function(response) {
-                            console.log('Cập nhật thành công:', response);
-                            $('#phimSuaModal').modal('hide');
-
-                        },
-                        error: function(error) {
-                            console.error('Lỗi cập nhật:', error);
-
-                        }
                     });
 
-                });            });
+
         });
+        <!-- JS cho xoa-->
+        $(document).ready(function() {
+
+            $(document).ready(function () {
+                $('.delete').click(function () {
+                    var phimid = $(this).data('phim-id');
+                    console.log('M_id của phim đã chọn xoa :', phimid);
+                    $('#formXoaPhim').attr('action', baseUrl + 'filmsdelete/' + phimid);
+
+                });
+
+            });
+
+        });
+        <!-- js cho tk-->
+
     </script>
 @endsection
 

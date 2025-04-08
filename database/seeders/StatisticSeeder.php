@@ -15,7 +15,7 @@ class StatisticSeeder extends Seeder
         DB::table('statistic')->insert([
             [
                 'Ngaydat' => '2025-03-20',
-                'Doanhso' => 5000000,
+                'Doanhso' => 500000,
                 'Lai' => 500000,
                 'Soluongdaban' => 100,
                 'Tongdon' => 50,
