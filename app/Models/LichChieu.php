@@ -11,6 +11,10 @@ class LichChieu extends Model
     //
     use HasFactory;
     protected $table = 'lich_chieu';
+    protected $primaryKey = 'idLC';
+    public $incrementing = false;
+    protected $keyType = 'string';
+    public $timestamps = false;
     protected $fillable = ['M_id', 'PC_id', 'ngayChieu' ,'gioBD' ,'thoiLong'];
     public function phim(): HasMany //Quan he nhieu nhieu voi lich chieu
     {
