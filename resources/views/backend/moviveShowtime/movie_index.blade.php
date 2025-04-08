@@ -55,7 +55,7 @@
 
                             <div class="movie-browser-card">
                                 <div class="movie-browser-poster">
-                                    <img src="{{$phim->Poster}}" alt="Movie" >
+                                    <img src="{{$phim->imgBanner}}" alt="Movie" >
                                     <div class="movie-browser-overlay">
                                         <div class="movie-browser-actions">
                                             <a href="#" class="movie-browser-watch-btn">Đặt vé</a>
