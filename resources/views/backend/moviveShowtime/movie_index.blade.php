@@ -409,7 +409,7 @@
         }
 
         a:hover {
-            color: white !important;
+            color: deeppink !important;
             text-decoration: none !important;
         }
         p{
