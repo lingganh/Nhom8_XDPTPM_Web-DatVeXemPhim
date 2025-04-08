@@ -14,7 +14,7 @@ class Film extends Model
 
 
      protected $table = 'phim'; // Đảm bảo model liên kết với đúng bảng
-
+    protected $primaryKey = 'M_id';
     public $timestamps = false;
     protected $fillable = ['tenPhim', 'thoiLuong','Poster', 'Trailer', 'moTa']; // Thêm các trường bạn muốn cho phép gán giá trị
 

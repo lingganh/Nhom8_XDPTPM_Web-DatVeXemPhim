@@ -42,12 +42,14 @@ class FilmController
         Film::create($data);
         return redirect()->route('films.index ')->with('success', 'Thêm phim thành công!');
     }
-    public function delete (Request $request)
+    public function delete ($id)
     {
         //  dd(request());
-        $data = $request->all();
+
         // dd($data);
-        Film::create($data);
-        return redirect()->route('films.index ')->with('success', 'Thêm phim thành công!');
+
+         Film::destroy($id);
+
+        return redirect()->route('films.index ')->with('success', 'Xóa phim thành công!');
     }
 }

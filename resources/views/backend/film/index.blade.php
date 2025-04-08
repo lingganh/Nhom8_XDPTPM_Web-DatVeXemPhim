@@ -44,14 +44,14 @@
 
                                         <div class="movie-buttons">
                                             <div class="box">
-                                                <button type="button" class="button btn-primary show-details" data-toggle="modal" data-target="#phimChiTietModal" data-phim-id="{{ $phim->M_id }}">
-                                                    Chi Tiết
-                                                </button>
+                                                <button type="button" class="btn btn-info show-details" data-toggle="modal" data-target="#phimChiTietModal" data-phim-id="{{ $phim->M_id }}">Chi Tiết</button>
                                             </div>
-                                            <button type="button" class="button btn-primary show-edit" data-toggle="modal" data-target="#phimSuaModal" data-phim-id="{{ $phim->M_id }}">
+                                            <br>
+                                            <button type="button" class="btn btn-success show-edit" data-toggle="modal" data-target="#phimSuaModal" data-phim-id="{{ $phim->M_id }}">
                                                 Sửa
                                             </button>
-                                            <a href="" class="button btn-primary">Xóa </a>
+                                            <a>&ensp;</a>
+                                            <button  type="button" class="btn btn-danger delete "  data-toggle="modal"  data-target="#deleteConfirmationModal" data-phim-id="{{ $phim->M_id }}">Xóa  </button>
                                         </div>
                                     </div>
 
@@ -160,7 +160,31 @@
     </div>
     <!-- Modal xóa -->
 
+    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Xác nhận xóa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa phim này không?
+                </div>
+                <div class="modal-footer">
 
+                    <form id="formXoaPhim" method="GET" action ="">
+                    @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="btn btn-danger" id="confirmDeleteBtn">Xóa</button>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal Thêm -->
     <div class="modal fade" id="phimThemModal" tabindex="-1" role="dialog" aria-labelledby="phimThemModalLabel" aria-hidden="true">
@@ -225,6 +249,7 @@
 
 
 
+
     <!-- JS cho modal xem ct -->
     <script>
         var allPhims = @json($phims);
@@ -279,6 +304,20 @@
 
                     });
 
+
+        });
+        <!-- JS cho xoa-->
+        $(document).ready(function() {
+
+            $(document).ready(function () {
+                $('.delete').click(function () {
+                    var phimid = $(this).data('phim-id');
+                    console.log('M_id của phim đã chọn xoa :', phimid);
+                    $('#formXoaPhim').attr('action', baseUrl + 'filmsdelete/' + phimid);
+
+                });
+
+            });
 
         });
     </script>
