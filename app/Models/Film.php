@@ -20,8 +20,6 @@ class Film extends Model
 
 
 
-
-
     protected $fillable = ['tenPhim', 'thoiLuong','Poster', 'Trailer', 'moTa']; // Thêm các trường bạn muốn cho phép gán giá trị
 
     public function lichChieu()

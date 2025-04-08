@@ -16,9 +16,8 @@ class LichChieu extends Model
     protected $keyType = 'string';
     public $timestamps = false;
     protected $fillable = ['M_id', 'PC_id', 'ngayChieu' ,'gioBD' ,'thoiLong'];
-    // Mỗi lịch chiếu thuộc về 1 phim
-    public function phim()
+    public function phim(): HasMany //Quan he nhieu nhieu voi lich chieu
     {
-        return $this->belongsTo(Film::class, 'M_id', 'M_id');
+        return $this->hasMany( Film::class, 'M_id', 'M_id');
     }
 }

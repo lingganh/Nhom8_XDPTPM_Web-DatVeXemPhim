@@ -10,11 +10,10 @@ class PhimSeeder extends Seeder
     public function run()
     {
 
-
-
+        DB::table('phim')->truncate(); // Xoá hết dữ liệu cũ
         DB::table('phim')->insert([
 
-            [
+            [   'M_id' => 'F001',
                 'tenPhim' => 'Vong Nhi',
                 'thoiLuong' => 120,
                 'moTa' => 'Vong nhi là một bộ phim điện ảnh Việt Nam thuộc thể loại tâm lý – siêu nhiên – kinh dị – chính kịch ',
@@ -24,6 +23,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://cdn.galaxycine.vn/media/2023/1/30/vong-nhi-1_1675048542706.jpg',
             ],
             [
+                'M_id' => 'F002',
                 'tenPhim' => 'Quỷ nhập tràng',
                 'thoiLuong' => 151,
                 'moTa' => 'Phim lấy cảm hứng từ câu chuyện có thật và “truyền thuyết kinh dị nhất về người chết sống lại”',
@@ -33,6 +33,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtEg-vme2Q7AI0KwlrcJPWdk1rFd9ht0rcWA&s',
             ],
             [
+                'M_id' => 'F003',
                 'tenPhim' => 'EMMA VÀ VƯƠNG QUỐC TÍ HON',
                 'thoiLuong' => 106,
                 'moTa' => 'Phim xoay quanh cô nàng bé nhỏ Emma được động vật nuôi lớn, thế nhưng luôn có sự tò mò về nguồn gốc của mình. ',
@@ -42,6 +43,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzl9i342olVlcDHMrmMfAFsNaOWbuMB48o4w&s',
             ],
             [
+                'M_id' => 'F004',
                 'tenPhim' => 'Lạc trôi',
                 'thoiLuong' => 85,
                 'moTa' => 'Lạc trôi là một bộ phim điện ảnh hoạt hình thuộc thể loại phiêu lưu – kỳ ảo – chính kịch ',
@@ -51,6 +53,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://upload.wikimedia.org/wikipedia/vi/9/96/FLOW_%E2%80%93_Vietnam_poster.jpg',
             ],
             [
+                'M_id' => 'F005',
                 'tenPhim' => 'Nụ Hôn Bạc Tỷ',
                 'thoiLuong' => 100,
                 'moTa' => 'Nụ Hôn Bạc Tỷ, nơi câu chuyện hài hước về tình chị em "chí choé nhưng yêu thương hết lòng" sẽ khiến bạn cười ngất và rưng rưng cảm động. ',
@@ -60,6 +63,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://cdn.galaxycine.vn/media/2024/12/11/nu-hon-bac-t-500_1733902817624.jpg',
             ],
             [
+                'M_id' => 'F006',
                 'tenPhim' => 'Anh Không Đau',
                 'thoiLuong' => 110,
                 'moTa' => 'Novocain là một bộ phim hài hành động của Mỹ năm 2025 do Dan Berk và Robert Olsen đạo diễn và Lars Jacobson viết kịch bản. ',
@@ -69,6 +73,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-tPEVd_7LVX152HQFV1yy3idbLdNSFVh37w&s',
             ],
             [
+                'M_id' => 'F007',
                 'tenPhim' => 'Thần dược',
                 'thoiLuong' => 140,
                 'moTa' => 'Thần dược là một bộ phim điện ảnh thuộc thể loại kinh dị – châm biếm – tâm lý – giật gân ra mắt vào năm 2024 do Coralie Fargeat viết kịch bản, đạo diễn, đồng biên tập và đồng sản xuất.',
@@ -78,6 +83,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://khenphim.com/wp-content/uploads/2024/10/The-Substance-pic1-poster_KP-scaled.webp',
             ],
             [
+                'M_id' => 'F008',
                 'tenPhim' => 'Bí Mật Không Thể Nói',
                 'thoiLuong' => 125,
                 'moTa' => 'Bí Mật Không Thể Nói 2025 được chuyển thể từ siêu phẩm lãng mạn cùng tên của Châu Kiệt Luân',
@@ -87,6 +93,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://iguov8nhvyobj.vcdn.cloud/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/p/o/poster_bi_mat_khong_the_noi_10.jpg',
             ],
             [
+                'M_id' => 'F009',
                 'tenPhim' => 'Nhà Gia Tiên',
                 'thoiLuong' => 117,
                 'moTa' => 'Người vui vẻ, kẻ trở nên lạ lùng khi thấy điều kì lạ xảy ra trước mắt. Chuyện gì đang xảy ra?',
@@ -96,6 +103,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://iguov8nhvyobj.vcdn.cloud/media/catalog/product/cache/3/image/c5f0a1eff4c394a251036189ccddaacd/p/a/payoff_poster_ngt_master_sneak-2_1_.jpg',
             ],
             [
+                'M_id' => 'F010',
                 'tenPhim' => 'Sát thủ vô cùng cực',
                 'thoiLuong' => 110,
                 'moTa' => 'Câu chuyện tiếp nối về cuộc đời làm hoạ sĩ webtoon Jun, người nổi tiếng trong thời gian ngắn với tư cách là tác giả của webtoon Đặc vụ ám sát Jun',
@@ -105,6 +113,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://static2.vieon.vn/vieplay-image/poster_v4/2023/03/01/a4kjtyow_660x946-satthuvocungcuc_360_534.jpeg',
             ],
             [
+                'M_id' => 'F011',
                 'tenPhim' => 'NGHỀ SIÊU KHÓ NÓI',
                 'thoiLuong' => 102,
                 'moTa' => 'Dan-bi vốn mơ ước trở thành một tác giả truyện thiếu nhi, nhưng trớ trêu thay, cô lại khởi đầu sự nghiệp tại Đội Bảo vệ Thanh thiếu niên ',
@@ -114,6 +123,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRBvwQ403j4nqZVsLUGfuQjy7wkiqu5RJImQ&s',
             ],
             [
+                'M_id' => 'F012',
                 'tenPhim' => 'Gặp lại chị bầu',
                 'thoiLuong' => 114,
                 'moTa' => 'Gặp lại chị bầu là một bộ phim điện ảnh Việt Nam thuộc thể loại hài lãng mạn – chính kịch ra mắt vào năm 2024 do Đoàn Nhất Trung làm đạo diễn.',
@@ -123,6 +133,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://boxofficevietnam.com/wp-content/uploads/2024/01/65672ba7d2a73642668289.jpeg',
             ],
             [
+                'M_id' => 'F013',
                 'tenPhim' => 'Captain America: Thế giới mới',
                 'thoiLuong' => 120,
                 'moTa' => 'Nhiệm vụ: Vén màn sự thật trước khi cả thế giới đổ máu. Captain America: Thế Giới Mới từ Marvel Studios ',
@@ -132,6 +143,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrR1k8C92vDCDfxbc1m-VgFY2tF90cxD2sXw&s',
             ],
             [
+                'M_id' => 'F014',
                 'tenPhim' => 'BUỔI HẸN HÒ KINH HOÀNG',
                 'thoiLuong' => 95,
                 'moTa' => 'Buổi hẹn hò đầu tiên sau nhiều năm của Violet nhanh chóng trở thành ác mộng khi cô nhận được những tin nhắn ẩn danh kỳ lạ. ',
@@ -141,6 +153,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://cdn.moveek.com/storage/media/cache/tall/679344e4e9aa3017021933.jpg',
             ],
             [
+                'M_id' => 'F015',
                 'tenPhim' => 'Đố Anh Còng Được Tôi ',
                 'thoiLuong' => 95,
                 'moTa' => 'Đố Anh Còng Được Tôi" (I, Executioner) là một trong những bộ phim chiếu rạp hành động Hàn Quốc hay ',
@@ -150,6 +163,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://www.elle.vn/wp-content/uploads/2024/08/29/605369/hwang-jung-min-trong-poster-do-anh-cong-duoc-toi.jpg',
             ],
             [
+                'M_id' => 'F016',
                 'tenPhim' => 'Hai muối',
                 'thoiLuong' => 101,
                 'moTa' => 'Muối – một cô gái mất mẹ từ khi vừa lọt lòng và lớn lên trong tình yêu thương của cha tại vùng đất xã đảo Thiềng Liềng. ',
@@ -159,6 +173,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://2saigon.vn/wp-content/uploads/2024/08/HAI-MUOI-PAYOFF-POSTER-KTHUOC-FACEBOOK-.jpg',
             ],
             [
+                'M_id' => 'F017',
                 'tenPhim' => 'NÀNG BẠCH TUYẾT',
                 'thoiLuong' => 108,
                 'moTa' => 'Phiên bản chuyển thể người đóng của bộ phim hoạt hình Bạch Tuyết & Bảy chú lùn của Disney năm 1937.',
@@ -168,6 +183,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://starlight.vn/Areas/Admin/Content/Fileuploads/images/Poster2024/snow-white.jpg',
             ],
             [
+                'M_id' => 'F018',
                 'tenPhim' => 'Cưới Ma: Hiến Mẹ Cho Quỷ ',
                 'thoiLuong' => 104,
                 'moTa' => 'Cưới ma: Hiến mẹ cho quỷ (Pengantin Iblis) là một bộ phim chiếu rạp kinh dị Indonesia của đạo diễn Azhar Kinoi Lubis',
@@ -177,6 +193,7 @@ class PhimSeeder extends Seeder
                 'imgBanner' => 'https://i.ytimg.com/vi/Dg9YzHxEkWU/oardefault.jpg?sqp=-oaymwEiCJwEENAFSFqQAgHyq4qpAxEIARUAAAAAJQAAyEI9AICiQw==&rs=AOn4CLDEpn_Om4vWIs2AdRedj3AnPJMCHA',
             ],
             [
+                'M_id' => 'F019',
                 'tenPhim' => 'PHIM ĐIỆN ẢNH DORAEMON: NOBITA VÀ CUỘC PHIÊU LƯU VÀO THẾ GIỚI TRONG TRANH',
                 'thoiLuong' => 140,
                 'moTa' => 'Thông qua món bảo bối mới của Doraemon, cả nhóm bạn bước thế giới trong một bức tranh nổi tiếng và bắt gặp cô bạn bí ẩn tên Claire. ',

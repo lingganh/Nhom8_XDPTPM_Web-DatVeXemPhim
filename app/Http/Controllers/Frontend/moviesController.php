@@ -17,7 +17,7 @@ class moviesController extends Controller
 
     }
 
-    public function show($M_id)
+    public function detail($M_id)
     {
 
 
@@ -27,8 +27,6 @@ class moviesController extends Controller
             abort(404);  // Nếu không tìm thấy phim, trả về lỗi 404
         }
 
-
         return view('frontend.movies.show', compact('film'));
     }
 }
-?>

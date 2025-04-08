@@ -18,7 +18,7 @@ use HomeController\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/movies', [moviesController::class, 'index'])->name('movies.index');
-Route::get('/movies/{M_id}', [moviesController::class, 'show'])->name('frontend.movies.show');
+Route::get('/movies/{M_id}', [moviesController::class, 'detail'])->name('frontend.movies.show');
 Route::get('/', function () {
     return view('welcome');
 });
