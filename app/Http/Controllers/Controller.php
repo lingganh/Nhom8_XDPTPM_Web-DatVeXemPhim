@@ -13,7 +13,7 @@ class Controller
 
     }
 
-    public function index()
+    public function show()
     {
         $phims = DB::table('phim')
             ->whereIn('trangThai', ['Đang chiếu', 'Sắp chiếu'])
