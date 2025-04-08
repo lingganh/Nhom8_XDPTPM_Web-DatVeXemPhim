@@ -53,7 +53,7 @@ Route::get('ticket', [Backend\ticketController::class, 'index'])->name('ticket.i
 
 
 // FE _home
-Route::get('', [Controller::class, 'index'])->name('home.index');
+Route::get('', [Controller::class, 'show'])->name('home.index');
 
 //List Film
 Route::get('/film', [ListFilmController::class, 'index'])->name('film.index');

@@ -21,8 +21,8 @@
         <br><br>
         <div class="row mb-3">
             <div class="col-md-6">
-                <form action="" method="GET">
-                    <input type="text" id="searchInput" class="form-control mb-2" placeholder="Tìm kiếm người dùng..." ">
+                <form action="{{ route('user.index') }}" method="GET">
+                    <input type="text" id="searchInput" class="form-control mb-2" placeholder="Tìm kiếm người dùng..." name="query" value="{{ request()->query('query') }}">
             </div>
             <div class="col-md-3">
                 <button id="searchButton" type="submit" class="btn btn-primary">Tìm kiếm</button>
@@ -31,12 +31,8 @@
 
             </div>
         </div>
-        <div id="searchResults" class="w3l-populohny-grids">
-        </div>
     </div>
-    <br>
-<br><br>
-
+    <br><br> 
     <div class="user-cards-container">
             @foreach ($users as $item)
                 <div class="col"> <div class="card">
@@ -70,9 +66,6 @@
                 </div>
             @endforeach
         </div>
-
-
-
 
 @endsection
 
