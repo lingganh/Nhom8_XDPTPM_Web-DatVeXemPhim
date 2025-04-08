@@ -336,3 +336,60 @@ table strong {
     object-fit: cover;
     width: 100%;
 }
+.card {
+    width: 400px;
+    height:220px;
+    background-color: #f8f9fa; /* Màu nền xám nhạt */
+    border: 1px solid #dee2e6; /* Viền xám nhạt */
+    border-radius: 5px; /* Bo góc */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Đổ bóng nhẹ */
+    margin-bottom: 15px; /* Khoảng cách với phần tử bên dưới */
+    overflow: hidden; /* Để đảm bảo border-radius hoạt động đúng với nội dung bên trong */
+    display: flex;
+    align-items: stretch;
+}
+
+.user-cards-container {
+    display: flex; /* Sử dụng flexbox để sắp xếp các card theo hàng ngang */
+    flex-wrap: wrap; /* Cho phép các card xuống hàng khi không đủ chỗ */
+    gap: 20px; /* Tạo khoảng cách giữa các card */
+    align-items: stretch;
+}
+.col-md-4 {
+    flex: 0 0 auto;
+    width: 33.333333%; /* Chiếm khoảng 1/3 chiều rộng cho ảnh */
+    padding-right: 10px; /* Thêm khoảng cách bên phải ảnh */
+}
+
+.col-md-8 {
+    flex: 0 0 auto;
+    width: 66.666667%; /* Chiếm khoảng 2/3 chiều rộng cho nội dung */
+    padding-left: 10px; /* Thêm khoảng cách bên trái nội dung */
+}
+
+.img-fluid0 {
+    max-width: 200px; /* Đảm bảo ảnh không vượt quá kích thước cột */
+    height: auto;
+    border-radius: 5px 0 0 5px; /* Bo góc bên trái của ảnh */
+    display: block; /* Loại bỏ khoảng trắng thừa dưới ảnh */
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 15px;
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    font-size: 8px;
+    color: #6c757d;
+    margin-bottom: 0.25rem; /* Giảm khoảng cách giữa các đoạn văn */
+}
+
+.text-muted {
+    font-size: 15px;
+    color: #6c757d;
+}
