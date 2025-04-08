@@ -55,7 +55,7 @@
 
                             <div class="movie-browser-card">
                                 <div class="movie-browser-poster">
-                                    <img src="{{$phim->Poster}}" alt="Movie" >
+                                    <img src="{{$phim->imgBanner}}" alt="Movie" >
                                     <div class="movie-browser-overlay">
                                         <div class="movie-browser-actions">
                                             <a href="#" class="movie-browser-watch-btn">Đặt vé</a>
@@ -65,15 +65,7 @@
                                 </div>
                                 <div class="movie-browser-info">
                                     <h3>{{$phim->tenPhim}}</h3>
-                                    <div class="movie-browser-meta">
-                                        <div class="movie-browser-duration">
-                                            <i class="fas fa-clock"></i>
-                                            <span>{{$phim->thoiLuong}} phút</span>
-                                        </div>
-                                        <div class="movie-browser-description" title="{{$phim->moTa}}">
-                                            <p>{{Str::limit($phim->moTa, 100, '...')}}</p>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         @endforeach
@@ -417,7 +409,7 @@
         }
 
         a:hover {
-            color: white !important;
+            color: deeppink !important;
             text-decoration: none !important;
         }
         p{

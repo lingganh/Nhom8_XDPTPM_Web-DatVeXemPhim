@@ -17,7 +17,7 @@ class moviesController extends Controller
 
     }
 
-    public function show($M_id)
+    public function detail($M_id)
     {
 
 
@@ -30,4 +30,3 @@ class moviesController extends Controller
         return view('frontend.movies.show', compact('film'));
     }
 }
-?>

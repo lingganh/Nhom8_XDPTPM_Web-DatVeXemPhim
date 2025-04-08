@@ -12,6 +12,7 @@
 <!-- footer-66 -->
 <header>
 
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </header>
 
 
