@@ -21,7 +21,6 @@
         <div class="grids-main py-5">
             <div class="container py-lg-3">
                 <div class="container py-lg-3">
-                    <a href="" class="btn btn-success mr5" style="margin-left:1000px" data-toggle="modal" data-target="#phimThemModal">  Thêm Mới <i class="fa fa-plus"></i></a>
                     <br><br>
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -32,6 +31,8 @@
                             <button id="searchButton" type="submit" class="btn btn-primary">Tìm kiếm</button>
                             </form>
                         </div>
+                        <a href="" class="btn btn-success mr5"  data-toggle="modal" data-target="#phimThemModal">  Thêm Mới <i class="fa fa-plus"></i></a>
+
                     </div>
                     <div id="searchResults" class="w3l-populohny-grids">
                     </div>

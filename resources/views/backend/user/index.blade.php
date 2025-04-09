@@ -33,39 +33,43 @@
         </div>
     </div>
     <br><br>
-    <div class="user-cards-container">
-            @foreach ($users as $item)
-                <div class="col"> <div class="card">
-                        <div class="img-fluid0">
-                            <img src="{{ $item->image }}"
-                                 alt="{{ $item->name}}"
-                                 style="max-width: 120px ; height:120px; display: block;"
-                                 onerror="this.onerror=null; this.src='https://cdn2.fptshop.com.vn/small/avatar_trang_1_cd729c335b.jpg';" >
-                            <br>
-                            <div class="movie-buttons">
-                                <button type="button" class="btn btn-success show-edit-user" data-toggle="modal" data-target="#UserSuaModal" data-user-id="{{ $item->id }}">
-                                    Sửa
-                                </button>
-                                <a>&ensp;</a>
-                                <button  type="button" class="btn btn-danger delete-user"  data-toggle="modal"  data-target="#deleteConfirmationModal" data-user-id="{{ $item->id }}">Xóa  </button>
+    <section class="w3l-grids">
+        <div class="grids-main py-5">
+            <div class="container py-lg-5">
+                <div class="row mb-5">
+                    @foreach ($users as $item)
+                        <div class="col-md-5 mb-5"> <div class="card">
+                                <div class="img-fluid0">
+                                    <img src="{{ $item->image }}"
+                                         alt="{{ $item->name}}"
+                                         style="max-width: 120px ; height:120px; display: block; object-fit: cover;"
+                                         onerror="this.onerror=null; this.src='https://cdn2.fptshop.com.vn/small/avatar_trang_1_cd729c335b.jpg';" >
+                                    <br>
+                                    <div class="movie-buttons">
+                                        <button type="button" class="btn btn-success show-edit-user" data-toggle="modal" data-target="#UserSuaModal" data-user-id="{{ $item->id }}">
+                                            Sửa
+                                        </button>
+                                        <a>&ensp;</a>
+                                        <button  type="button" class="btn btn-danger delete-user"  data-toggle="modal"  data-target="#deleteConfirmationModal" data-user-id="{{ $item->id }}">Xóa  </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $item->name }}</h5>
+                                    @if ($item['description'])
+                                        <p class="card-text">{{ Str::limit($item['description'], 100) }}</p>
+                                    @endif
+                                    <p class="card-text"><small class="text-muted"><b>Phone:</b> {{ $item->phone ?? 'N/A' }}</small></p>
+                                    <p class="card-text"><small class="text-muted"><b>Address:</b> {{ $item->address ?? 'N/A' }}</small></p>
+                                    <p class="card-text"><small class="text-muted"><b>Birthday:</b> {{ $item->birthday ??'N/A' }}</small></p>
+                                    <p class="card-text"><small class="text-muted"><b>Email:</b> {{ $item->email ?? 'N/A' }}</small></p>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $item->name }}</h5>
-                            @if ($item['description'])
-                                <p class="card-text">{{ Str::limit($item['description'], 100) }}</p>
-                            @endif
-                            <p class="card-text"><small class="text-muted"><b>Phone:</b> {{ $item->phone ?? 'N/A' }}</small></p>
-                            <p class="card-text"><small class="text-muted"><b>Address:</b> {{ $item->address ?? 'N/A' }}</small></p>
-                            <p class="card-text"><small class="text-muted"><b>Birthday:</b> {{ $item->birthday ??'N/A' }}</small></p>
-                            <p class="card-text"><small class="text-muted"><b>Email:</b> {{ $item->email ?? 'N/A' }}</small></p>
-
-
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-            @endforeach
+            </div>
         </div>
+    </section>
     <!--them-->
      <div class="modal fade" id="UserThemModal" tabindex="-1" role="dialog" aria-labelledby="UserThemModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -238,5 +242,6 @@
             });
         });
     </script>
+
 @endsection
 
