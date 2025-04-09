@@ -16,6 +16,8 @@
 
         </div>
     </div>
+    <div class="container-xxl " style="margin-left: 40px">
+
     <h1>SUPER ADMIN</h1>
     <div class="user-cards-container">
         @foreach ($superAdmins as $item)
@@ -84,7 +86,7 @@
             </div>
         @endforeach
     </div>
-    </div>
+
             <h1>KHÁCH HÀNG</h1>
             <br>
 
@@ -149,6 +151,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
