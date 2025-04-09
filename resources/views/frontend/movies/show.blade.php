@@ -1,7 +1,8 @@
 @extends('frontend.app')
 
 @section('content')
-    <div class="max-w-6xl mx-auto px-4 py-8">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <div class="max-w-6xl mx-auto px-4 py-8 mt-24">
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-2">
             <!-- Poster -->
             <div class="bg-black">
