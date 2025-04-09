@@ -16,12 +16,11 @@ use App\Http\Controllers\Frontend\ListFilmController;
 use App\Http\Controllers\Frontend\moviesController;
 use Illuminate\Support\Facades\Route;
 
-<<<<<<< HEAD
+
 Route::get('/movies', [moviesController::class, 'index'])->name('movies.index');
-=======
+
 Route::get('movies', [moviesController::class, 'index'])->name('movies.index');
->>>>>>> 347c2321e076f67753f1b839c2eaf1efc35eac63
-Route::get('movies/{M_id}', [moviesController::class, 'detail'])->name('frontend.movies.show');
+ Route::get('movies/{M_id}', [moviesController::class, 'detail'])->name('frontend.movies.show');
 Route::get('/', function () {
     return view('welcome');
 });
