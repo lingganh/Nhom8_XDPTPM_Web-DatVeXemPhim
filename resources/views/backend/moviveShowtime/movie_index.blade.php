@@ -55,7 +55,9 @@
 
                             <div class="movie-browser-card">
                                 <div class="movie-browser-poster">
-                                    <img src="{{$phim->imgBanner}}" alt="Movie" >
+                                    <a href="{{ route('frontend.movies.show', ['M_id' => $phim->M_id]) }}">
+                                        <img src="{{$phim->imgBanner}}" alt="Movie" >
+                                    </a>
                                     <div class="movie-browser-overlay">
                                         <div class="movie-browser-actions">
                                             <a href="#" class="movie-browser-watch-btn">Đặt vé</a>

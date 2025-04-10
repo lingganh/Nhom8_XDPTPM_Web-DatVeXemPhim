@@ -67,6 +67,34 @@
             iframe.src = ''; // reset video
         }
     </script>
-<h2>LỊCH CHIẾU/MOVIESHOWTIME</h2>
+    <h2 class="text-2xl font-bold mb-4 mt-12">Lịch Chiếu {{ $film->tenPhim }}</h2>
 
+    <!-- Tabs ngày -->
+    <div class="flex space-x-2 overflow-x-auto pb-2">
+        @foreach($lichChieu as $ngay => $buoiChieu)
+            <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded hover:bg-gray-200">
+                {{ $ngay }}
+            </button>
+        @endforeach
+    </div>
+
+    <!-- Nội dung theo ngày và buổi -->
+    @foreach($lichChieu as $ngay => $buoiList)
+        <div class="mt-6">
+            <h3 class="text-lg font-semibold text-gray-700 mb-2">Ngày {{ $ngay }}</h3>
+            @foreach($buoiList as $buoi => $suatChieu)
+                <div class="mb-2">
+                    <h4 class="text-sm font-bold text-gray-600 mb-1">{{ $buoi }}</h4>
+                    <div class="flex flex-wrap gap-3">
+                        @foreach($suatChieu as $lich)
+                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+                            {{ \Carbon\Carbon::parse($lich->gioBD)->format('H:i') }} -
+                            {{ \Carbon\Carbon::parse($lich->gioBD)->addMinutes($lich->thoiLong)->format('H:i') }}
+                        </span>
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endforeach
 @endsection

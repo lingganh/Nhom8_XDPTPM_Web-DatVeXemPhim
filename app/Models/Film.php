@@ -22,7 +22,7 @@ class Film extends Model
 
     protected $fillable = ['tenPhim', 'thoiLuong','Poster', 'Trailer', 'moTa']; // Thêm các trường bạn muốn cho phép gán giá trị
 
-    public function lichChieu()
+    public function LichChieu()
     {
         return $this->hasMany(LichChieu::class, 'M_id', 'M_id');
     }

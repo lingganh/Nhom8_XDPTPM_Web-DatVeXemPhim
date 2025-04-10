@@ -19,14 +19,25 @@ class moviesController extends Controller
 
     public function detail($M_id)
     {
-
-
-        $film = Film::find($M_id);
+        $film = Film::with('lichChieu')->find($M_id);
 
         if (!$film) {
-            abort(404);  // Nếu không tìm thấy phim, trả về lỗi 404
+            abort(404);
         }
 
-        return view('frontend.movies.show', compact('film'));
+        $lichChieu = collect(); // tạo collection rỗng mặc định
+
+        $lichChieu = $film->lichChieu->groupBy(function ($item) {
+            return \Carbon\Carbon::parse($item->ngayChieu)->format('d/m');
+        })->map(function ($group) {
+            return $group->groupBy(function ($item) {
+                $hour = \Carbon\Carbon::parse($item->gioBD)->hour;
+                if ($hour < 12) return 'Sáng';
+                elseif ($hour < 18) return 'Chiều';
+                else return 'Tối';
+            });
+        });
+        return view('frontend.movies.show', compact('film', 'lichChieu'));
     }
+
 }
