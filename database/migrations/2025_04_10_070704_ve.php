@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ve', function (Blueprint $table) {
-            $table->id('idVe')->primary();
+            $table->increments('idVe');
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Foreign key cho bảng users
             $table->unsignedBigInteger('idLC'); // Foreign key cho bảng lịch chiếu
             $table->string('PC_id'); // Foreign key cho bảng phòng chiếu (kiểu dữ liệu phải khớp với bảng ghe)

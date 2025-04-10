@@ -67,36 +67,49 @@
             iframe.src = ''; // reset video
         }
     </script>
-    <h2 class="text-2xl font-bold mb-4 mt-12">Lịch Chiếu {{ $film->tenPhim }}</h2>
+    <h2 class="text-2xl font-semibold mb-6">Lịch Chiếu {{ $film->tenPhim }}</h2>
 
-    <!-- Tabs ngày -->
-    <div class="flex space-x-2 overflow-x-auto pb-2">
-        @foreach($lichChieu as $ngay => $buoiChieu)
-            <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded hover:bg-gray-200">
-                {{ $ngay }}
-            </button>
-        @endforeach
-    </div>
+    @if($lichChieu->isNotEmpty())
+        <div x-data="{ selectedDate: '{{ $lichChieu->keys()->first() }}' }">
+            {{-- Dãy nút ngày --}}
+            <div class="flex gap-2 mb-6">
+                @foreach($lichChieu as $ngay => $buoi)
+                    <button
+                        class="px-4 py-2 rounded text-sm font-medium"
+                        :class="selectedDate === '{{ $ngay }}' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'"
+                        @click="selectedDate = '{{ $ngay }}'"
+                    >
+                        {{ $ngay }}
+                    </button>
+                @endforeach
+            </div>
 
-    <!-- Nội dung theo ngày và buổi -->
-    @foreach($lichChieu as $ngay => $buoiList)
-        <div class="mt-6">
-            <h3 class="text-lg font-semibold text-gray-700 mb-2">Ngày {{ $ngay }}</h3>
-            @foreach($buoiList as $buoi => $suatChieu)
-                <div class="mb-2">
-                    <h4 class="text-sm font-bold text-gray-600 mb-1">{{ $buoi }}</h4>
-                    <div class="flex flex-wrap gap-3">
-                        @foreach($suatChieu as $lich)
-                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
-                            {{ \Carbon\Carbon::parse($lich->gioBD)->format('H:i') }} -
-                            {{ \Carbon\Carbon::parse($lich->gioBD)->addMinutes($lich->thoiLong)->format('H:i') }}
-                             <a href="{{ route('booking.seats', ['lich_chieu_id' => $lich->idLC]) }}" class="ml-2 text-green-500 hover:text-green-700 font-semibold">Chọn ghế</a>
+            {{-- Hiển thị lịch của ngày được chọn --}}
+            @foreach($lichChieu as $ngay => $buoi)
+                <div x-show="selectedDate === '{{ $ngay }}'" class="mb-6" x-transition>
+                    <h3 class="text-xl font-bold mb-2">Ngày {{ $ngay }}</h3>
 
-                        </span>
-                        @endforeach
-                    </div>
+                    @foreach(['Sáng', 'Chiều', 'Tối'] as $thoiDiem)
+                        @if(isset($buoi[$thoiDiem]) && $buoi[$thoiDiem]->isNotEmpty())
+                            <div class="mb-2">
+                                <h4 class="font-semibold text-gray-700">{{ $thoiDiem }}</h4>
+                                <div class="flex flex-wrap gap-3">
+                                    @foreach($buoi[$thoiDiem] as $lich)
+                                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2">
+                                        {{ \Carbon\Carbon::parse($lich->gioBD)->format('H:i') }} -
+                                        {{ \Carbon\Carbon::parse($lich->gioBD)->addMinutes($lich->thoiLong)->format('H:i') }}
+                                        <a href="#" class="text-green-600 font-semibold ml-2 hover:underline">Chọn ghế</a>
+                                    </span>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             @endforeach
         </div>
-    @endforeach
+    @else
+        <p class="text-gray-600">Không có lịch chiếu nào cho phim này.</p>
+    @endif
+
 @endsection
