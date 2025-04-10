@@ -48,7 +48,7 @@
                         @endif
                     </div>
                     @auth
-                        <form action="{{ route('logout.user') }}" method="POST" style="display: inline-block; margin-left: 10px; ">
+                        <form action="{{ route('logout.user') }}" method="GET" style="display: inline-block; margin-left: 10px; ">
                             @csrf
                             <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; font-size: 2rem; color: #c6006a; cursor: pointer;">
                                 <i class="fa fa-sign-out"></i>

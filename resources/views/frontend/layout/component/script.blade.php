@@ -1,3 +1,4 @@
+@vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 <!-- responsive tabs -->
 <script src="frontend/assets/js/jquery-1.9.1.min.js"></script>

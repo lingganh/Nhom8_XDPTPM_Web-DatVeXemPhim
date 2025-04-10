@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Frontend;
 
 
  use App\Models\Film;
-use App\Models\LichChieu;
-use Illuminate\Http\Request;
+ use App\Models\Ghe;
+ use App\Models\LichChieu;
+ use App\Models\Ve;
+ use Illuminate\Http\Request;
 
 class BookingController
 {
@@ -17,7 +19,25 @@ class BookingController
 
         return view('booking.showtimes', compact('phim', 'lichChieus'));
     }
-    public function showSeats(Request $request, $M_id){
+    public function showSeats(Request $request, $lich_chieu_id)
+    {
+        $lichChieu = LichChieu::findOrFail($lich_chieu_id);
+        $phongChieu = $lichChieu->phongChieu;
+        $gheDaDat = Ve::where('idLC', $lich_chieu_id)->pluck('idG')->toArray();
 
+         $allSeats = Ghe::where('PC_id', $phongChieu->PC_id)->get();
+
+        return view('booking.seats', compact('lichChieu', 'phongChieu', 'gheDaDat', 'allSeats'));
+    }
+    public function processSeatSelection(Request $request)
+    {
+        // Logic xử lý ghế đã chọn (lưu vào session, database tạm, v.v.)
+        $lichChieuId = $request->input('lich_chieu_id');
+        $selectedSeats = json_decode($request->input('selected_seats'));
+
+        dd($lichChieuId, $selectedSeats); // Tạm thời dump dữ liệu để kiểm tra
+
+        // Sau đó chuyển hướng đến trang xác nhận đặt vé
+        // return redirect()->route('booking.confirm');
     }
 }
