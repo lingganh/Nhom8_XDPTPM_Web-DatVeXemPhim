@@ -110,3 +110,5 @@ Route::get('/test-email', function () {
 
 // Forgot password
 Route::get('/fpass', [forgotpassword::class, 'index'])->name('fpass');
+//bookng
+Route::get('/dat-ve/{phim_id}/chon-lich-chieu', [BookingController::class, 'showShowtimes'])->name('booking.showtimes');
