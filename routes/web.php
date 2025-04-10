@@ -9,7 +9,9 @@ use App\{Http\Controllers\Backend,
     Http\Controllers\Controller,
     Http\Controllers\Frontend\forgotpassword,
     Http\Controllers\Frontend\SignInController,
-    Http\Middleware\AuthMiddleware};
+    Http\Controllers\Frontend\BookingController,
+
+Http\Middleware\AuthMiddleware};
 
 use App\Http\Controllers\Backend\RevenueController;
 use App\Http\Controllers\Frontend\ListFilmController;

@@ -47,7 +47,7 @@
                     </div>
                     <div class="w3l-populohny-grids">
                         @php
-                            $upcomingMovies = $phims->where('trangThai', 'Sắp chiếu')->take(4);
+                            $upcomingMovies = $phims->where('trangThai', 'Đang chiếu')->take(4);
                         @endphp
                         @foreach ($upcomingMovies as $phim)
                             <div class="item vhny-grid">
@@ -66,9 +66,9 @@
                                             </h4>
 
                                             <div class="movie-buttons">
+                                                <a href="{{ route('frontend.movies.show', ['M_id' => $phim->M_id]) }}" class="button btn-primary">Xem Chi Tiết </a>
 
 
-                                                <a href="{{ route('frontend.movies.show', ['M_id' => $phim->M_id]) }}" class="button btn-primary">Đặt Vé </a>
 
                                             </div>
                                         </div>
@@ -97,7 +97,7 @@
                 </div>
                 <div class="w3l-populohny-grids">
                     @php
-                        $upcomingMovies = $phims->where('trangThai', 'Đang chiếu')->take(4);
+                        $upcomingMovies = $phims->where('trangThai', 'Sắp chiếu')->take(4);
                     @endphp
                     @foreach ($upcomingMovies as $phim)
                         <div class="item vhny-grid">
@@ -116,8 +116,8 @@
                                         </h4>
 
                                         <div class="movie-buttons">
+                                            <a href="{{ route('booking.showtimes', ['phim_id' => $phim->M_id]) }}">Đặt vé</a>
 
-                                            <a href="{{ route('frontend.movies.show', ['M_id' => $phim->M_id]) }}" class="button btn-primary">Xem Chi Tiết </a>
                                         </div>
                                     </div>
                                 </a>

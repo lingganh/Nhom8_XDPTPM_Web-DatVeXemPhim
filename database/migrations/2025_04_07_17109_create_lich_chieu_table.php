@@ -19,6 +19,7 @@ return new class extends Migration
             $table->dateTime('gioBD')->nullable();
             $table->integer('thoiLuong')->nullable();
             $table->foreign('M_id')->references('M_id')->on('phim')->onDelete('cascade');
+            $table->foreign('PC_id')->references('PC_id')->on('phong_chieu')->onDelete('set null');
         });
     }
 
