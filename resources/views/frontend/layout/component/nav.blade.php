@@ -37,51 +37,27 @@
 
                 <!--/search-right-->
                 <!--/search-right-->
-                <div class="search-right">
-                    <a href="#search" class="btn search-hny mr-lg-3 mt-lg-0 mt-4" title="search">Search <span
-                            class="fa fa-search ml-3" aria-hidden="true"></span></a>
-                    <!-- search popup -->
-                    <div id="search" class="pop-overlay">
-                        <div class="popup">
-                            <form action="#" method="post" class="search-box">
-                                <input type="search" placeholder="Search your Keyword" name="search"
-                                       required="required" autofocus="">
-                                <button type="submit" class="btn"><span class="fa fa-search"
-                                                                        aria-hidden="true"></span></button>
-                            </form>
-                            <div class="browse-items">
-                                <h3 class="hny-title two mt-md-5 mt-4">Duyệt tất cả</h3>
-                                <ul class="search-items">
-                                    <li><a href="movies.html">Phim Hành Động</a></li>
-                                    <li><a href="movies.html">Phim Kịch</a></li>
-                                    <li><a href="movies.html">Phim Gia Đình</a></li>
-                                    <li><a href="movies.html">Phim Kinh Dị</a></li>
-                                    <li><a href="movies.html">Phim Hài</a></li>
-                                    <li><a href="movies.html">Phim Lãng mạn</a></li>
-                                    <li><a href="movies.html">Phim truyền hình</a></li>
-                                    <li><a href="movies.html">Phim Hành Động</a></li>
-                                    <li><a href="movies.html">Phim Kịch</a></li>
-                                    <li><a href="movies.html">Phim Gia Đình</a></li>
-                                    <li><a href="movies.html">Phim Kinh Dị</a></li>
-                                    <li><a href="movies.html">Phim Hài</a></li>
-                                    <li><a href="movies.html">Phim Lãng mạn</a></li>
-                                    <li><a href="movies.html">Phim truyền hình</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <a class="close" href="#close">×</a>
-                    </div>
-                    <!-- /search popup -->
-                    <!--/search-right-->
 
+                <div style="display: flex; align-items: center;">
+                    <div class="Login_SignUp" id="login"
+                         style="font-size: 2rem ; display: inline-block; position: relative;">
+                        @if (!Auth::check())
+                            <a class="nav-link" href="{{ route('signin.index') }}"><i class="fa fa-user-circle-o"></i></a>
+                        @else
+                            <a class="nav-link" href="{{route('user.movieIndex')}}"><i class="fa fa-user-circle-o"></i></a>
+                        @endif
+                    </div>
+                    @auth
+                        <form action="{{ route('logout.user') }}" method="POST" style="display: inline-block; margin-left: 10px; ">
+                            @csrf
+                            <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; font-size: 2rem; color: #c6006a; cursor: pointer;">
+                                <i class="fa fa-sign-out"></i>
+                            </button>
+                        </form>
+                    @endauth
                 </div>
-                <div class="Login_SignUp" id="login"
-                     style="font-size: 2rem ; display: inline-block; position: relative;">
-                    <!-- <li class="nav-item"> -->
-                    <a class="nav-link" href=" {{route('signin.index')}}"><i class="fa fa-user-circle-o"></i></a>
-                    <!-- </li> -->
-                </div>
-            </div>
+
+
             <!-- toggle switch for light and dark theme -->
             <div class="mobile-position">
                 <nav class="navigation">

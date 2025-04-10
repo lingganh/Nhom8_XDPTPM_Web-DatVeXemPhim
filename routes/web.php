@@ -96,7 +96,7 @@ Route::get('/verify-otp', [SignInController::class, 'showVerifyForm'])->name('ve
 Route::post('/verify', [SignInController::class, 'verifyOtp'])->name('verify');
 Route::post('/resend-otp',  [SignInController::class, 'resendOtp'])->name('resend-otp');
 
-Route::get('/logoutuser', [SignInController:: class, 'logout'])->name('logout');
+Route::get('logoutuser', [SignInController:: class, 'logout'])->name('logout.user');
 //Test
 Route::get('/test-email', function () {
     $details = ['message' => 'Email test từ Laravel'];
@@ -110,3 +110,5 @@ Route::get('/test-email', function () {
 
 // Forgot password
 Route::get('/fpass', [forgotpassword::class, 'index'])->name('fpass');
+//bookng
+Route::get('/dat-ve/{phim_id}/chon-lich-chieu', [BookingController::class, 'showShowtimes'])->name('booking.showtimes');
