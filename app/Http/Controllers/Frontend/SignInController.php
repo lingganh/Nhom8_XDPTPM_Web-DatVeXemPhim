@@ -92,12 +92,11 @@ class SignInController
         return redirect()->route('verify-otp')->with('success', "Mã OTP đã được gửi đến email của bạn. Vui lòng kiểm tra email");
     }
 
-    public function logout($request)
+    public function logout( )
     {
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect()->route('home')->with('success', "Đăng xuất thành công");
+
+        return redirect()->route('home.index')->with('success', "Đăng xuất thành công");
     }
 
     public function verifyOtp(VerifyOtpRequest $request)
@@ -111,7 +110,7 @@ class SignInController
         $user = User::where('email', $request->email)->first();
 
 
-        if ($user->otp != (int)$request->otp) { // Chuyển đổi $request->otp thành số
+        if ($user->otp != (int)$request->otp) {
             return redirect()->route('verify-otp')->with('error', 'OTP sai  ! ');
         }
 

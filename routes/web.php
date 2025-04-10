@@ -96,7 +96,7 @@ Route::get('/verify-otp', [SignInController::class, 'showVerifyForm'])->name('ve
 Route::post('/verify', [SignInController::class, 'verifyOtp'])->name('verify');
 Route::post('/resend-otp',  [SignInController::class, 'resendOtp'])->name('resend-otp');
 
-Route::get('/logoutuser', [SignInController:: class, 'logout'])->name('logout');
+Route::get('logoutuser', [SignInController:: class, 'logout'])->name('logout.user');
 //Test
 Route::get('/test-email', function () {
     $details = ['message' => 'Email test từ Laravel'];
