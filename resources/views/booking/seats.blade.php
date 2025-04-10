@@ -74,8 +74,7 @@
                     </div>
                     <div class="legend-item">
                         <div class="legend-color" style="background-color: #28a745;"></div>
-                        <span>Ghế đang chọn</span>
-                    </div>
+                        <p id="selected-seats-summary">Ghế đã chọn <p >             </div>
                 </div>
             </div>
 
@@ -92,16 +91,14 @@
 
 
 
-@endsection
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
     const selectedSeats = {};
-    const selectedSeatsDisplay = document.getElementById('selected-seats-display');
     const selectedSeatsSummary = document.getElementById('selected-seats-summary');
     const selectedSeatsInput = document.getElementById('selected-seats-input');
     const totalPriceElement = document.getElementById('total-price');
-    const seatPrice = 75000; // Giá tiền mỗi ghế
+    const seatPrice = 75000;
 
     function toggleSeat(seatId) {
         const seatButton = document.querySelector(`.seat[data-ghe-id="${seatId}"]`);
@@ -115,6 +112,7 @@
                 seatButton.classList.remove('bg-green-500', 'hover:bg-green-600');
                 seatButton.classList.add('bg-orange-500', 'hover:bg-orange-600', 'selected');
             }
+            console.log(seatId);
             updateSelectedSeatsDisplay();
             updateTotalPrice();
         }
@@ -122,7 +120,7 @@
 
     function updateSelectedSeatsDisplay() {
         const seatIds = Object.keys(selectedSeats);
-        selectedSeatsDisplay.textContent = seatIds.join(', ');
+        console.log('seatIds:', seatIds);
         selectedSeatsSummary.textContent = seatIds.join(', ');
         selectedSeatsInput.value = JSON.stringify(seatIds);
     }
@@ -132,14 +130,14 @@
         const total = numberOfSeats * seatPrice;
         totalPriceElement.textContent = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(total);
     }
-
      updateTotalPrice();
 </script>
 <style>
     .row {
         display: flex;
-     
+
         align-items: center;
     }
 
 </style>
+@endsection
