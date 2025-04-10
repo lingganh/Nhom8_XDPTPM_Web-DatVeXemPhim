@@ -24,14 +24,14 @@
                 @csrf
                 <div>
                     <p class="mb-0">
-                        Lọc kết quả:
+                       Từ ngày:
                     </p>
                     <input type="text" class="form-control"
                            name="start" id="datepicker" placeholder="Từ ngày" value="{{ $start }}">
                 </div>
                 <div>
                     <p class="mb-0">
-                        Lọc kết quả:
+                       Đến ngày:
                     </p>
                     <input type="text" class="form-control" name="end" id="datepicker2" placeholder="Đến ngày" value="{{ $end }}">
                 </div>
