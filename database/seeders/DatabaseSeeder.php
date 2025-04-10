@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'email' => 'admin0@gmail.com',
+                'email' => 'admin@gmail.com',
                 'name' => 'admin',
                 'password' => bcrypt('password'),
                 'address' => null,
@@ -83,12 +83,17 @@ class DatabaseSeeder extends Seeder
             CTPhieuNhapSeeder::class,
             GheSeeder::class,
             HoaDonSeeder::class,
-
             StatisticSeeder::class,
             SanPhamSeeder::class,
             PhimSeeder::class,
+
             PhongChieuSeeder::class,
+
+
             LichChieuSeeder::class,
+
+            VeTableSeeder::class,
+
 
         ]);
     }

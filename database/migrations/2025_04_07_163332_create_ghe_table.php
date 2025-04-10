@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('ghe', function (Blueprint $table) {
             $table->string('PC_id');
-            $table->string('idG')->primary();
+            $table->string('idG');
             $table->string('status')->nullable();
+
+            $table->primary(['idG', 'PC_id']);
         });
     }
 

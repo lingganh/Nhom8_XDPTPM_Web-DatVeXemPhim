@@ -393,3 +393,115 @@ table strong {
     font-size: 15px;
     color: #6c757d;
 }
+.ticket-horizontal {
+    background-color: #fff;
+    border-radius: 8px; /* Giảm bo tròn chút */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Giảm đổ bóng chút */
+    display: flex;
+    width: 300px; /* Giảm kích thước xuống 300px */
+    overflow: hidden;
+    position: relative;
+}
+
+.left-section {
+    background-color: #f0f0f0; /* Màu xám nhạt */
+    padding: 10px; /* Giảm padding đáng kể */
+    flex: 2; /* Chiếm 2 phần */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.left-section .header-left {
+    background-color: #e50914; /* Màu đỏ */
+    color: #fff;
+    padding: 6px; /* Giảm padding */
+    text-align: center;
+    border-radius: 4px; /* Giảm bo tròn */
+    font-weight: bold;
+    font-size: 12px; /* Giảm font size */
+    margin-bottom: 6px; /* Giảm margin bottom */
+}
+
+.movie-info .title {
+    font-size: 14px; /* Giảm font size */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 2px; /* Giảm margin bottom */
+}
+
+.name-info .name {
+    font-size: 10px; /* Giảm font size */
+    color: #333;
+    margin-bottom: 2px; /* Giảm margin bottom */
+}
+
+.label {
+    font-size: 8px; /* Giảm font size */
+    color: #777;
+    text-transform: uppercase;
+}
+
+.session-info {
+    display: flex;
+    gap: 5px; /* Giảm gap */
+}
+
+.session-info .seat-time {
+    text-align: center;
+}
+
+.session-info .value {
+    font-size: 16px; /* Giảm font size */
+    font-weight: bold;
+    color: #333;
+}
+
+.right-section {
+    background-color: #f0f0f0; /* Màu xám nhạt */
+    flex: 1; /* Chiếm 1 phần */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0; /* Giảm padding */
+}
+
+.right-section .seat-number {
+    font-size: 30px; /* Giảm font size */
+    font-weight: bold;
+    color: #333;
+}
+
+.right-section .seat-label {
+    font-size: 10px; /* Giảm font size */
+    color: #777;
+    text-transform: uppercase;
+}
+
+.right-section .barcode {
+    text-align: center;
+}
+
+.right-section .barcode-lines {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%; /* Giảm kích thước barcode */
+}
+
+.right-section .barcode-lines div {
+    width: 100%;
+    height: 4px; /* Giảm chiều cao vạch barcode */
+    background-color: #000;
+    margin: 1px 0; /* Giảm margin vạch barcode */
+}
+
+.separator0 {
+    border-left: 1px dashed #ccc; /* Giảm độ dày separator */
+    height: 60%; /* Giảm chiều cao separator */
+    position: absolute;
+    left: 66.66%; /* Điều chỉnh vị trí dựa trên flex */
+    top: 50%;
+    transform: translateY(-50%);
+}
