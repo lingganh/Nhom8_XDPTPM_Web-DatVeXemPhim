@@ -20,4 +20,8 @@ class LichChieu extends Model
     {
         return $this->belongsTo(Film::class, 'M_id', 'M_id');
     }
+    public function phongChieu()
+    {
+        return $this->belongsTo(PhongChieu::class, 'PC_id', 'PC_id');
+    }
 }

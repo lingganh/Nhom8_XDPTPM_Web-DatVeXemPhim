@@ -17,4 +17,7 @@ class BookingController
 
         return view('booking.showtimes', compact('phim', 'lichChieus'));
     }
+    public function showSeats(Request $request, $M_id){
+
+    }
 }

@@ -90,6 +90,8 @@
                             <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
                             {{ \Carbon\Carbon::parse($lich->gioBD)->format('H:i') }} -
                             {{ \Carbon\Carbon::parse($lich->gioBD)->addMinutes($lich->thoiLong)->format('H:i') }}
+                             <a href="{{ route('booking.seats', ['lich_chieu_id' => $lich->idLC]) }}" class="ml-2 text-green-500 hover:text-green-700 font-semibold">Chọn ghế</a>
+
                         </span>
                         @endforeach
                     </div>
