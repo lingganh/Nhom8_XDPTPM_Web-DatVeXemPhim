@@ -5,10 +5,9 @@
             <h1><a class="navbar-brand" href="index.html">
 
                     <img src="https://img.icons8.com/?size=100&id=f37TKteMvQFo&format=png&color=000000"
-                         alt="Five Star " style="height:40px;">
-                    <h1 data-text="Five Star" class="text0">
+                         alt="Five Star " style="height:30px;"><a data-text="Five Star" class="text0">
                         Five Star
-                    </h1>
+                    </a>
                 </a></h1>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
