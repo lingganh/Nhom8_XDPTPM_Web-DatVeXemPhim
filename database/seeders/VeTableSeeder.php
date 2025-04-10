@@ -31,7 +31,7 @@ class VeTableSeeder extends Seeder
               'PC_id' => array_search($pcId, $phongChieux) + 1, // Chuyển PC_id thành số
                 'idG' => $gheId,
                 'giaVe' => $faker->randomElement([75000, 90000, 120000]),
-                'trangThai' => $faker->randomElement(['Đã đặt', 'Đã thanh toán', 'Chưa thanh toán']),
+                'trangThai' => $faker->randomElement([ 'Đã thanh toán']),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

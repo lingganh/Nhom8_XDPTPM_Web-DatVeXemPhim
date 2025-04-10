@@ -60,7 +60,7 @@ Route::get('revenue', [Backend\RevenueController::class, 'index'])->name('revenu
 
 //ticket
 Route::get('ticket', [Backend\ticketController::class, 'index'])->name('ticket.index ')->middleware(AuthMiddleware::class);
-
+Route::get('admin/tickets', [Backend\ticketController::class, 'index'])->name('admin.tickets.index');
 
 // FE _home
 Route::get('', [Controller::class, 'show'])->name('home.index');
