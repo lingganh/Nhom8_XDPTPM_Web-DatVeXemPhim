@@ -13,10 +13,7 @@ class BookingController
     public function showShowtimes(Request $request, $M_id)
     {
         $phim = Film ::findOrFail($M_id);
-        $lichChieus = LichChieu::where('phim_id', $M_id)
-            ->where('thoi_gian_bat_dau', '>=', now()) // Lấy lịch chiếu từ thời điểm hiện tại
-            ->orderBy('thoi_gian_bat_dau')
-            ->get();
+        $lichChieus = LichChieu::where('M_id', $M_id)->get();
 
         return view('booking.showtimes', compact('phim', 'lichChieus'));
     }

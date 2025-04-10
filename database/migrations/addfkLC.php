@@ -12,14 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('lich_chieu', function (Blueprint $table) {
-            $table->id('idLC')->primary();
-            $table->string('PC_id')->nullable();
-            $table->unsignedInteger('M_id')->nullable();
-            $table->date('ngayChieu')->nullable();
-            $table->dateTime('gioBD')->nullable();
-            $table->integer('thoiLuong')->nullable();
-            $table->foreign('M_id')->references('M_id')->on('phim')->onDelete('cascade');
-             $table->timestamps();
+
+            $table->foreign('PC_id')->references('PC_id')->on('phong_chieu')->onDelete('set null');
+
         });
     }
 

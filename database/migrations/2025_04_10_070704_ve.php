@@ -24,6 +24,8 @@ return new class extends Migration
             $table->foreign(['idG', 'PC_id'])->references(['idG', 'PC_id'])->on('ghe')->onDelete('cascade');
             $table->foreign('idLC')->references('idLC')->on('lich_chieu')->onDelete('cascade');
          });
+
+
     }
 
     /**
