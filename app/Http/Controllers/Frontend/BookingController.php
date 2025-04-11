@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Frontend;
 
 
 
- use App\Models\Film;
- use App\Models\Ghe;
- use App\Models\LichChieu;
- use App\Models\Ve;
- use Illuminate\Http\Request;
+use App\Models\Film;
+use App\Models\Ghe;
+use App\Models\LichChieu;
+use App\Models\SanPham;
+use App\Models\Ve;
+use Illuminate\Http\Request;
+use App\Models\FoodItem; // Import model FoodItem (nếu bạn có)
 
 class BookingController
 {
@@ -25,7 +27,7 @@ class BookingController
         $phongChieu = $lichChieu->phongChieu;
         $gheDaDat = Ve::where('idLC', $lich_chieu_id)->pluck('idG')->toArray();
 
-         $allSeats = Ghe::where('PC_id', $phongChieu->PC_id)->get();
+        $allSeats = Ghe::where('PC_id', $phongChieu->PC_id)->get();
 
         return view('booking.seats', compact('lichChieu', 'phongChieu', 'gheDaDat', 'allSeats'));
     }
@@ -35,9 +37,17 @@ class BookingController
         $lichChieuId = $request->input('lich_chieu_id');
         $selectedSeats = json_decode($request->input('selected_seats'));
 
-        dd($lichChieuId, $selectedSeats); // Tạm thời dump dữ liệu để kiểm tra
+        // Lưu thông tin vào session (ví dụ)
+        session(['lich_chieu_id' => $lichChieuId]);
+        session(['selected_seats' => $selectedSeats]);
 
-        // Sau đó chuyển hướng đến trang xác nhận đặt vé
-        // return redirect()->route('booking.confirm');
+        // Chuyển hướng đến trang chọn bỏng nước
+        return redirect()->route('booking.select-food');
+    }
+    public function showSelectFood()
+    {
+         $foodItems = SanPham::all();
+
+        return view('booking.select_food', compact('foodItems'));
     }
 }
