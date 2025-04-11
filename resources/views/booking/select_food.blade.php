@@ -12,13 +12,13 @@
             @foreach ($foodItems as $item)
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="{{ $item->image_url ?? 'https://via.placeholder.com/150' }}" class="card-img-top" alt="{{ $item->name }}">
+                    <img src="{{ $item->img ?? 'https://via.placeholder.com/150' }}" class="card-img-top" alt="{{ $item->name }}" style ="height:300px ; weight :300px">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $item->name }}</h5>
-                        <p class="card-text">{{ number_format($item->price) }} VNĐ</p>
+                        <h5 class="card-title">{{ $item->tenSP }}</h5>
+                        <p class="card-text">{{ number_format($item->donGia) }} VNĐ</p>
                         <div class="form-group">
-                            <label for="quantity-{{ $item->id }}">Số lượng:</label>
-                            <input type="number" class="form-control" id="quantity-{{ $item->id }}" name="food[{{ $item->id }}]" value="0" min="0">
+                            <label for="quantity-{{ $item->idsp }}">Số lượng:</label>
+                            <input type="number" class="form-control" id="quantity-{{ $item->idsp }}" name="food[{{ $item->idsp }}]" value="0" min="0">
                         </div>
                     </div>
                 </div>

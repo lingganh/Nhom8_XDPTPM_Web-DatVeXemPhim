@@ -15,6 +15,8 @@ return new class extends Migration
                 $table->string('idsp')->primary();
                 $table->string('tenSP');
                 $table->float('donGia')->nullable();
+                $table->string('img')->nullable();
+
                 $table->timestamps();
             });
 
