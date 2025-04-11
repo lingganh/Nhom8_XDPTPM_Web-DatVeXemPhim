@@ -7,8 +7,7 @@
 
     <form action="{{ route('booking.confirm-food') }}" method="POST">
         @csrf
-        {{-- Assuming you have data for available food items --}}
-        @if (isset($foodItems) && count($foodItems) > 0)
+         @if (isset($foodItems) && count($foodItems) > 0)
         <div class="row">
             @foreach ($foodItems as $item)
             <div class="col-md-4 mb-4">

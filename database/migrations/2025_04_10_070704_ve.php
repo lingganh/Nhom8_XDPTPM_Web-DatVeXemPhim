@@ -12,17 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ve', function (Blueprint $table) {
-            $table->increments('idVe');
+            $table->id('idVe')->primary();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Foreign key cho bảng users
-            $table->unsignedBigInteger('idLC'); // Foreign key cho bảng lịch chiếu
+            $table->foreignId('idLC') ;
+
             $table->string('PC_id'); // Foreign key cho bảng phòng chiếu (kiểu dữ liệu phải khớp với bảng ghe)
             $table->string('idG'); // Foreign key cho bảng ghế (kiểu dữ liệu phải khớp với bảng ghe)
             $table->decimal('giaVe')->nullable();
             $table->string('trangThai')->nullable();
-            $table->timestamps();
 
-            $table->foreign(['idG', 'PC_id'])->references(['idG', 'PC_id'])->on('ghe')->onDelete('cascade');
             $table->foreign('idLC')->references('idLC')->on('lich_chieu')->onDelete('cascade');
+            $table->foreign(['idG', 'PC_id'])->references(['idG', 'PC_id'])->on('ghe')->onDelete('cascade');
+            $table->timestamps();
          });
 
 
