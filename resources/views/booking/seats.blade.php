@@ -17,7 +17,7 @@
                                 <p>Giá mỗi ghế: <span id="seat-price">{{ number_format(75000) }} VNĐ</span></p>
                                 <p>Tổng tiền: <span id="total-price">0 VNĐ</span></p>
 
-                            <form action="{{ route('booking.select-food') }}" method="GET" class="mt-4" id="booking-form">
+                            <form action="{{ route('booking.confirm-seats') }}" method="POST" class="mt-4" id="booking-form">
                                     @csrf
                                     <input type="hidden" name="lich_chieu_id" value="{{ $lichChieu->idLC }}">
                                     <input type="hidden" name="selected_seats" id="selected-seats-input" value="">

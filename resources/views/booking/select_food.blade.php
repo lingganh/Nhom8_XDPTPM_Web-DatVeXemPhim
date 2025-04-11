@@ -28,7 +28,7 @@
         @else
         <p>Hiện chưa có bỏng nước và đồ uống nào.</p>
         @endif
-
+        <br>
         <button type="submit" class="btn btn-primary mt-4">Tiếp tục đến Thanh toán</button>
     </form>
 </div>

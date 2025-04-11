@@ -11,4 +11,5 @@ class SanPham extends Model
     use HasFactory;
 
     protected $table = 'san_pham';
+    protected $primaryKey = 'idsp';
 }

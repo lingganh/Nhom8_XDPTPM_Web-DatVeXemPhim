@@ -10,7 +10,6 @@ use App\Models\LichChieu;
 use App\Models\SanPham;
 use App\Models\Ve;
 use Illuminate\Http\Request;
-use App\Models\FoodItem; // Import model FoodItem (nếu bạn có)
 
 class BookingController
 {
@@ -33,21 +32,48 @@ class BookingController
     }
     public function processSeatSelection(Request $request)
     {
-        // Logic xử lý ghế đã chọn (lưu vào session, database tạm, v.v.)
-        $lichChieuId = $request->input('lich_chieu_id');
+        //luu vao section
+         $lichChieuId = $request->input('lich_chieu_id');
         $selectedSeats = json_decode($request->input('selected_seats'));
 
-        // Lưu thông tin vào session (ví dụ)
-        session(['lich_chieu_id' => $lichChieuId]);
+         session(['lich_chieu_id' => $lichChieuId]);
         session(['selected_seats' => $selectedSeats]);
 
-        // Chuyển hướng đến trang chọn bỏng nước
-        return redirect()->route('booking.select-food');
+        $seatPrice = 75000;
+        $totalSeatPrice = count($selectedSeats) * $seatPrice;
+
+        session(['total_seat_price' => $totalSeatPrice]);
+         return redirect()->route('booking.select-food');
     }
     public function showSelectFood()
     {
          $foodItems = SanPham::all();
 
         return view('booking.select_food', compact('foodItems'));
+    }
+    public function confirm(Request $request){
+//mảng món ăn
+        $selectedFood = $request->input('food');
+
+        $lichChieuId = session('lich_chieu_id');
+        $selectedSeats = session('selected_seats');
+        $gia = session('totalSeatPrice');
+        $giadoan=0;
+        $spchon=SanPham::find(array_keys($selectedFood));
+
+        if($spchon){
+            foreach ($spchon as $sp) {
+
+                    $soluong = $selectedFood[$sp->idsp]??0;
+                    $giadoan += $gia*$soluong;
+            }
+        }
+        $giaHD = $gia + $giadoan;
+
+        session(['giaHD' => $giaHD]);
+
+        return view('booking.confimation', compact('selectedSeats', 'selectedFood', 'giaHD', 'spchon'));
+
+
     }
 }

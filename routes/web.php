@@ -117,5 +117,5 @@ Route::get('/dat-ve/{phim_id}/chon-lich-chieu', [BookingController::class, 'show
 Route::get('/dat-ve/{lich_chieu_id}/chon-ghe', [BookingController::class, 'showSeats'])->name('booking.seats');
 Route::post('/dat-ve/xac-nhan-ghe', [BookingController::class, 'processSeatSelection'])->name('booking.confirm-seats');
 Route::get('/booking/select-food', [BookingController::class, 'showSelectFood'])->name('booking.select-food');
-Route::post('/booking/confirm-food', 'BookingController@confirmFood')->name('booking.confirm-food');
+Route::post('/booking/confirm-food', [BookingController::class, 'confirm'])->name('booking.confirm-food');
 
