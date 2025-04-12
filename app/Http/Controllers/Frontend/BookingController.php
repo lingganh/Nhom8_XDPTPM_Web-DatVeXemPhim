@@ -39,10 +39,7 @@ class BookingController
          session(['lich_chieu_id' => $lichChieuId]);
         session(['selected_seats' => $selectedSeats]);
 
-        $seatPrice = 75000;
-        $totalSeatPrice = count($selectedSeats) * $seatPrice;
 
-        session(['total_seat_price' => $totalSeatPrice]);
          return redirect()->route('booking.select-food');
     }
     public function showSelectFood()
@@ -54,26 +51,33 @@ class BookingController
     public function confirm(Request $request){
 //mảng món ăn
         $selectedFood = $request->input('food');
-
-        $lichChieuId = session('lich_chieu_id');
+        //dd($selectedFood);
+         $lichChieuId = session('lich_chieu_id');
         $selectedSeats = session('selected_seats');
-        $gia = session('totalSeatPrice');
-        $giadoan=0;
+        $seatPrice = 75000;
+        $totalSeatPrice = count($selectedSeats) * $seatPrice;
+
+        session(['total_seat_price' => $totalSeatPrice]);        $giadoan=0;
         $spchon=SanPham::find(array_keys($selectedFood));
 
         if($spchon){
             foreach ($spchon as $sp) {
 
                     $soluong = $selectedFood[$sp->idsp]??0;
-                    $giadoan += $gia*$soluong;
+                    $giadoan += $sp->donGia *$soluong;
             }
         }
-        $giaHD = $gia + $giadoan;
-
-        session(['giaHD' => $giaHD]);
-
-        return view('booking.confimation', compact('selectedSeats', 'selectedFood', 'giaHD', 'spchon'));
 
 
+        session(['giaHD' => $giadoan]);
+
+        return view('booking.confimation', compact('selectedSeats', 'selectedFood', 'giadoan', 'spchon','totalSeatPrice'));
+
+
+    }
+    public function payment(Request $request){
+
+        //
+        return view('booking.payment');
     }
 }

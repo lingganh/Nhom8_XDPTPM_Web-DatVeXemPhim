@@ -12,6 +12,10 @@
     <link rel="stylesheet" type="text/css" href="frontend/assets/css/style-starter.css">
     <link rel="stylesheet" type="text/css" href="frontend/assets/css/sign-in.css">
     <link rel="stylesheet" type="text/css" href="frontend/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/brands.min.css" integrity="sha512-58P9Hy7II0YeXLv+iFiLCv1rtLW47xmiRpC1oFafeKNShp8V5bKV/ciVtYqbk2YfxXQMt58DjNfkXFOn62xE+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css" integrity="sha512-v8QQ0YQ3H4K6Ic3PJkym91KoeNT5S3PnDKvqnwqFD1oiqIl653crGZplPdU5KKtHjO0QKcQ2aUlQZYjHczkmGw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -30,13 +34,12 @@
                 </a></h1>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             </div>
-            <div class="DangNhap-DangKy" id="DangNhap">
-                <!-- style="font-size: 2rem ; display: inline-block; position: relative;" -->
+                 <!-- style="font-size: 2rem ; display: inline-block; position: relative;" -->
                 <!-- <li class="nav-item"> -->
-                <a class="nav-link" href=""><i class="fa fa-user-circle-o"></i></a>
-                <!-- </li> -->
-            </div>
+                 <!-- </li> -->
+
             <!-- toggle switch for light and dark theme -->
+             </div>
             <div class="mobile-position">
                 <nav class="navigation">
                     <div class="theme-switch-wrapper">

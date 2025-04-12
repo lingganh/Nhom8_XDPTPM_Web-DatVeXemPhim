@@ -1,12 +1,13 @@
 @extends('frontend.app')
 @section('content')
     <br><br><br><br><br><br>
-    <div class="container">
-        <h1>Xác Nhận Đơn Hàng</h1>
+    <h3 style ="text-align:center">Xác Nhận Đơn Hàng</h3>
+
+    <div class="box">
 
         <div>
-            <h3>Ghế đã chọn:</h3>
-            <ul>
+            <h2>Ghế đã chọn:</h2>
+
                 @if (!empty($selectedSeats))
                     @foreach ($selectedSeats as $seatId)
                         <li>{{ $seatId }}</li>
@@ -14,11 +15,11 @@
                 @else
                     <li>Chưa có ghế nào được chọn.</li>
                 @endif
-            </ul>
+
         </div>
 
         <div>
-            <h3>Đồ ăn và thức uống đã chọn:</h3>
+            <h5>Đồ ăn và thức uống đã chọn:</h5>
             @if (!empty($selectedFood) && !empty($spchon))
                 <ul>
                     @foreach ($spchon as $item)
@@ -26,7 +27,7 @@
                             $quantity = $selectedFood[$item->idsp] ?? 0;
                         @endphp
                         @if ($quantity > 0)
-                            <li>{{ $item->tensp }} - Số lượng: {{ $quantity }} - Giá: {{ number_format($item->gia * $quantity) }} VNĐ</li>
+                            <li>{{ $item->tenSP }} - Số lượng: {{ $quantity }} - Giá: {{ number_format($item->donGia * $quantity) }} VNĐ</li>
                         @endif
                     @endforeach
                 </ul>
@@ -37,8 +38,10 @@
 
         <div>
             <h3>Tổng hóa đơn:</h3>
-            <p>{{ number_format($giaHD ?? 0) }} VNĐ</p>
+            <p>{{ number_format($giadoan + $totalSeatPrice ?? 0) }} VNĐ</p>
         </div>
+        <form action="{{route('booking.payment')}}" method="POST">
+            @csrf
             <button type="submit" class="btn btn-success mt-4">Tiến hành Thanh toán QR Code</button>
         </form>
     </div>

@@ -60,10 +60,9 @@
                                             <h3 class="title">{{ $phim->tenPhim }}</h3>
                                             <h4>
                                         <span class="post">
-                                            <span class="fa fa-clock-o"></span> {{ $phim->thoiLuong }} Min
+                                            <span class="fa-solid fa-clock"></span> {{ $phim->thoiLuong }} Min
                                         </span>
-                                                <span class="post fa fa-heart text-right"></span>
-                                            </h4>
+                                             </h4>
 
                                             <div class="movie-buttons">
 
@@ -110,12 +109,10 @@
                                         <h3 class="title">{{ $phim->tenPhim }}</h3>
                                         <h4>
                                         <span class="post">
-                                            <span class="fa fa-clock-o"></span> {{ $phim->thoiLuong }} Min
+                                            <span class="fa-solid fa-clock"></span> {{ $phim->thoiLuong }} Min
                                         </span>
-                                            <span class="post fa fa-heart text-right"></span>
-                                        </h4>
-
-                                        <div class="movie-buttons">
+                                         </h4>
+                                         <div class="movie-buttons">
                                             <a href="{{ route('frontend.movies.show', ['M_id' => $phim->M_id]) }}" class="button btn-primary">Xem Chi Tiết </a>
 
                                         </div>

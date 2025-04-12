@@ -33,8 +33,7 @@
             <div class="DangNhap-DangKy" id="DangNhap">
                 <!-- style="font-size: 2rem ; display: inline-block; position: relative;" -->
                 <!-- <li class="nav-item"> -->
-                <a class="nav-link" href=""><i class="fa fa-user-circle-o"></i></a>
-                <!-- </li> -->
+                 <!-- </li> -->
             </div>
             <!-- toggle switch for light and dark theme -->
             <div class="mobile-position">

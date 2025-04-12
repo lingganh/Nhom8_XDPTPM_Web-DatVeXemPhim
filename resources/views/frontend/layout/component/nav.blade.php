@@ -42,9 +42,9 @@
                     <div class="Login_SignUp" id="login"
                          style="font-size: 2rem ; display: inline-block; position: relative;">
                         @if (!Auth::check())
-                            <a class="nav-link" href="{{ route('signin.index') }}"><i class="fa fa-user-circle-o"></i></a>
+                            <a class="nav-link" href="{{ route('signin.index') }}"><i class="fa-regular fa-circle-user"></i></a>
                         @else
-                            <a class="nav-link" href="{{route('user.movieIndex')}}"><i class="fa fa-user-circle-o"></i></a>
+                            <a class="nav-link" href="{{route('user.movieIndex')}}"><i class="fa-regular fa-circle-user"></i></a>
                         @endif
                     </div>
                     @auth
