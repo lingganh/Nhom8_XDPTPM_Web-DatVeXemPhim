@@ -66,7 +66,7 @@
                                              <div class="movie-buttons">
 
 
-                                                 <a href="{{ route('frontend.movies.show', ['M_id' => $phim->M_id]) }}" class="button btn-primary">Đặt Vé </a>
+                                                 <a href="{{ route('frontend.movies.show', ['M_id' => $phim->M_id]) }}" class="btn btn-danger">Đặt Vé </a>
 
                                              </div>
                                          </div>
@@ -112,7 +112,7 @@
                                         </span>
                                              </h4>
                                              <div class="movie-buttons">
-                                                 <a href="{{ route('frontend.movies.show', ['M_id' => $phim->M_id]) }}" class="button btn-primary">Xem Chi Tiết </a>
+                                                 <a href="{{ route('frontend.movies.show', ['M_id' => $phim->M_id]) }}" class="btn btn-info">Xem Chi Tiết </a>
 
                                              </div>
                                          </div>

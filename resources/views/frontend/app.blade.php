@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="zxx">
 @extends('frontend.layout.component.head')
+@extends('frontend.layout.component.script')
 
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 <body>
@@ -27,4 +28,3 @@
 
 </body>
 </html>
-@extends('frontend.layout.component.script')
