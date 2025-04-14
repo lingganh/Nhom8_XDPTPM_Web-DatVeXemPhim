@@ -19,6 +19,9 @@
 <div class="content">
     @yield('content')
 </div>
+
+
+
 @extends('frontend.layout.component.footer')
 
 

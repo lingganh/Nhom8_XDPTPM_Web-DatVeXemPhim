@@ -10,8 +10,9 @@ use App\{Http\Controllers\Backend,
     Http\Controllers\Frontend\forgotpassword,
     Http\Controllers\Frontend\SignInController,
     Http\Controllers\Frontend\BookingController,
-
-Http\Middleware\AuthMiddleware};
+    Http\Middleware\AuthMiddleware,
+    Livewire\Homepage,
+    Livewire\UserProfile};
 
 use App\Http\Controllers\Backend\RevenueController;
 use App\Http\Controllers\Frontend\ListFilmController;
@@ -65,7 +66,8 @@ Route::get('ticket', [Backend\ticketController::class, 'index'])->name('ticket.i
 Route::get('admin/tickets', [Backend\ticketController::class, 'index'])->name('admin.tickets.index');
 
 // FE _home
-Route::get('', [Controller::class, 'show'])->name('home.index');
+Route::get('', Homepage::class)->name('home.index');
+
 
 //List Film
 Route::get('/film', [ListFilmController::class, 'index'])->name('film.index');
@@ -120,3 +122,8 @@ Route::get('/booking/select-food', [BookingController::class, 'showSelectFood'])
 Route::post('/booking/confirm', [BookingController::class, 'confirm'])->name('booking.confirmation');
 
 Route::post('/booking/payment', [BookingController::class, 'payment'])->name('booking.payment');
+
+
+
+// user profile
+Route::get('user/profile', UserProfile::class)->name('user.profile');

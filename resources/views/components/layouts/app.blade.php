@@ -1,12 +1,23 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="zxx">
+<head>
+    @include('frontend.layout.component.head')
+    @livewireStyles
+</head>
+<body>
 
-        <title>{{ $title ?? 'Page Title' }}</title>
-    </head>
-    <body>
-        {{ $slot }}
-    </body>
+@include('frontend.layout.component.nav')
+
+<header></header>
+
+<div class="content">
+    @yield('content')
+</div>
+
+@include('frontend.layout.component.footer')
+
+@livewireScripts
+@include('frontend.layout.component.script')
+
+</body>
 </html>
