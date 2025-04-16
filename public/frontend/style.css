@@ -304,3 +304,92 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng nhẹ (tùy chọn) */
 }
 
+.checkout-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-container h3, .checkout-container h4 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.checkout-container div {
+    margin-bottom: 20px;
+}
+
+.checkout-container  ,
+.checkout-container  {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.checkout-container ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.checkout-container ul li {
+    margin-bottom: 5px;
+    color: #777;
+}
+
+.checkout-container p {
+    color: #333;
+    font-size: 1.1em;
+}
+
+.checkout-container .btn-success {
+    display: block;
+    width: 200px;
+    margin-top: 30px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    text-align: center;
+    text-decoration: none;
+}
+
+.checkout-container .btn-success:hover {
+    background-color: #218838;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+
+.col-md-6 {
+    flex: 1;
+}
+
+.form-check {
+    margin-bottom: 8px;
+}

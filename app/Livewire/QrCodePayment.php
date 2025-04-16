@@ -1,6 +1,7 @@
 <?php
 namespace App\Livewire;
 
+use App\Models\SanPham;
 use Livewire\Component;
 use Illuminate\Http\Request;
 
@@ -17,13 +18,14 @@ class QrCodePayment extends Component
     {
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = route('booking.confirmation');
-        $vnp_TmnCode = "1VYBIYQP";
-        $vnp_HashSecret = "NOH6MBGNLQL9O9OMMFMZ2AX8NIEP50W1"; // Chuỗi bí mật
+        $vnp_TmnCode = "OCYUNIZL";
+        $vnp_HashSecret = "8A72ZRRYHRPB44D9OG1YY51QMMKQC4OX"; // Chuỗi bí mật
 
         $vnp_TxnRef = rand(00, 9999); // mã đơn hàng
         $vnp_OrderInfo = 'Thanh toán cho five star';
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = $this->totalAmount * 100; //  vnd
+       $vnp_Amount = $this->totalAmount * 100; //  vnd
+        //$vnp_Amount = 2000 * 100; //  test
         $vnp_Locale = 'vn';
         $vnp_IpAddr = request()->ip(); //  ip ng dùng
         $inputData = array(
@@ -63,9 +65,32 @@ class QrCodePayment extends Component
 
         return redirect()->away($vnp_Url);
     }
+    public function render (Request $request){
+//mảng món ăn
+        $selectedFood = $request->input('food');
+        //dd($selectedFood);
+        $lichChieuId = session('lich_chieu_id');
+        $selectedSeats = session('selected_seats');
+        $seatPrice = 75000;
+        $totalSeatPrice = count($selectedSeats) * $seatPrice;
 
-    public function render()
-    {
-        return view('livewire.qr-code-payment')->extends('layouts.app')->section('content');
+        session(['total_seat_price' => $totalSeatPrice]);        $giadoan=0;
+        $spchon=SanPham::find(array_keys($selectedFood));
+
+        if($spchon){
+            foreach ($spchon as $sp) {
+
+                $soluong = $selectedFood[$sp->idsp]??0;
+                $giadoan += $sp->donGia *$soluong;
+            }
+        }
+
+
+        session(['giaHD' => $giadoan]);
+
+        return view('livewire.qr-code-payment', compact('selectedSeats', 'selectedFood', 'giadoan', 'spchon','totalSeatPrice'))->extends('layouts.app')->section('content');
+
+
     }
+
 }
