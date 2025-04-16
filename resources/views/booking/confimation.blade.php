@@ -39,10 +39,16 @@
         <div>
             <h3>Tổng hóa đơn:</h3>
             <p>{{ number_format($giadoan + $totalSeatPrice ?? 0) }} VNĐ</p>
+            @php
+                $tongTien=$giadoan + $totalSeatPrice;
+                session(['giaHD' => $tongTien]);
+
+            @endphp
         </div>
         <form action="{{route('booking.payment')}}" method="POST">
             @csrf
             <button type="submit" class="btn btn-success mt-4">Tiến hành Thanh toán QR Code</button>
+
         </form>
     </div>
 @endsection

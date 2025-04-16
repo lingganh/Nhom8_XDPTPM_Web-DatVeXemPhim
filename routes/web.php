@@ -12,6 +12,7 @@ use App\{Http\Controllers\Backend,
     Http\Controllers\Frontend\BookingController,
     Http\Middleware\AuthMiddleware,
     Livewire\Homepage,
+    Livewire\QrCodePayment,
     Livewire\UserProfile};
 
 use App\Http\Controllers\Backend\RevenueController;
@@ -121,7 +122,7 @@ Route::post('/dat-ve/xac-nhan-ghe', [BookingController::class, 'processSeatSelec
 Route::get('/booking/select-food', [BookingController::class, 'showSelectFood'])->name('booking.select-food');
 Route::post('/booking/confirm', [BookingController::class, 'confirm'])->name('booking.confirmation');
 
-Route::post('/booking/payment', [BookingController::class, 'payment'])->name('booking.payment');
+Route::post('/booking/payment',  QrCodePayment::class)->name('booking.payment');
 
 
 

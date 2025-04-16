@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 class BookingController
 {
+    public $totalAmount;
     public function showShowtimes(Request $request, $M_id)
     {
         $phim = Film ::findOrFail($M_id);
