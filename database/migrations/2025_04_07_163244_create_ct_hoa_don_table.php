@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('SL')->nullable();
             $table->float('donGia')->nullable();
             $table->primary(['idHD', 'idsp']);
+
         });
     }
 

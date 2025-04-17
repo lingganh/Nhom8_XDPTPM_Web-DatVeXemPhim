@@ -17,7 +17,7 @@ class QrCodePayment extends Component
     public function vnpay_payment()
     {
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = route('booking.confirmation');
+        $vnp_Returnurl = route('ketqua');
         $vnp_TmnCode = "OCYUNIZL";
         $vnp_HashSecret = "8A72ZRRYHRPB44D9OG1YY51QMMKQC4OX"; // Chuỗi bí mật
 
@@ -91,6 +91,41 @@ class QrCodePayment extends Component
         return view('livewire.qr-code-payment', compact('selectedSeats', 'selectedFood', 'giadoan', 'spchon','totalSeatPrice'))->extends('layouts.app')->section('content');
 
 
+    }
+    public function vnpay_return(Request $request)
+    {
+        $vnp_HashSecret = "8A72ZRRYHRPB44D9OG1YY51QMMKQC4OX"; // Chuỗi bí mật của bạn
+        $vnp_SecureHash = $request->input('vnp_SecureHash');
+        $inputData = $request->except('vnp_SecureHash');
+        ksort($inputData);
+        $hashdata = "";
+        $i = 0;
+        $hashSecret = $vnp_HashSecret;
+        foreach ($inputData as $key => $value) {
+            if ($i == 1) {
+                $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+            } else {
+                $hashdata .= urlencode($key) . "=" . urlencode($value);
+                $i = 1;
+            }
+        }
+
+        $secureHash = hash_hmac('sha512', $hashdata, $hashSecret);
+
+        if ($secureHash == $vnp_SecureHash) {
+            $vnp_ResponseCode = $request->input('vnp_ResponseCode');
+            $vnp_TxnRef = $request->input('vnp_TxnRef'); // Mã đơn hàng bạn đã gửi
+            $vnp_TransactionNo = $request->input('vnp_TransactionNo'); // Mã giao dịch tại VNPAY
+            $vnp_Amount = $request->input('vnp_Amount') / 100; // Số tiền thanh toán
+
+            if ($vnp_ResponseCode == '00') {
+                return redirect()->route('payment.success');
+            } else {
+                return redirect()->route('payment.failure')->with('error', 'Thanh toán thất bại. Mã lỗi: ' . $vnp_ResponseCode);
+            }
+        } else {
+             return redirect()->route('payment.failure')->with('error', 'Chữ ký không hợp lệ!');
+        }
     }
 
 }

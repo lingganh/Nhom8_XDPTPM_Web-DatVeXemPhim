@@ -24,6 +24,9 @@ return new class extends Migration
             $table->foreign('idLC')->references('idLC')->on('lich_chieu')->onDelete('cascade');
             $table->foreign(['idG', 'PC_id'])->references(['idG', 'PC_id'])->on('ghe')->onDelete('cascade');
             $table->timestamps();
+            // Thêm foreign key cho bảng hoa_don
+            $table->string('idHD'); // Kiểu dữ liệu phải khớp với khóa chính của bảng hoa_don
+            $table->foreign('idHD')->references('idHD')->on('hoa_don')->onDelete('cascade');
          });
 
 

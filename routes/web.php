@@ -123,6 +123,7 @@ Route::get('/booking/select-food', [BookingController::class, 'showSelectFood'])
 Route::post('/booking/checkout', QrCodePayment::class)->name('booking.confirmation');
 
 Route::post('/booking/payment',  QrCodePayment::class)->name('booking.payment');
+Route::get('/ketqua', [QrCodePayment::class, 'vnpay_return'])->name('ketqua'); // Route trả về từ VNPAY
 
 
 
