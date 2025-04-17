@@ -10,7 +10,7 @@ use App\{Http\Controllers\Backend,
     Http\Controllers\Frontend\forgotpassword,
     Http\Controllers\Frontend\SignInController,
     Http\Controllers\Frontend\BookingController,
-    Http\Middleware\AuthMiddleware,
+    Http\Middleware\SignInMiddleware,
     Livewire\Homepage,
     Livewire\QrCodePayment,
     Livewire\UserProfile};
@@ -18,6 +18,7 @@ use App\{Http\Controllers\Backend,
 use App\Http\Controllers\Backend\RevenueController;
 use App\Http\Controllers\Frontend\ListFilmController;
 use App\Http\Controllers\Frontend\moviesController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -31,39 +32,39 @@ Route::get('/', function () {
 //BACKEND
 Route::get('admin',  [AuthController::class, 'index'])->name('auth.admin');//->middleware(LoginMiddleware::Class);
 Route::post('login',  [AuthController::class, 'login'])->name('auth.login');
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware(AuthMiddleware::class);
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware(SignInMiddleware::class);
 Route::get('logout', [AuthController:: class, 'logout'])->name('auth.logout');
 
 
 // USER
-Route::get('user', [Backend\UserController ::class, 'index'])->name('user.index')->middleware(AuthMiddleware::class);
-Route::get('usergroup', [UserGroupController ::class, 'index'])->name('usergroup.index')->middleware(AuthMiddleware::class);
-Route::put('role/{user}', [UserGroupController::class, 'updateRole'])->name('userupdate.role')->middleware(AuthMiddleware::class);
+Route::get('user', [Backend\UserController ::class, 'index'])->name('user.index')->middleware(SignInMiddleware::class);
+Route::get('usergroup', [UserGroupController ::class, 'index'])->name('usergroup.index')->middleware(SignInMiddleware::class);
+Route::put('role/{user}', [UserGroupController::class, 'updateRole'])->name('userupdate.role')->middleware(SignInMiddleware::class);
 
 
 
-Route::post('user', [Backend\UserController::class, 'create'])->name('user.create')->middleware(AuthMiddleware::class);
-Route::put('user/{user}', [Backend\UserController::class, 'update'])->name('user.update')->middleware(AuthMiddleware::class);
-Route::delete('user/{user}', [Backend\UserController::class, 'delete'])->name('user.destroy')->middleware(AuthMiddleware::class);
+Route::post('user', [Backend\UserController::class, 'create'])->name('user.create')->middleware(SignInMiddleware::class);
+Route::put('user/{user}', [Backend\UserController::class, 'update'])->name('user.update')->middleware(SignInMiddleware::class);
+Route::delete('user/{user}', [Backend\UserController::class, 'delete'])->name('user.destroy')->middleware(SignInMiddleware::class);
 // Film
-Route::get('films', [FilmController::class, 'index'])->name('films.index ')->middleware(AuthMiddleware::class);
- Route::post('filmsupdate/{id}', [FilmController::class, 'update'])->middleware(AuthMiddleware::class);
- Route::post('filmscreate', [FilmController::class, 'create'])->name('films.create')->middleware(AuthMiddleware::class);
-Route::get('filmsdelete/{id}', [FilmController::class, 'delete'])->name('films.delete')->middleware(AuthMiddleware::class);
+Route::get('films', [FilmController::class, 'index'])->name('films.index ')->middleware(SignInMiddleware::class);
+ Route::post('filmsupdate/{id}', [FilmController::class, 'update'])->middleware(SignInMiddleware::class);
+ Route::post('filmscreate', [FilmController::class, 'create'])->name('films.create')->middleware(SignInMiddleware::class);
+Route::get('filmsdelete/{id}', [FilmController::class, 'delete'])->name('films.delete')->middleware(SignInMiddleware::class);
 
 //movie showtimes
-Route::get('movieShowtime', [Backend\movieShowtimeController::class, 'index'])->name('movieShowtime.index ')->middleware(AuthMiddleware::class);
+Route::get('movieShowtime', [Backend\movieShowtimeController::class, 'index'])->name('movieShowtime.index ')->middleware(SignInMiddleware::class);
 
 
 // Comments
-Route::get('comments', [CommentsController::class, 'index'])->name('comments.index ')->middleware(AuthMiddleware::class);
+Route::get('comments', [CommentsController::class, 'index'])->name('comments.index ')->middleware(SignInMiddleware::class);
 
 
 // revenue
-Route::get('revenue', [Backend\RevenueController::class, 'index'])->name('revenue.index ')->middleware(AuthMiddleware::class);
+Route::get('revenue', [Backend\RevenueController::class, 'index'])->name('revenue.index ')->middleware(SignInMiddleware::class);
 
 //ticket
-Route::get('ticket', [Backend\ticketController::class, 'index'])->name('ticket.index ')->middleware(AuthMiddleware::class);
+Route::get('ticket', [Backend\ticketController::class, 'index'])->name('ticket.index ')->middleware(SignInMiddleware::class);
 Route::get('admin/tickets', [Backend\ticketController::class, 'index'])->name('admin.tickets.index');
 
 // FE _home
@@ -89,7 +90,7 @@ route::post('/days-order', [RevenueController::class, 'days_order']);
 
 
 // revenue
-Route::get('admin/revenue', [Backend\RevenueController::class, 'index_statistic'])->name('admin.revenue.index')->middleware(AuthMiddleware::class);
+Route::get('admin/revenue', [Backend\RevenueController::class, 'index_statistic'])->name('admin.revenue.index')->middleware(SignInMiddleware::class);
 
 // revenue
 Route::get('movie-index', [Backend\movieShowtimeController::class, 'movieIndex'])->name('user.movieIndex');
@@ -116,16 +117,20 @@ Route::get('/test-email', function () {
 // Forgot password
 Route::get('/fpass', [forgotpassword::class, 'index'])->name('fpass');
 //bookng
-Route::get('/dat-ve/{phim_id}/chon-lich-chieu', [BookingController::class, 'showShowtimes'])->name('booking.showtimes');
-Route::get('/dat-ve/{lich_chieu_id}/chon-ghe', [BookingController::class, 'showSeats'])->name('booking.seats');
-Route::post('/dat-ve/xac-nhan-ghe', [BookingController::class, 'processSeatSelection'])->name('booking.confirm-seats');
-Route::get('/booking/select-food', [BookingController::class, 'showSelectFood'])->name('booking.select-food');
-Route::post('/booking/checkout', QrCodePayment::class)->name('booking.confirmation');
 
-Route::post('/booking/payment',  QrCodePayment::class)->name('booking.payment');
-Route::get('/ketqua', [QrCodePayment::class, 'vnpay_return'])->name('ketqua'); // Route trả về từ VNPAY
+Route::middleware([SignInMiddleware::class])->group(function () {
+    Route::get('/dat-ve/{phim_id}/chon-lich-chieu', [BookingController::class, 'showShowtimes'])->name('booking.showtimes');
+    Route::get('/dat-ve/{lich_chieu_id}/chon-ghe', [BookingController::class, 'showSeats'])->name('booking.seats');
+    Route::post('/dat-ve/xac-nhan-ghe', [BookingController::class, 'processSeatSelection'])->name('booking.confirm-seats');
+    Route::get('/booking/select-food', [BookingController::class, 'showSelectFood'])->name('booking.select-food');
+    Route::post('/booking/checkout', QrCodePayment::class)->name('booking.confirmation');
+
+    Route::get('/vnpay_payment', [QrCodePayment::class, 'vnpay_payment'])->name('booking.payment'); // Đổi tên route cho thống nhất
+    Route::get('/ketqua', [QrCodePayment::class, 'vnpay_return'])->name('ketqua'); // Route trả về từ VNPAY
+    Route::get('payment/fail', \App\Livewire\PaymentFailure::class )->name( 'payment.failure'); // Sửa lại route cho trang thất bại
+    Route::get('payment/success', \App\Livewire\PaymentSuccess::class )->name('payment.success'); // Sửa lại route cho trang thành công
+    // user profile
+    Route::get('user/profile', UserProfile::class)->name('user.profile');
+});
 
 
-
-// user profile
-Route::get('user/profile', UserProfile::class)->name('user.profile');
