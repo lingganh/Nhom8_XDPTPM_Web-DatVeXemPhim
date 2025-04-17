@@ -23,30 +23,35 @@ class PaymentSuccess extends Component
         $tongTien = session('giaHD');
         $lichChieuId = session('lich_chieu_id');
         $selectedSeats = session('selected_seats');
-        $customerId = auth()->id(); // Assuming user is logged in
-        $selectedFood = session('selected_food'); // Lấy thông tin đồ ăn từ session
+        $customerId = auth()->id();
+        $selectedFood = session('selected_food');
 
         // Tạo hóa đơn
-        $this->hoaDon = HoaDon::create([
-            'idHD' => Str::uuid(), // Generate a UUID for idHD
+        $idHD=rand(66,10000);
+        $this->hoaDon = HoaDon::insert([
+            'idHD' => $idHD,
             'idKH' => $customerId,
             'tongTien' => $tongTien,
             'NgayXuat' => now(),
         ]);
-
+        //dd($this->hoaDon->idHD);
         $lichChieu = LichChieu::findOrFail($lichChieuId);
         $phongChieuId = $lichChieu->PC_id;
 
         foreach ($selectedSeats as $seatId) {
             $ticketCode = Str::random(10);
             $ve = Ve::create([
-                'idHD' => $this->hoaDon->idHD,
+                'idHD' =>$idHD,
                 'idLC' => $lichChieuId,
                 'PC_id' => $phongChieuId,
                 'idG' => $seatId,
                 'ticket_code' => $ticketCode,
+                'user_id' => $customerId,
+                'trang_thai' =>'Đã thanh toán',
+                'giaVe' =>  75000 ,
+
             ]);
-            $this->tickets[] = $ve; // Store the Ve model
+            $this->tickets[] = $ve;
         }
 
         // Lưu thông tin vào bảng ct_hoa_don
@@ -54,7 +59,7 @@ class PaymentSuccess extends Component
             foreach ($selectedFood as $productId => $quantity) {
                 $sanPham = SanPham::findOrFail($productId);
                 CT_HoaDon::create([
-                    'idHD' => $this->hoaDon->idHD,
+                    'idHD' => $idHD,
                     'idsp' => $productId,
                     'SL' => $quantity,
                     'donGia' => $sanPham->donGia,
