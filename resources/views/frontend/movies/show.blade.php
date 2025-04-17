@@ -95,7 +95,7 @@
                                         <div class="font-semibold text-gray-600 mb-1">{{ $buoi }}</div>
                                         <div class="flex flex-wrap gap-3">
                                             @foreach($lichTrongNgay[$buoi] as $lich)
-                                                <a href="#" class="flex items-center bg-gray-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-100 transition">
+                                                <a href="{{ route('booking.seats', ['lich_chieu_id' => $lich->idLC]) }}" class="flex items-center bg-gray-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-100 transition">
                                                     {{ \Carbon\Carbon::parse($lich->gioBD)->format('H:i') }} -
                                                     {{ \Carbon\Carbon::parse($lich->gioBD)->addMinutes($lich->thoiLuong)->format('H:i') }}
                                                     <span class="text-green-600 ml-2">Đặt vé</span>
