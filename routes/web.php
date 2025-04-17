@@ -17,7 +17,17 @@ use App\Http\Controllers\Backend\RevenueController;
 use App\Http\Controllers\Frontend\ListFilmController;
 use App\Http\Controllers\Frontend\moviesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\movieShowtimeController;
 
+Route::prefix('backend')->name('backend.')->group(function () {
+    Route::get('/moviveShowtime', [movieShowtimeController::class, 'index'])->name('moviveShowtime.index');
+    Route::get('/moviveShowtime/create', [movieShowtimeController::class, 'create'])->name('moviveShowtime.create');
+    Route::post('/moviveShowtime', [movieShowtimeController::class, 'store'])->name('moviveShowtime.store');
+    Route::delete('/moviveShowtime/{idLC}', [movieShowtimeController::class, 'destroy'])->name('moviveShowtime.destroy');
+    Route::get('/moviveShowtime/{idLC}/edit', [movieShowtimeController::class, 'edit'])->name('moviveShowtime.edit');
+    Route::put('/moviveShowtime/{idLC}', [movieShowtimeController::class, 'update'])->name('moviveShowtime.update');
+
+});
 
 Route::get('/movies', [moviesController::class, 'index'])->name('movies.index');
 

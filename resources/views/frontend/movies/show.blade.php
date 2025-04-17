@@ -67,49 +67,49 @@
             iframe.src = ''; // reset video
         }
     </script>
-    <h2 class="text-2xl font-semibold mb-6">Lịch Chiếu {{ $film->tenPhim }}</h2>
+    <div class="rounded-2xl shadow-md p-6 mt-6 max-w-4xl mx-auto" style="background-color: #FFFFFF;">
+        <h2 class="text-2xl font-bold mb-6 text-center" style="color: black; font-weight: bold;">Lịch Chiếu {{ $film->tenPhim }}</h2>
 
-    @if($lichChieu->isNotEmpty())
-        <div x-data="{ selectedDate: '{{ $lichChieu->keys()->first() }}' }">
-            {{-- Dãy nút ngày --}}
-            <div class="flex gap-2 mb-6">
-                @foreach($lichChieu as $ngay => $buoi)
-                    <button
-                        class="px-4 py-2 rounded text-sm font-medium"
-                        :class="selectedDate === '{{ $ngay }}' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'"
-                        @click="selectedDate = '{{ $ngay }}'"
-                    >
-                        {{ $ngay }}
-                    </button>
-                @endforeach
-            </div>
-
-            {{-- Hiển thị lịch của ngày được chọn --}}
-            @foreach($lichChieu as $ngay => $buoi)
-                <div x-show="selectedDate === '{{ $ngay }}'" class="mb-6" x-transition>
-                    <h3 class="text-xl font-bold mb-2">Ngày {{ $ngay }}</h3>
-
-                    @foreach(['Sáng', 'Chiều', 'Tối'] as $thoiDiem)
-                        @if(isset($buoi[$thoiDiem]) && $buoi[$thoiDiem]->isNotEmpty())
-                            <div class="mb-2">
-                                <h4 class="font-semibold text-gray-700">{{ $thoiDiem }}</h4>
-                                <div class="flex flex-wrap gap-3">
-                                    @foreach($buoi[$thoiDiem] as $lich)
-                                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2">
-                                        {{ \Carbon\Carbon::parse($lich->gioBD)->format('H:i') }} -
-                                        {{ \Carbon\Carbon::parse($lich->gioBD)->addMinutes($lich->thoiLuong)->format('H:i') }}
-                                        <a href="#" class="text-green-600 font-semibold ml-2 hover:underline">Chọn ghế</a>
-                                    </span>
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endif
+        @if($lichChieu->isNotEmpty())
+            <div x-data="{ selectedDate: '{{ $lichChieu->keys()->first() }}' }" class="max-w-4xl mx-auto">
+                <!-- Tabs ngày chiếu -->
+                <div class="flex flex-wrap justify-center gap-2 mb-6">
+                    @foreach($lichChieu as $ngay => $lichTrongNgay)
+                        <button
+                            class="px-4 py-2 rounded text-sm font-medium"
+                            :class="selectedDate === '{{ $ngay }}' ? 'bg-pink-600 text-white' : 'bg-gray-100 text-gray-800'"
+                            @click="selectedDate = '{{ $ngay }}'">
+                            {{ $ngay }}
+                        </button>
                     @endforeach
                 </div>
-            @endforeach
-        </div>
+                <!-- Danh sách giờ chiếu -->
+                @foreach($lichChieu as $ngay => $lichTrongNgay)
+                    <div x-show="selectedDate === '{{ $ngay }}'" x-transition>
+                        <div class="space-y-4">
+                            @foreach(['Sáng', 'Chiều', 'Tối'] as $buoi)
+                                @if($lichTrongNgay[$buoi]->isNotEmpty())
+                                    <div>
+                                        <div class="font-semibold text-gray-600 mb-1">{{ $buoi }}</div>
+                                        <div class="flex flex-wrap gap-3">
+                                            @foreach($lichTrongNgay[$buoi] as $lich)
+                                                <a href="#" class="flex items-center bg-gray-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-100 transition">
+                                                    {{ \Carbon\Carbon::parse($lich->gioBD)->format('H:i') }} -
+                                                    {{ \Carbon\Carbon::parse($lich->gioBD)->addMinutes($lich->thoiLuong)->format('H:i') }}
+                                                    <span class="text-green-600 ml-2">Đặt vé</span>
+                                                </a>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+    </div>
     @else
-        <p class="text-gray-600">Không có lịch chiếu nào cho phim này.</p>
-    @endif
-
+        <p class="text-center text-gray-600">Không có lịch chiếu nào cho phim này.</p>
+        @endif
+        </div>
 @endsection
