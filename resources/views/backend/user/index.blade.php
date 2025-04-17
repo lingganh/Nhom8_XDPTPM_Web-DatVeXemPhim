@@ -27,7 +27,7 @@
             <div class="col-md-3">
                 <button id="searchButton" type="submit" class="btn btn-primary">Tìm kiếm</button>
                 </form>
-                <a href="" class="btn btn-success mr5"   data-toggle="modal" data-target="#UserThemModal">  Thêm Mới <i class="fa fa-plus"></i></a>
+                <a href="" class="btn btn-dark mr5"   data-toggle="modal" data-target="#UserThemModal">  Thêm Mới <i class="fa fa-plus"></i></a>
 
             </div>
         </div>
@@ -46,7 +46,7 @@
                                          onerror="this.onerror=null; this.src='https://cdn2.fptshop.com.vn/small/avatar_trang_1_cd729c335b.jpg';" >
                                     <br>
                                     <div class="movie-buttons">
-                                        <button type="button" class="btn btn-success show-edit-user" data-toggle="modal" data-target="#UserSuaModal" data-user-id="{{ $item->id }}">
+                                        <button type="button" class="btn btn-info show-edit-user" data-toggle="modal" data-target="#UserSuaModal" data-user-id="{{ $item->id }}">
                                             Sửa
                                         </button>
                                         <a>&ensp;</a>

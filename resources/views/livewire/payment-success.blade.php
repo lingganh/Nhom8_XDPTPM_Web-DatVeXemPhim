@@ -2,11 +2,11 @@
   <div class="container">
       <div class="top">
           <br><br><br><br>
-          <h3> Chờ chút nha , tui đang in vé cho bà nè &lt;3 </h3>
+          <h3> Chờ chút nha , tui đang in vé cho bà nè &lt;3 </h3><br><br><br>
           @foreach($tickets as $ve )
               <div class="printer" />
       </div>
-      <br><br>
+
       <div class="receipts-wrapper">
           <div class="receipts">
               <div class="receipt">
