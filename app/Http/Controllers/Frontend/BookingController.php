@@ -4,14 +4,16 @@ namespace App\Http\Controllers\Frontend;
 
 
 
- use App\Models\Film;
- use App\Models\Ghe;
- use App\Models\LichChieu;
- use App\Models\Ve;
- use Illuminate\Http\Request;
+use App\Models\Film;
+use App\Models\Ghe;
+use App\Models\LichChieu;
+use App\Models\SanPham;
+use App\Models\Ve;
+use Illuminate\Http\Request;
 
 class BookingController
 {
+    public $totalAmount;
     public function showShowtimes(Request $request, $M_id)
     {
         $phim = Film ::findOrFail($M_id);
@@ -25,19 +27,58 @@ class BookingController
         $phongChieu = $lichChieu->phongChieu;
         $gheDaDat = Ve::where('idLC', $lich_chieu_id)->pluck('idG')->toArray();
 
-         $allSeats = Ghe::where('PC_id', $phongChieu->PC_id)->get();
+        $allSeats = Ghe::where('PC_id', $phongChieu->PC_id)->get();
 
         return view('booking.seats', compact('lichChieu', 'phongChieu', 'gheDaDat', 'allSeats'));
     }
     public function processSeatSelection(Request $request)
     {
-        // Logic xử lý ghế đã chọn (lưu vào session, database tạm, v.v.)
-        $lichChieuId = $request->input('lich_chieu_id');
+        //luu vao section
+         $lichChieuId = $request->input('lich_chieu_id');
         $selectedSeats = json_decode($request->input('selected_seats'));
 
-        dd($lichChieuId, $selectedSeats); // Tạm thời dump dữ liệu để kiểm tra
+         session(['lich_chieu_id' => $lichChieuId]);
+        session(['selected_seats' => $selectedSeats]);
 
-        // Sau đó chuyển hướng đến trang xác nhận đặt vé
-        // return redirect()->route('booking.confirm');
+
+         return redirect()->route('booking.select-food');
+    }
+    public function showSelectFood()
+    {
+         $foodItems = SanPham::all();
+
+        return view('booking.select_food', compact('foodItems'));
+    }
+    public function confirm(Request $request){
+//mảng món ăn
+        $selectedFood = $request->input('food');
+        //dd($selectedFood);
+         $lichChieuId = session('lich_chieu_id');
+        $selectedSeats = session('selected_seats');
+        $seatPrice = 75000;
+        $totalSeatPrice = count($selectedSeats) * $seatPrice;
+
+        session(['total_seat_price' => $totalSeatPrice]);        $giadoan=0;
+        $spchon=SanPham::find(array_keys($selectedFood));
+
+        if($spchon){
+            foreach ($spchon as $sp) {
+
+                    $soluong = $selectedFood[$sp->idsp]??0;
+                    $giadoan += $sp->donGia *$soluong;
+            }
+        }
+
+
+        session(['giaHD' => $giadoan]);
+
+        return view('booking.confimation', compact('selectedSeats', 'selectedFood', 'giadoan', 'spchon','totalSeatPrice'));
+
+
+    }
+    public function payment(Request $request){
+
+        //
+        return view('booking.payment');
     }
 }

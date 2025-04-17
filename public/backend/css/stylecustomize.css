@@ -505,3 +505,40 @@ table strong {
     top: 50%;
     transform: translateY(-50%);
 }
+.confirmation-container {
+    background-color: #f8f9fa; /* Màu nền nhạt */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.confirmation-container h2,
+.confirmation-container h3,
+.confirmation-container h5 {
+    color: #333;
+}
+
+.confirmation-container ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.confirmation-container li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.confirmation-container li:last-child {
+    border-bottom: none;
+}
+
+.total-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #28a745; /* Màu xanh lá cây cho tổng tiền */
+}
+
+.btn-success {
+    width: 100%; /* Làm cho nút chiếm toàn bộ chiều rộng */
+}

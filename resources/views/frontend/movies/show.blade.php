@@ -70,6 +70,7 @@
     <div class="rounded-2xl shadow-md p-6 mt-6 max-w-4xl mx-auto" style="background-color: #FFFFFF;">
         <h2 class="text-2xl font-bold mb-6 text-center" style="color: black; font-weight: bold;">Lịch Chiếu {{ $film->tenPhim }}</h2>
 
+
         @if($lichChieu->isNotEmpty())
             <div x-data="{ selectedDate: '{{ $lichChieu->keys()->first() }}' }" class="max-w-4xl mx-auto">
                 <!-- Tabs ngày chiếu -->
@@ -81,6 +82,7 @@
                             @click="selectedDate = '{{ $ngay }}'">
                             {{ $ngay }}
                         </button>
+
                     @endforeach
                 </div>
                 <!-- Danh sách giờ chiếu -->

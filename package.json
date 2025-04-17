@@ -12,6 +12,7 @@
         "axios": "^1.7.4",
         "bootstrap": "^5.2.3",
         "concurrently": "^9.0.1",
+        "gulp": "^5.0.0",
         "laravel-vite-plugin": "^1.2.0",
         "sass": "^1.56.1",
         "tailwindcss": "^4.0.0",
@@ -21,6 +22,25 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.7.2",
         "switchery": "^0.0.2",
-        "toastr": "^2.1.4"
-    }
+        "toastr": "^2.1.4",
+        "vn-qr-pay": "^0.0.5"
+    },
+    "name": "nhom8-project",
+    "version": "1.0.0",
+    "description": "- PHP >= 8.1 - Node >= v20.13.1 ## Usage - In root path project, run command: ``` bash  npm install  npm run prepare",
+    "main": "vite.config.js",
+    "directories": {
+        "test": "tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lingganh/Nhom8_XDPTPM_Web-DatVeXemPhim.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/lingganh/Nhom8_XDPTPM_Web-DatVeXemPhim/issues"
+    },
+    "homepage": "https://github.com/lingganh/Nhom8_XDPTPM_Web-DatVeXemPhim#readme"
 }

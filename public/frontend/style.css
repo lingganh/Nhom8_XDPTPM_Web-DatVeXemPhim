@@ -171,22 +171,22 @@ body {
     text-align: center;
     padding: 10px;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 50%; /* Adjust width of the screen */
     max-width: 600px;
+    margin-left: 10px;
 }
 
 .seating-layout {
-    margin-top: 30px;
+    margin-top: 10px;
     background-color: #222;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: grid;
-    grid-template-columns: repeat(10, 40px);
-    grid-gap: 15px;
+     grid-gap: 15px;
     align-items: center;
-    justify-content: center;
+     max-width: 600px;
 }
 
 
@@ -255,4 +255,296 @@ body {
 .selected-seats-area {
     margin-top: 20px;
     text-align: center;
+}
+.flex0 {
+    display: flex;
+    justify-content: space-between; /* Keep this */
+    align-items: flex-start;
+    width: 60%;
+    max-width: 960px;
+}
+
+.seat-booking-seating-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%; /* Keep this */
+}
+
+.booking-summary {
+    /* width: 350px; Remove this fixed width */
+    width: 50%; /* Set width to 50% */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px;
+    background-color: #374151;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-left: 30px;
+}
+.row-label {
+
+    color: #fff;
+    font-weight: bold;
+    width: 30px;
+    text-align: center;
+}
+.seat.empty {
+    background-color: transparent;
+    border: none;
+    cursor: default;
+    color: transparent;
+}
+.box {
+    background-color: #fff; /* Màu nền trắng */
+    padding: 20px; /* Khoảng cách bên trong box */
+    border-radius: 8px; /* Bo tròn góc (tùy chọn) */
+    margin-bottom: 20px; /* Khoảng cách bên dưới box (tùy chọn) */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng nhẹ (tùy chọn) */
+}
+
+.checkout-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-container h3, .checkout-container h4 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.checkout-container div {
+    margin-bottom: 20px;
+}
+
+.checkout-container  ,
+.checkout-container  {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.checkout-container ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.checkout-container ul li {
+    margin-bottom: 5px;
+    color: #777;
+}
+
+.checkout-container p {
+    color: #333;
+    font-size: 1.1em;
+}
+
+.checkout-container .btn-success {
+    display: block;
+    width: 200px;
+    margin-top: 30px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    text-align: center;
+    text-decoration: none;
+}
+
+.checkout-container .btn-success:hover {
+    background-color: #218838;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+
+.col-md-6 {
+    flex: 1;
+}
+
+.form-check {
+    margin-bottom: 8px;
+}
+/*ticket*/
+.ticket-system {
+    max-width: 385px;
+    .top {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .title {
+            font-weight: normal;
+            font-size: 1.6em;
+            text-align: left;
+            margin-left: 20px;
+            margin-bottom: 50px;
+            color: #fff;
+        }
+        .printer {
+            width: 90%;
+            height: 20px;
+            border: 5px solid #fff;
+            border-radius: 10px;
+            box-shadow: 1px 3px 3px 0px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    .receipts-wrapper {
+        overflow: hidden;
+        margin-top: -10px;
+        padding-bottom: 10px;
+    }
+
+    .receipts {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        transform: translateY(-510px);
+
+        animation-duration: 2.5s;
+        animation-delay: 500ms;
+        animation-name: print;
+        animation-fill-mode: forwards;
+
+
+        .receipt {
+            padding: 25px 30px;
+            text-align: left;
+            min-height: 200px;
+            width: 88%;
+            background-color: #fff;
+            border-radius: 10px 10px 20px 20px;
+            box-shadow: 1px 3px 8px 3px rgba(0, 0, 0, 0.2);
+
+            .airliner-logo {
+                max-width: 80px;
+            }
+
+            .route {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 30px 0;
+
+                .plane-icon {
+                    width: 30px;
+                    height: 30px;
+                    transform: rotate(90deg);
+                }
+                h2 {
+                    font-weight: 300;
+                    font-size: 2.2em;
+                    margin: 0;
+                }
+            }
+
+            .details {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+
+                .item {
+                    display: flex;
+                    flex-direction: column;
+                    min-width: 70px;
+
+                    span {
+                        font-size: .8em;
+                        color: rgba(28, 28, 28, .7);
+                        font-weight: 500;
+                    }
+                    h3 {
+                        margin-top: 10px;
+                        margin-bottom: 25px;
+                    }
+                }
+            }
+
+            &.qr-code {
+                height: 110px;
+                min-height: unset;
+                position: relative;
+                border-radius: 20px 20px 10px 10px;
+                display: flex;
+                align-items: center;
+
+            //TODO: replace with svg
+            &::before {
+                content: '';
+                background: linear-gradient(to right, #fff 50%, #e0888d 50%);
+                background-size: 22px 4px, 100% 4px;
+                height: 4px;
+                width: 90%;
+                display: block;
+                left: 0;
+                right: 0;
+                top: -1px;
+                position: absolute;
+                margin: auto;
+            }
+
+                .qr {
+                    width: 70px;
+                    height: 70px;
+                }
+
+                .description {
+                    margin-left: 20px;
+
+                    h2 {
+                        margin: 0 0 5px 0;
+                        font-weight: 500;
+                    }
+                    p {
+                        margin: 0;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes print {
+    0% {
+        transform: translateY(-510px)
+    }
+    35% {
+        transform: translateY(-395px);
+    }
+    70% {
+        transform: translateY(-140px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }

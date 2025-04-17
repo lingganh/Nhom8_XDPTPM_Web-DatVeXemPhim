@@ -16,6 +16,11 @@ return new class extends Migration
             $table->foreign('PC_id')->references('PC_id')->on('phong_chieu')->onDelete('set null');
 
         });
+        Schema::create('ct_hoa_don', function (Blueprint $table) {
+
+            $table->foreign('idHD')->references('idHD')->on('hoa_don')->onDelete('cascade');
+            $table->foreign('idsp')->references('idsp')->on('san_pham')->onDelete('cascade');
+        });
     }
 
     /**
