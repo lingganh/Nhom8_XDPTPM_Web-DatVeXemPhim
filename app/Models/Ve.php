@@ -18,10 +18,7 @@ class Ve extends Model
         'trangThai',
         'idHD',
         ];
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+
 
     public function lichChieu()
     {
@@ -36,5 +33,8 @@ class Ve extends Model
     public function ghe()
     {
         return $this->belongsTo(Ghe::class, ['idG', 'PC_id'], ['idG', 'PC_id']);
+    }
+    public function User(){
+        return $this->belongsTo(User::class, ['user_id', 'id'],['user_id', 'id']);
     }
 }
