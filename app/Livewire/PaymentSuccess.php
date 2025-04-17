@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Mail\OrderConfirmation;
 use App\Models\HoaDon;
 use App\Models\LichChieu;
 use App\Models\Ve;
@@ -28,7 +27,7 @@ class PaymentSuccess extends Component
 
         // Tạo hóa đơn
         $idHD=rand(66,10000);
-        $this->hoaDon = HoaDon::insert([
+        $this->hoaDon = HoaDon::create([
             'idHD' => $idHD,
             'idKH' => $customerId,
             'tongTien' => $tongTien,
@@ -73,9 +72,14 @@ class PaymentSuccess extends Component
 
     public function render()
     {
+        $hoaDon = $this->hoaDon;
+        $tickets = Ve::where('idHD', $this->hoaDon->idHD)
+            ->with(['lichChieu.phim', 'phongchieu', 'nguoiDung'])
+            ->get();
+
         return view('livewire.payment-success', [
-            'hoaDon' => $this->hoaDon,
-            'tickets' => $this->tickets,
+            'hoaDon' => $hoaDon,
+            'tickets' => $tickets,
         ])->extends('layouts.app')->section('content');
     }
 }
