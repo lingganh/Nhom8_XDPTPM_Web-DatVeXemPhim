@@ -44,7 +44,7 @@
                         @if (!Auth::check())
                             <a class="nav-link" href="{{ route('signin.index') }}"><i class="fa-regular fa-circle-user"></i></a>
                         @else
-                            <a class="nav-link" href="{{route('user.movieIndex')}}"><i class="fa-regular fa-circle-user"></i></a>
+                            <a class="nav-link" href="{{route('user.profile')}}"><i class="fa-regular fa-circle-user"></i></a>
                         @endif
                     </div>
                     @auth

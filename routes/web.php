@@ -135,10 +135,10 @@ Route::middleware([SignInMiddleware::class])->group(function () {
     Route::get('/booking/select-food', [BookingController::class, 'showSelectFood'])->name('booking.select-food');
     Route::post('/booking/checkout', QrCodePayment::class)->name('booking.confirmation');
 
-    Route::get('/vnpay_payment', [QrCodePayment::class, 'vnpay_payment'])->name('booking.payment'); // Đổi tên route cho thống nhất
-    Route::get('/ketqua', [QrCodePayment::class, 'vnpay_return'])->name('ketqua'); // Route trả về từ VNPAY
-    Route::get('payment/fail', \App\Livewire\PaymentFailure::class )->name( 'payment.failure'); // Sửa lại route cho trang thất bại
-    Route::get('payment/success', \App\Livewire\PaymentSuccess::class )->name('payment.success'); // Sửa lại route cho trang thành công
+    Route::get('/vnpay_payment', [QrCodePayment::class, 'vnpay_payment'])->name('booking.payment');
+    Route::get('/ketqua', [QrCodePayment::class, 'vnpay_return'])->name('ketqua');
+    Route::get('payment/fail', \App\Livewire\PaymentFailure::class )->name( 'payment.failure');
+    Route::get('payment/success', \App\Livewire\PaymentSuccess::class )->name('payment.success');
     // user profile
     Route::get('user/profile', UserProfile::class)->name('user.profile');
 });
