@@ -31,7 +31,7 @@
                             <button id="searchButton" type="submit" class="btn btn-primary">Tìm kiếm</button>
                             </form>
                         </div>
-                        <a href="" class="btn btn-success mr5"  data-toggle="modal" data-target="#phimThemModal">  Thêm Mới <i class="fa fa-plus"></i></a>
+                        <a href="" class="btn btn-info mr5"  data-toggle="modal" data-target="#phimThemModal">  Thêm Mới <i class="fa fa-plus"></i></a>
 
                     </div>
                     <div id="searchResults" class="w3l-populohny-grids">
@@ -63,7 +63,7 @@
                                                 <button type="button" class="btn btn-info show-details" data-toggle="modal" data-target="#phimChiTietModal" data-phim-id="{{ $phim->M_id }}">Chi Tiết</button>
                                             </div>
                                             <br>
-                                            <button type="button" class="btn btn-success show-edit" data-toggle="modal" data-target="#phimSuaModal" data-phim-id="{{ $phim->M_id }}">
+                                            <button type="button" class="btn btn-warning show-edit" data-toggle="modal" data-target="#phimSuaModal" data-phim-id="{{ $phim->M_id }}">
                                                 Sửa
                                             </button>
                                             <a>&ensp;</a>

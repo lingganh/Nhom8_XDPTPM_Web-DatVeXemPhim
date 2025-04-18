@@ -411,7 +411,7 @@ textarea {
         .printer {
             width: 90%;
             height: 20px;
-            border: 5px solid #fff;
+            border: 5px solid #e0888d;
             border-radius: 10px;
             box-shadow: 1px 3px 3px 0px rgba(0, 0, 0, 0.2);
         }
@@ -441,7 +441,7 @@ textarea {
             text-align: left;
             min-height: 200px;
             width: 88%;
-            background-color: #fff;
+            background-color: #ffffff;
             border-radius: 10px 10px 20px 20px;
             box-shadow: 1px 3px 8px 3px rgba(0, 0, 0, 0.2);
 
@@ -500,7 +500,7 @@ textarea {
             //TODO: replace with svg
             &::before {
                 content: '';
-                background: linear-gradient(to right, #fff 50%, #e0888d 50%);
+                background: linear-gradient(to right, #c6006a 50%, #e0888d 50%);
                 background-size: 22px 4px, 100% 4px;
                 height: 4px;
                 width: 90%;

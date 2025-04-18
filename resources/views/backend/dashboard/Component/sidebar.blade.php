@@ -15,10 +15,7 @@
 FIVE Cinema
                     </div>
                 </li>
-                <li class="active">
-                    <a href="{{'dashboard/index'}}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span>  </a>
 
-                </li>
                 <li>
                     <a href="#"><i class="fa fa-user"></i><span class="nav-label"> Quản Lý Thành Viên </span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
@@ -35,7 +32,7 @@ FIVE Cinema
 
                 </li>
                 <li>
-                    <a href="{{ route ('comments.index ') }}"><i class="fa fa-envelope"></i> <span class="nav-label"> Góp Ý  </span><span class="label label-warning pull-right">16/24</span></a>
+                    <a href="{{ route ('comments.index ') }}"><i class="fa fa-envelope"></i> <span class="nav-label"> Góp Ý  </span> </a>
 
                 </li>
                 <li>

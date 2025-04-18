@@ -17,6 +17,7 @@ class Ve extends Model
         'giaVe',
         'trangThai',
         'idHD',
+        'ticket_code'
         ];
 
 
@@ -34,7 +35,10 @@ class Ve extends Model
     {
         return $this->belongsTo(Ghe::class, ['idG', 'PC_id'], ['idG', 'PC_id']);
     }
-    public function User(){
+    public function nguoiDung(){
         return $this->belongsTo(User::class, ['user_id', 'id'],['user_id', 'id']);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
