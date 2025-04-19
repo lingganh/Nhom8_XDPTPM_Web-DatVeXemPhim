@@ -1,28 +1,28 @@
 <?php
 
-use App\{Http\Controllers\Backend,
-    Http\Controllers\Backend\AuthController,
-    Http\Controllers\Backend\CommentsController,
-    Http\Controllers\Backend\DashboardController,
-    Http\Controllers\Backend\FilmController,
-    Http\Controllers\Backend\UserGroupController,
+use App\{Http\Controllers\Admin,
+    Http\Controllers\Admin\AuthController,
+    Http\Controllers\Admin\CommentsController,
+    Http\Controllers\Admin\DashboardController,
+    Http\Controllers\Admin\FilmController,
+    Http\Controllers\Admin\UserGroupController,
     Http\Controllers\Controller,
-    Http\Controllers\Frontend\forgotpassword,
-    Http\Controllers\Frontend\SignInController,
-    Http\Controllers\Frontend\BookingController,
+    Http\Controllers\Client\forgotpassword,
+    Http\Controllers\Client\SignInController,
+    Http\Controllers\Client\BookingController,
     Http\Middleware\SignInMiddleware,
     Livewire\Homepage,
     Livewire\QrCodePayment,
     Livewire\UserProfile};
 
-use App\Http\Controllers\Backend\RevenueController;
-use App\Http\Controllers\Frontend\ListFilmController;
-use App\Http\Controllers\Frontend\moviesController;
+use App\Http\Controllers\Admin\RevenueController;
+use App\Http\Controllers\Client\ListFilmController;
+use App\Http\Controllers\Client\moviesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\movieShowtimeController;
+use App\Http\Controllers\Admin\movieShowtimeController;
 
-Route::prefix('backend')->name('backend.')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/moviveShowtime', [movieShowtimeController::class, 'index'])->name('moviveShowtime.index');
     Route::get('/moviveShowtime/create', [movieShowtimeController::class, 'create'])->name('moviveShowtime.create');
     Route::post('/moviveShowtime', [movieShowtimeController::class, 'store'])->name('moviveShowtime.store');
@@ -35,7 +35,7 @@ Route::prefix('backend')->name('backend.')->group(function () {
 Route::get('/movies', [moviesController::class, 'index'])->name('movies.index');
 
 Route::get('movies', [moviesController::class, 'index'])->name('movies.index');
- Route::get('movies/{M_id}', [moviesController::class, 'detail'])->name('frontend.movies.show');
+ Route::get('movies/{M_id}', [moviesController::class, 'detail'])->name('client.movies.show');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -45,17 +45,16 @@ Route::post('login',  [AuthController::class, 'login'])->name('auth.login');
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware(SignInMiddleware::class);
 Route::get('logout', [AuthController:: class, 'logout'])->name('auth.logout');
 
-
 // USER
-Route::get('user', [Backend\UserController ::class, 'index'])->name('user.index')->middleware(SignInMiddleware::class);
+Route::get('user', [Admin\UserController ::class, 'index'])->name('user.index')->middleware(SignInMiddleware::class);
 Route::get('usergroup', [UserGroupController ::class, 'index'])->name('usergroup.index')->middleware(SignInMiddleware::class);
 Route::put('role/{user}', [UserGroupController::class, 'updateRole'])->name('userupdate.role')->middleware(SignInMiddleware::class);
 
 
 
-Route::post('user', [Backend\UserController::class, 'create'])->name('user.create')->middleware(SignInMiddleware::class);
-Route::put('user/{user}', [Backend\UserController::class, 'update'])->name('user.update')->middleware(SignInMiddleware::class);
-Route::delete('user/{user}', [Backend\UserController::class, 'delete'])->name('user.destroy')->middleware(SignInMiddleware::class);
+Route::post('user', [Admin\UserController::class, 'create'])->name('user.create')->middleware(SignInMiddleware::class);
+Route::put('user/{user}', [Admin\UserController::class, 'update'])->name('user.update')->middleware(SignInMiddleware::class);
+Route::delete('user/{user}', [Admin\UserController::class, 'delete'])->name('user.destroy')->middleware(SignInMiddleware::class);
 // Film
 Route::get('films', [FilmController::class, 'index'])->name('films.index ')->middleware(SignInMiddleware::class);
  Route::post('filmsupdate/{id}', [FilmController::class, 'update'])->middleware(SignInMiddleware::class);
@@ -63,7 +62,7 @@ Route::get('films', [FilmController::class, 'index'])->name('films.index ')->mid
 Route::get('filmsdelete/{id}', [FilmController::class, 'delete'])->name('films.delete')->middleware(SignInMiddleware::class);
 
 //movie showtimes
-Route::get('movieShowtime', [Backend\movieShowtimeController::class, 'index'])->name('movieShowtime.index ')->middleware(SignInMiddleware::class);
+Route::get('movieShowtime', [Admin\movieShowtimeController::class, 'index'])->name('movieShowtime.index ')->middleware(SignInMiddleware::class);
 
 
 // Comments
@@ -71,11 +70,11 @@ Route::get('comments', [CommentsController::class, 'index'])->name('comments.ind
 
 
 // revenue
-Route::get('revenue', [Backend\RevenueController::class, 'index'])->name('revenue.index ')->middleware(SignInMiddleware::class);
+Route::get('revenue', [Admin\RevenueController::class, 'index'])->name('revenue.index ')->middleware(SignInMiddleware::class);
 
 //ticket
-Route::get('ticket', [Backend\ticketController::class, 'index'])->name('ticket.index ')->middleware(SignInMiddleware::class);
-Route::get('admin/tickets', [Backend\ticketController::class, 'index'])->name('admin.tickets.index');
+Route::get('ticket', [Admin\ticketController::class, 'index'])->name('ticket.index ')->middleware(SignInMiddleware::class);
+Route::get('admin/tickets', [Admin\ticketController::class, 'index'])->name('admin.tickets.index');
 
 // FE _home
 Route::get('', Homepage::class)->name('home.index');
@@ -100,10 +99,10 @@ route::post('/days-order', [RevenueController::class, 'days_order']);
 
 
 // revenue
-Route::get('admin/revenue', [Backend\RevenueController::class, 'index_statistic'])->name('admin.revenue.index')->middleware(SignInMiddleware::class);
+Route::get('admin/revenue', [Admin\RevenueController::class, 'index_statistic'])->name('admin.revenue.index')->middleware(SignInMiddleware::class);
 
 // revenue
-Route::get('movie-index', [Backend\movieShowtimeController::class, 'movieIndex'])->name('user.movieIndex');
+Route::get('movie-index', [Admin\movieShowtimeController::class, 'movieIndex'])->name('user.movieIndex');
 // Register verify OTP
 Route::get('/register', [SignInController::class, 'showRegisterForm'])->name('register');
 Route::post('/register',  [SignInController::class, 'register']);

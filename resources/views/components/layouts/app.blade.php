@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="zxx">
 <head>
-    @include('frontend.layout.component.head')
+    <title>Five Star</title>
+    @include('client.layout.component.head')
     @livewireStyles
 </head>
 <body>
 
-@include('frontend.layout.component.nav')
+@include('client.layout.component.nav')
 
 <header></header>
 
@@ -14,10 +15,10 @@
     @yield('content')
 </div>
 
-@include('frontend.layout.component.footer')
+@include('client.layout.component.footer')
 
 @livewireScripts
-@include('frontend.layout.component.script')
+@include('client.layout.component.script')
 
 </body>
 </html>

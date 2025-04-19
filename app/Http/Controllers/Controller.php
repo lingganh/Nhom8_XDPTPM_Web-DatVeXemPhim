@@ -18,6 +18,6 @@ class Controller
         $phims = DB::table('phim')
             ->whereIn('trangThai', ['Đang chiếu', 'Sắp chiếu'])
             ->get();
-        return view('frontend.home.index', compact('phims')); // Truyền dữ liệu vào view
+        return view('client.home.index', compact('phims')); // Truyền dữ liệu vào view
     }
 }

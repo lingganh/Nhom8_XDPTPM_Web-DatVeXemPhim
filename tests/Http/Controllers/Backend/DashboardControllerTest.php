@@ -2,7 +2,7 @@
 
 namespace Tests\Http\Controllers\Backend;
 
-use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Admin\DashboardController;
 use PHPUnit\Framework\TestCase;
 
 class DashboardControllerTest extends TestCase

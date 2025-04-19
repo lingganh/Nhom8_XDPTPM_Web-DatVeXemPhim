@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="zxx">
 <head>
-    @include('frontend.layout.component.head')
+    <title>FIVE Star</title>@include('client.layout.component.head')
     @livewireStyles
     @livewireScripts
-    @include('frontend.layout.component.script')
+    @include('client.layout.component.script')
 </head>
 <body>
 
-@include('frontend.layout.component.nav')
+@include('client.layout.component.nav')
 
 <header></header>
 
@@ -18,7 +18,7 @@
 </div>
 
 
-@include('frontend.layout.component.footer')
+@include('client.layout.component.footer')
 
 
 
