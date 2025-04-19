@@ -60,7 +60,7 @@
                                     </a>
                                     <div class="movie-browser-overlay">
                                         <div class="movie-browser-actions">
-                                            <a href="#" class="movie-browser-watch-btn">Đặt vé</a>
+                                            <a href="/movies/{{$phim->M_id}}" class="movie-browser-watch-btn">Đặt vé</a>
                                             <a href="javascript:void(0)" onclick="openTrailer('{{$phim->Trailer}}')" class="movie-browser-trailer-btn">Trailer</a>
                                         </div>
                                     </div>
