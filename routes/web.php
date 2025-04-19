@@ -67,7 +67,8 @@ Route::get('movieShowtime', [Admin\movieShowtimeController::class, 'index'])->na
 
 // Comments
 Route::get('comments', [CommentsController::class, 'index'])->name('comments.index ')->middleware(SignInMiddleware::class);
-
+Route::get('comments-web', [CommentsController::class, 'indexWeb'])->name('comments_web.index');
+Route::post('comments-web', [CommentsController::class, 'store'])->name('comments.store');
 
 // revenue
 Route::get('revenue', [Admin\RevenueController::class, 'index'])->name('revenue.index ')->middleware(SignInMiddleware::class);

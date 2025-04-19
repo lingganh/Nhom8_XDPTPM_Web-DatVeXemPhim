@@ -20,18 +20,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Trang Chủ</a>
+                        <a class="nav-link" href="/">Trang Chủ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('user.movieIndex')}}">Phim</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="about.html">Về Chúng Tôi</a>
-                    </li>
+                    </li> --}}
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="Contact_Us.html">Liên hệ</a>
+                        <a class="nav-link" href="{{ route('comments_web.index') }}">Liên hệ</a>
                     </li>
                 </ul>
 
@@ -44,7 +44,7 @@
                         @if (!Auth::check())
                             <a class="nav-link" href="{{ route('signin.index') }}"><i class="fa-regular fa-circle-user"></i></a>
                         @else
-                            <a class="nav-link" href="{{route('user.profile')}}"><i class="fa-regular fa-circle-user"></i></a>
+                            <a class="nav-link" href="{{route('user.movieIndex')}}"><i class="fa-regular fa-circle-user"></i></a>
                         @endif
                     </div>
                     @auth
@@ -58,21 +58,21 @@
                 </div>
 
 
-            <!-- toggle switch for light and dark theme -->
-            <div class="mobile-position">
-                <nav class="navigation">
-                    <div class="theme-switch-wrapper">
-                        <label class="theme-switch" for="checkbox">
-                            <input type="checkbox" id="checkbox">
-                            <div class="mode-container">
-                                <i class="gg-sun"></i>
-                                <i class="gg-moon"></i>
-                            </div>
-                        </label>
-                    </div>
-                </nav>
+                <!-- toggle switch for light and dark theme -->
+                <div class="mobile-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
             </div>
-        </div>
     </nav>
 
     <!--/nav-->

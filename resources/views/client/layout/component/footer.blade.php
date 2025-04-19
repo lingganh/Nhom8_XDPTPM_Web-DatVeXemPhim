@@ -39,12 +39,12 @@
                             <div class="col-md-3 col-sm-6 sub-two-right mt-5">
                                 <h6>thông tin</h6>
                                 <ul>
-                                    <li><a href="index.html"> Trang Chủ </a> </li>
-                                    <li><a href="about.html">Quay Lại</a> </li>
-                                    <li><a href="#">Phim truyền hình</a> </li>
+                                    <li><a href="/"> Trang Chủ </a> </li>
+                                    <li><a href="/">Quay Lại</a> </li>
+                                    <li><a href="{{ route('user.movieIndex') }}">Phim</a> </li>
                                     <li><a href="#">Blogs</a> </li>
-                                    <li><a href="sign_in.html">Đăng Nhập </a></li>
-                                    <li><a href="Contact_Us.html">Liên Hệ </a></li>
+                                    <li><a href="{{ route('signin.index') }}">Đăng Nhập </a></li>
+                                    <li><a href="{{ route('comments_web.index') }}">Liên Hệ </a></li>
                                 </ul>
                             </div>
                             <div class="col-md-3 col-sm-6 sub-two-right mt-5">

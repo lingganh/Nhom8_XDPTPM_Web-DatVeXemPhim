@@ -105,6 +105,9 @@ class movieShowtimeController
                 $phims->orderBy('thoiLuong', 'desc');
             }
         }
+        if($request->has('trangThai')){
+            $phims->where('trangThai',$request->trangThai);
+        }
         $phims = $phims->paginate(12);
         return view('admin.moviveShowtime.movie_index', compact('phims'));
     }

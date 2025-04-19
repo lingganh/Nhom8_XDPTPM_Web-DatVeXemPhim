@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\Comment;
-class CommentsController
+
+class CommentsController extends Controller
 {
+    //
+
     public function __construct()
     {
 
@@ -14,10 +18,11 @@ class CommentsController
 
         $comnet = Comment::orderBy("created_at","desc")->paginate(10);
 
-        return view('admin.comments.index',compact('comnet'));
+        return view('backend.comments.index',compact('comnet'));
     }
+
     public function indexWeb(Request $request){
-        return view('admin.comments.index_web');
+        return view('backend.comments.index_web');
 
     }
 
