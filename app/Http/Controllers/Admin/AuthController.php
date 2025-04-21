@@ -37,7 +37,7 @@ class AuthController extends Controller
             //echo 1; die();
         }
         else {
-            return redirect()->route('auth.admin')->with('error', 'Email hoặc mật khầu không chính xác !');
+            return redirect()->route('auth.admin')->with('error', 'Email hoặc mật khẩu không chính xác !');
         }
 
 

@@ -2,6 +2,10 @@
 <html lang="zxx">
 <head>
     <title>Five Star</title>
+    @livewireScripts
+    @include('client.layout.component.script')
+
+
     @include('client.layout.component.head')
     @livewireStyles
 </head>
@@ -17,8 +21,6 @@
 
 @include('client.layout.component.footer')
 
-@livewireScripts
-@include('client.layout.component.script')
 
 </body>
 </html>

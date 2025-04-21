@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Http;
+
 
 class CommentsController extends Controller
 {
@@ -36,6 +38,25 @@ class CommentsController extends Controller
         $comment->created_at = now();
         $comment->updated_at = now();
         $comment->save();
-        return response()->json(['success' => 'Góp ý đã được gửi thành công']);
+        $brevoApiKey = "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";
+        $senderEmail = "885fae005@smtp-brevo.com";
+
+        Http::withHeaders([
+            'accept' => 'application/json',
+            'api-key' => $brevoApiKey,
+            'content-type' => 'application/json',
+        ])->post('https://api.brevo.com/v3/smtp/email', [
+            'sender' => ['name' => 'FIVE star cinema ', 'email' => $senderEmail],
+            'to' => [
+                ['email' => $comment->email]
+            ],
+            'subject' => 'From FIVE STAR WITH LOVE  ',
+            'htmlContent' => "<h1> Phản hồi về Góp Ý của Bạn</h1>", "<a> Trước hết , chúng tôi vô cùng cảm kích vì bạn đã gửi góp ý đến chúng tôi . Chúng tôi đã xem và sẽ xem xét về góp ý của bạn  </a>","<a>Cảm ơn bạn !</a>",
+
+        ]);
+       return response()->json(['success' => 'Góp ý đã được gửi thành công']);
+
     }
+
+
 }
