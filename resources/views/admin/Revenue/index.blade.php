@@ -108,7 +108,7 @@
                                         const quantity = chartData.quantities[index] + ' vé';
                                         return [
                                             'Doanh thu: ' + revenue,
-                                            'Số lượng: ' + quantity
+
                                         ];
                                     }
                                 }
