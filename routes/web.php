@@ -40,7 +40,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 //BACKEND
-Route::get('admin',  [AuthController::class, 'index'])->name('auth.admin');//->middleware(LoginMiddleware::Class);
+Route::get('administrator',  [AuthController::class, 'index'])->name('auth.admin');//->middleware(LoginMiddleware::Class);
 Route::post('login',  [AuthController::class, 'login'])->name('auth.login');
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware(SignInMiddleware::class);
 Route::get('logout', [AuthController:: class, 'logout'])->name('auth.logout');

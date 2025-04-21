@@ -2,7 +2,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
         <div class="container">
-            <h1><a class="navbar-brand" href="index.html">
+            <h1><a class="navbar-brand" href="{{route('home.index')}}">
 
                     <img src="https://img.icons8.com/?size=100&id=f37TKteMvQFo&format=png&color=000000"
                          alt="Five Star " style="height:30px;"><a data-text="Five Star" class="text0">
@@ -25,9 +25,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('user.movieIndex')}}">Phim</a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="about.html">Về Chúng Tôi</a>
-                    </li> --}}
+                      <li class="nav-item">
+                        <a class="nav-link" href="">Về Chúng Tôi</a>
+                    </li>
 
 
                     <li class="nav-item">
@@ -44,7 +44,7 @@
                         @if (!Auth::check())
                             <a class="nav-link" href="{{ route('signin.index') }}"><i class="fa-regular fa-circle-user"></i></a>
                         @else
-                            <a class="nav-link" href="{{route('user.movieIndex')}}"><i class="fa-regular fa-circle-user"></i></a>
+                            <a class="nav-link" href="{{route('user.profile')}}"><i class="fa-regular fa-circle-user"></i></a>
                         @endif
                     </div>
                     @auth
