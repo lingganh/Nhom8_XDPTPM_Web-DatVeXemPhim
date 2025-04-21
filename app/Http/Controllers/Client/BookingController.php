@@ -72,7 +72,7 @@ class BookingController
 
         session(['giaHD' => $giadoan]);
 
-        return view('booking.confimation', compact('selectedSeats', 'selectedFood', 'giadoan', 'spchon','totalSeatPrice'));
+        return view('booking.confirm', compact('selectedSeats', 'selectedFood', 'giadoan', 'spchon','totalSeatPrice'));
 
 
     }

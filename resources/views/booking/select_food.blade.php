@@ -5,7 +5,7 @@
     <h1>Chọn Bỏng Nước</h1>
     <p>Vui lòng chọn các loại bỏng nước và đồ uống bạn muốn thêm vào đơn hàng:</p>
 
-    <form action="{{ route('booking.confirmation') }}" method="POST">
+    <form action="{{ route('booking.confirm') }}" method="POST">
         @csrf
         @if (isset($foodItems) && count($foodItems) > 0)
             <div class="row">

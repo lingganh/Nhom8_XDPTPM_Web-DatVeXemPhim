@@ -5,8 +5,8 @@ namespace App\Livewire;
 use App\Models\HoaDon;
 use App\Models\LichChieu;
 use App\Models\Ve;
-use App\Models\SanPham; // Import model SanPham
-use App\Models\CT_HoaDon; // Import model CT_HoaDon
+use App\Models\SanPham;
+use App\Models\CT_HoaDon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
@@ -76,7 +76,8 @@ class PaymentSuccess extends Component
         }
         $brevoApiKey = "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";
         $senderEmail = "885fae005@smtp-brevo.com";
-
+        $user = Auth::user();
+        $email=$user->email;
         Http::withHeaders([
             'accept' => 'application/json',
             'api-key' => $brevoApiKey,
@@ -84,7 +85,7 @@ class PaymentSuccess extends Component
         ])->post('https://api.brevo.com/v3/smtp/email', [
             'sender' => ['name' => 'FIVE star cinema ', 'email' => $senderEmail],
             'to' => [
-                ['email' => Auth()->email]
+                ['email' =>  $email]
             ],
             'subject' => 'Vé của bạn - From FIVE STAR WITH LOVE  ',
             'htmlContent' => "<h1> Thông Tin vé của bạn </h1>" . $ticketDetails . "<a>Cảm ơn bạn !</a>",

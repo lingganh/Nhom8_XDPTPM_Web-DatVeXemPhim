@@ -133,7 +133,7 @@ Route::middleware([SignInMiddleware::class])->group(function () {
     Route::get('/dat-ve/{lich_chieu_id}/chon-ghe', [BookingController::class, 'showSeats'])->name('booking.seats');
     Route::post('/dat-ve/xac-nhan-ghe', [BookingController::class, 'processSeatSelection'])->name('booking.confirm-seats');
     Route::get('/booking/select-food', [BookingController::class, 'showSelectFood'])->name('booking.select-food');
-    Route::post('/booking/checkout', QrCodePayment::class)->name('booking.confirmation');
+    Route::match(['get', 'post'],'/checkout', QrCodePayment::class)->name('booking.confirm');
 
     Route::get('/vnpay_payment', [QrCodePayment::class, 'vnpay_payment'])->name('booking.payment');
     Route::get('/ketqua', [QrCodePayment::class, 'vnpay_return'])->name('ketqua');

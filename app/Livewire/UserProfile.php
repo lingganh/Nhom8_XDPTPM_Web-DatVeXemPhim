@@ -19,7 +19,7 @@ class UserProfile extends Component
     public $phone;
     public $birthday;
     public $address;
-    public $img; // Đổi thành $img để khớp với view
+    public $img;
     public $avatarUrl;
 
     protected $listeners = ['profileUpdated' => '$refresh'];
