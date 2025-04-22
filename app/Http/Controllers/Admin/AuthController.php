@@ -26,20 +26,20 @@ class AuthController extends Controller
 
       //dd($credentials, Auth::attempt($credentials), session('error'));
 
-        if (Auth::attempt($credentials)) {
-           // $request->session()->regenerate();
-             //$userName = Auth::user()->name;
+        if (Auth::attempt($credentials)  ) {
+            // $request->session()->regenerate();
+            //$userName = Auth::user()->name;
 
+             // dd(Auth::user() );
+            if (Auth::check() && Auth::user()->role != null) {
+                $request->session()->regenerate();
+                return redirect()->route('dashboard.index')->with('success', 'Đăng Nhập Thành Công ');
+            } else {
+                Auth::logout();
+                return redirect()->route('auth.admin')->with('error', 'Bạn không có quyền truy cập hoặc có lỗi xảy ra!');
+            }
 
-           // dd(Auth::user() );
-            return redirect()->route('dashboard.index')->with('success', 'Đăng Nhập Thành Công ');
-
-            //echo 1; die();
         }
-        else {
-            return redirect()->route('auth.admin')->with('error', 'Email hoặc mật khẩu không chính xác !');
-        }
-
 
 
        // echo 2; die();

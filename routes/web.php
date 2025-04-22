@@ -10,6 +10,7 @@ use App\{Http\Controllers\Admin,
     Http\Controllers\Client\forgotpassword,
     Http\Controllers\Client\SignInController,
     Http\Controllers\Client\BookingController,
+    Http\Middleware\CheckRole,
     Http\Middleware\SignInMiddleware,
     Livewire\Homepage,
     Livewire\QrCodePayment,
@@ -32,6 +33,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 });
 
+Route::middleware(['auth', CheckRole::class])->group(function () {
+    Route::get('filmsdelete/{id}', [FilmController::class, 'delete'])->name('films.delete')->middleware(SignInMiddleware::class);
+    Route::post('filmsupdate/{id}', [FilmController::class, 'update'])->middleware(SignInMiddleware::class);
+    Route::put('role/{user}', [UserGroupController::class, 'updateRole'])->name('userupdate.role')->middleware(SignInMiddleware::class);
+    Route::delete('user/{user}', [Admin\UserController::class, 'delete'])->name('user.destroy')->middleware(SignInMiddleware::class);
+    Route::put('user/{user}', [Admin\UserController::class, 'update'])->name('user.update')->middleware(SignInMiddleware::class);
+
+});
 Route::get('/movies', [moviesController::class, 'index'])->name('movies.index');
 
 Route::get('movies', [moviesController::class, 'index'])->name('movies.index');
@@ -48,18 +57,13 @@ Route::get('logout', [AuthController:: class, 'logout'])->name('auth.logout');
 // USER
 Route::get('user', [Admin\UserController ::class, 'index'])->name('user.index')->middleware(SignInMiddleware::class);
 Route::get('usergroup', [UserGroupController ::class, 'index'])->name('usergroup.index')->middleware(SignInMiddleware::class);
-Route::put('role/{user}', [UserGroupController::class, 'updateRole'])->name('userupdate.role')->middleware(SignInMiddleware::class);
 
 
 
 Route::post('user', [Admin\UserController::class, 'create'])->name('user.create')->middleware(SignInMiddleware::class);
-Route::put('user/{user}', [Admin\UserController::class, 'update'])->name('user.update')->middleware(SignInMiddleware::class);
-Route::delete('user/{user}', [Admin\UserController::class, 'delete'])->name('user.destroy')->middleware(SignInMiddleware::class);
 // Film
 Route::get('films', [FilmController::class, 'index'])->name('films.index ')->middleware(SignInMiddleware::class);
- Route::post('filmsupdate/{id}', [FilmController::class, 'update'])->middleware(SignInMiddleware::class);
  Route::post('filmscreate', [FilmController::class, 'create'])->name('films.create')->middleware(SignInMiddleware::class);
-Route::get('filmsdelete/{id}', [FilmController::class, 'delete'])->name('films.delete')->middleware(SignInMiddleware::class);
 
 //movie showtimes
 Route::get('movieShowtime', [Admin\movieShowtimeController::class, 'index'])->name('movieShowtime.index ')->middleware(SignInMiddleware::class);
@@ -142,5 +146,4 @@ Route::middleware([SignInMiddleware::class])->group(function () {
     // user profile
     Route::get('user/profile', UserProfile::class)->name('user.profile');
 });
-
 

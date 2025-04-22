@@ -4,10 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
-class AuthMiddleware
+class CheckRole
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,11 @@ class AuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check()) {
 
-            return redirect()->route('auth.admin')->with('error', 'Bạn cần đăng nhập để truy cập !');
+        if (Auth::check() && Auth::user()->role == 2) {
+            return redirect()->route('dashboard.index')->with('error', 'Bạn không có quyền này , nếu cần phân quyền hãy liên hệ với superAdmin!');
         }
 
-        return $next($request);
+
     }
 }
