@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signin</title>
-    <link rel="stylesheet" type="text/css" href="frontend/assets/css/as-alert-message.min.css">
+    <link rel="stylesheet" type="text/css" href="client/assets/css/as-alert-message.min.css">
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="frontend/assets/css/style-starter.css">
-    <link rel="stylesheet" type="text/css" href="frontend/assets/css/sign-in.css">
-    <link rel="stylesheet" type="text/css" href="frontend/style.css">
+    <link rel="stylesheet" type="text/css" href="client/assets/css/style-starter.css">
+    <link rel="stylesheet" type="text/css" href="client/assets/css/sign-in.css">
+    <link rel="stylesheet" type="text/css" href="client/style.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     <!--/nav-->
     <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
         <div class="container">
-            <h1><a class="navbar-brand" href="index.html">
+            <h1><a class="navbar-brand" href="{{route('home.index')}}">
                     <img src="https://img.icons8.com/?size=100&id=f37TKteMvQFo&format=png&color=000000"
                          alt="Five Star " style="height:40px;">
                     <h1 data-text="Five Star" class="text0">
@@ -72,17 +72,17 @@
     <button type="submit" class="resend-btn">Gửi lại OTP</button>
 </form>
 
-<script type="text/javascript" src="frontend/assets/js/as-alert-message.min.js"></script>
-<script src="frontend/assets/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="client/assets/js/as-alert-message.min.js"></script>
+<script src="client/assets/js/jquery-3.3.1.min.js"></script>
 <!--/theme-change-->
-<script src="frontend/assets/js/theme-change.js"></script>
+<script src="client/assets/js/theme-change.js"></script>
 
 <!-- disable body scroll which navbar is in active -->
 <!--/MENU-JS-->
 
-<script src="frontend/assets/js/bootstrap.min.js"></script>
+<script src="client/assets/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="frontend/assets/js/sign-in.js"></script>
+<script type="text/javascript" src="client/assets/js/sign-in.js"></script>
 <style>
     .container_signup_signin {
         width: 400px; /* Giảm chiều rộng, bạn có thể điều chỉnh giá trị này */

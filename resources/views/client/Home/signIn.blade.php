@@ -23,7 +23,7 @@
     <!--/nav-->
     <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
         <div class="container">
-            <h1><a class="navbar-brand" href="index.html">
+            <h1><a class="navbar-brand" href="{{route('home.index')}}">
                     <img src="https://img.icons8.com/?size=100&id=f37TKteMvQFo&format=png&color=000000"
                          alt="Five Star " style="height:40px;">
                     <h1 data-text="Five Star" class="text0">

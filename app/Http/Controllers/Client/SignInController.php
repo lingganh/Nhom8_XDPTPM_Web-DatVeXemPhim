@@ -39,9 +39,17 @@ class SignInController
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            Auth::login($user);
-            session(['user_id' => $user->id]);
-            return redirect()->route('home.index')->with('success', 'Đăng Nhập Thành Công');
+
+            if($user->otp != null) {
+               // session(['otp_email' => $user->email]);
+                return redirect()->route('verify-otp')->with('warning', 'Tài khoản của bạn cần được xác thực. Vui lòng nhập mã OTP đã được gửi đến email của bạn.');
+            }
+            else{
+                Auth::login($user);
+                session(['user_id' => $user->id]);
+                return redirect()->route('home.index')->with('success', 'Đăng Nhập Thành  Công');
+            }
+
         } else {
             return redirect()->route('signin.index')->with('error', 'Email hoặc mật khẩu không chính xác !');
         }
@@ -66,27 +74,13 @@ class SignInController
             'otp_expires_at' =>  $otpExpiresAt,
         ]);
 
-        $brevoApiKey = "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";
-        $senderEmail = "885fae005@smtp-brevo.com";
+        $subject = 'Mã Kích Hoạt';
+        $messageContent = "<h1> Mã xác thực của bạn : {$otp} </h1>";
 
-        $response = Http::withHeaders([
-            'accept' => 'application/json',
-            'api-key' => $brevoApiKey,
-            'content-type' => 'application/json',
-        ])->post('https://api.brevo.com/v3/smtp/email', [
-            'sender' => ['name' => 'FIVE star cinema ', 'email' => $senderEmail],
-            'to' => [
-                ['email' => $user->email, 'name' => $user->name]
-            ],
-            'subject' => 'Ma Kich Hoat',
-            'htmlContent' => "<h1> Mã xác thực của bạn : {$otp} </h1>",
-        ]);
-
-        if ($response->failed()) {
-            // Ghi log lỗi nếu gửi không thành công
-            Log::error('Email gửi OTP thất bại', $response->json());
-            return back()->withErrors(['email' => 'Không thể gửi email xác thực. Vui lòng thử lại sau.']);
-        }
+        \Mail::raw($messageContent, function ($message) use ($user, $subject) {
+            $message->to($user->email, $user->name)
+                ->subject($subject);
+        });
 
         session(['otp_email' => $user->email]);
         return redirect()->route('verify-otp')->with('success', "Mã OTP đã được gửi đến email của bạn. Vui lòng kiểm tra email");
@@ -151,26 +145,16 @@ class SignInController
             'otp_expires_at' => $newOtpExpiresAt,
         ]);
 
-        $brevoApiKey = "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";
-        $senderEmail = "885fae005@smtp-brevo.com";
 
-        $response = Http::withHeaders([
-            'accept' => 'application/json',
-            'api-key' => $brevoApiKey,
-            'content-type' => 'application/json',
-               ])->post('https://api.brevo.com/v3/smtp/email', [
-            'sender' => ['name' => 'FIVE star cinema ', 'email' => $senderEmail],
-            'to' => [
-                ['email' => $user->email, 'name' => $user->name]
-            ],
-            'subject' => 'Ma OTP MOI ',
-            'htmlContent' => "<h1> Mã xác thực MỚI của bạn : {$newOtp} </h1>",
-        ]);
+            $messageContent = "<h1> Mã xác thực MỚI của bạn : {$newOtp} </h1>";
+            $mail=$user->email;
 
-        if ($response->failed()) {
-            Log::error('Gửi OTP thất bại', $response->json());
-            return back()->withErrors(['email' => 'Không thể gửi email xác thực. Vui lòng thử lại sau.']);
-        }
+            \Mail::raw($messageContent, function ($message)  use ($mail) {
+
+                $message->to($mail)
+                    ->subject('Mã OTP MỚI');
+            });
+
         session(['otp_email' => $user->email]);
 
         return back()->with('success', "Mã OTP mới đã được gửi đến email của bạn. Vui lòng kiểm tra email");

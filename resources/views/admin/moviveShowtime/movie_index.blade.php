@@ -1,4 +1,4 @@
-@extends('client.app')
+@extends( 'layouts.app')
 @section('content')
     <!-- Modal Trailer -->
     <div id="trailerModal" class="movie-trailer-modal">

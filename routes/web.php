@@ -14,6 +14,7 @@ use App\{Http\Controllers\Admin,
     Http\Middleware\SignInMiddleware,
     Livewire\Homepage,
     Livewire\QrCodePayment,
+    Livewire\ShowSeats,
     Livewire\UserProfile};
 
 use App\Http\Controllers\Admin\RevenueController;
@@ -121,7 +122,7 @@ Route::get('logoutuser', [SignInController:: class, 'logout'])->name('logout.use
 Route::get('/test-email', function () {
     $details = ['message' => 'Email test từ Laravel'];
     \Mail::raw($details['message'], function ($message) {
-        $message->to('dieulinh120411@gmail.com')
+        $message->to('dueling0809@gmail.com')
             ->subject('Test Email');
     });
     return 'Đã gửi email thành công!';
@@ -134,8 +135,8 @@ Route::get('/fpass', [forgotpassword::class, 'index'])->name('fpass');
 
 Route::middleware([SignInMiddleware::class])->group(function () {
     Route::get('/dat-ve/{phim_id}/chon-lich-chieu', [BookingController::class, 'showShowtimes'])->name('booking.showtimes');
-    Route::get('/dat-ve/{lich_chieu_id}/chon-ghe', [BookingController::class, 'showSeats'])->name('booking.seats');
-    Route::post('/dat-ve/xac-nhan-ghe', [BookingController::class, 'processSeatSelection'])->name('booking.confirm-seats');
+    Route::get('/dat-ve/{lich_chieu_id}/chon-ghe',  ShowSeats::class)->name('booking.seats');
+    //Route::post('/dat-ve/xac-nhan-ghe', ShowSeats::class)->name('booking.confirm-seats');
     Route::get('/booking/select-food', [BookingController::class, 'showSelectFood'])->name('booking.select-food');
     Route::match(['get', 'post'],'/checkout', QrCodePayment::class)->name('booking.confirm');
 

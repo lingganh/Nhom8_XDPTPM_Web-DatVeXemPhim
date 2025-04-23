@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Livewire\Component;
-
+use Illuminate\Support\Facades\Mail;
 class PaymentSuccess extends Component
 {
     public $hoaDon;
@@ -52,18 +52,22 @@ class PaymentSuccess extends Component
                 'trang_thai' => 'Đã thanh toán',
                 'giaVe' => 75000,
             ]);
+            $veArray[] = [
+                'tenPhim' => $lichChieu->phim->tenPhim,
+                'tenPhong' => $ve->phongchieu->ten_phong,
+                'gioBD' => $lichChieu->gioBD,
+                'ghe' => $ve->idG,
+                'maVe' => $ve->ticket_code,
+            ];
+
             $this->tickets[] = $ve;
 
-            // Thêm thông tin vé vào chuỗi
-            $ticketDetails .= "<p>Phim: " . $lichChieu->phim->tenPhim . ", ";
-            $ticketDetails .= "Phòng Chiếu: " . $ve->phongchieu->ten_phong . ", ";
-            $ticketDetails .= "Thời Gian: " . $lichChieu->gioBD . ", ";
-            $ticketDetails .= "Ghế: " . $ve->idG . ", ";
-            $ticketDetails .= "Mã Vé: " . $ve->ticket_code . "</p>";
+
         }
 
         // Lưu thông tin vào bảng ct_hoa_don
         if ($selectedFood) {
+            $foodDetails = [];
             foreach ($selectedFood as $productId => $quantity) {
                 $sanPham = SanPham::findOrFail($productId);
                 CT_HoaDon::create([
@@ -72,25 +76,29 @@ class PaymentSuccess extends Component
                     'SL' => $quantity,
                     'donGia' => $sanPham->donGia,
                 ]);
+                $foodDetails[] = [
+                    'tenSP' => $sanPham->tenSP,
+                    'soLuong' => $quantity,
+                    'donGia' => $sanPham->donGia,
+                    'thanhTien' => $quantity * $sanPham->donGia,
+                ];
             }
+        }else{
+            $foodDetails = [];
         }
-        $brevoApiKey = "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";
-        $senderEmail = "885fae005@smtp-brevo.com";
         $user = Auth::user();
-        $email=$user->email;
-        Http::withHeaders([
-            'accept' => 'application/json',
-            'api-key' => $brevoApiKey,
-            'content-type' => 'application/json',
-        ])->post('https://api.brevo.com/v3/smtp/email', [
-            'sender' => ['name' => 'FIVE star cinema ', 'email' => $senderEmail],
-            'to' => [
-                ['email' =>  $email]
-            ],
-            'subject' => 'Vé của bạn - From FIVE STAR WITH LOVE  ',
-            'htmlContent' => "<h1> Thông Tin vé của bạn </h1>" . $ticketDetails . "<a>Cảm ơn bạn !</a>",
-        ]);
-        // Mail::to(auth()->user()->email)->send(new OrderConfirmation($this->hoaDon, $this->tickets));
+        $subject = 'Xác Nhận Đặt Vé Xem Phim Thành Công!';
+        $messageContent = view('emails.thong_tin_dat_ve', [
+            'hoaDon' => $this->hoaDon,
+            'veArray' => $veArray,
+            'foodDetails' => $foodDetails,
+            'tongTien' => $tongTien,
+        ])->render();
+
+        Mail::raw($messageContent, function ($message) use ($user, $subject) {
+            $message->to($user->email, $user->name)
+                ->subject($subject);
+        });
         session()->forget(['lich_chieu_id', 'selected_seats', 'selected_food', 'total_seat_price', 'giaHD', 'vnp_TxnRef']);
     }
 
