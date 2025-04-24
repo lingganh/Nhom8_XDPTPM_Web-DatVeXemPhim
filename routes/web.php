@@ -23,8 +23,8 @@ use App\Http\Controllers\Client\moviesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Backend\movieShowtimeController;
-use App\Http\Controllers\Frontend\AboutUsController;
+use App\Http\Controllers\Admin\movieShowtimeController;
+use App\Http\Controllers\Client\AboutUsController;
 
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about');
 

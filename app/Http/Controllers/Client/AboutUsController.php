@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 class AboutUsController extends Controller
 {
     public function index()
     {
-        return view('frontend.about');
+        return view('Client.about');
     }
 
 }

@@ -1,4 +1,4 @@
-@extends('frontend.app')
+@extends('client.app')
 
 @section('title', 'Về chúng tôi - Five Star Cinema')
 
