@@ -2,29 +2,28 @@
 
 namespace App\Livewire;
 
-use AllowDynamicProperties;
 use App\Models\Ghe;
 use App\Models\LichChieu;
 use App\Models\Ve;
 use Livewire\Component;
 
- class ShowSeats extends Component
+class ShowSeats extends Component
 {
     public $lichChieuId;
-    public $lichChieu;
+    public LichChieu $lichChieu;
     public $phongChieu;
-    public $gheDaDat = [];
-    public $allSeats   ;
-    public $selectedSeats = [];
+    public array $gheDaDat = [];
+    public $allSeats;
+    public array $selectedSeats = [];
 
-    public function mount($lich_chieu_id)
+    public function mount(int $lich_chieu_id): void
     {
         $this->lichChieuId = $lich_chieu_id;
         $this->loadSeatData();
         $this->selectedSeats = session('selected_seats', []);
     }
 
-    public function loadSeatData()
+    public function loadSeatData(): void
     {
         $this->lichChieu = LichChieu::findOrFail($this->lichChieuId);
         $this->phongChieu = $this->lichChieu->phongChieu;
@@ -32,12 +31,12 @@ use Livewire\Component;
         $this->allSeats = Ghe::where('PC_id', $this->phongChieu->PC_id)->get();
     }
 
-     public function processSeatSelection($selectedSeatsFromJs)
+    public function processSeatSelection(array $selectedSeatsFromJs): \Illuminate\Http\RedirectResponse
     {
-         session(['lich_chieu_id' => $this->lichChieuId]);
+        session(['lich_chieu_id' => $this->lichChieuId]);
         session(['selected_seats' => $selectedSeatsFromJs]);
 
-         return redirect()->route('booking.select-food');
+        return redirect()->route('booking.select-food');
     }
 
     public function render()

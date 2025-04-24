@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Xác Nhận Đặt Vé Xem Phim</title>
+    <title>Vé Xem Phim của bạn nè</title>
 </head>
 <body>
-<h1>Chúc mừng bạn đã đặt vé thành công!</h1>
+<h1>Bạn đã đặt vé thành công!</h1>
 
-<h2>Thông tin hóa đơn:</h2>
-<p>Mã hóa đơn: {{ $hoaDon->idHD }}</p>
+<h2> Hóa đơn:</h2>
 <p>Ngày xuất: {{ $hoaDon->NgayXuat }}</p>
 <p>Tổng tiền: {{ number_format($tongTien) }} VNĐ</p>
 

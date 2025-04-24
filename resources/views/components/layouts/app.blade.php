@@ -2,8 +2,8 @@
 <html lang="zxx">
 <head>
     <title>Five Star</title>
-    @include('client.layout.component.head')
-    @livewireStyles
+    @livewireStyles    @include('client.layout.component.head')
+
 
     @livewireScripts
     @include('client.layout.component.script')

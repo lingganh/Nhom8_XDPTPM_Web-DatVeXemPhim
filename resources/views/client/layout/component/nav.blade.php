@@ -78,6 +78,6 @@
     <!--/nav-->
 </header>
 
-<script src="frontend/assets/js/theme-change.js"></script>
-<script src="frontend/assets/js/owl.carousel.js"></script>
+<script src="client/assets/js/theme-change.js"></script>
+<script src="client/assets/js/owl.carousel.js"></script>
 
