@@ -62,7 +62,7 @@
                                 <h6>Bản Tin</h6>
                                 <form action="#" class="subscribe mb-3" method="post">
                                     <input type="email" name="email" placeholder="Địa chỉ Email của bạn" required="">
-                                    <button><span class="fa fa-envelope-o"></span></button>
+                                    <button><span><i class="fa fa-envelope-o"></i></span></button>
                                 </form>
                                 <p>Nhập email của bạn và nhận tin tức mới nhất, cập nhật và ưu đãi đặc biệt từ chúng tôi.
                                 </p>
@@ -80,15 +80,10 @@
                     </div>
 
                     <ul class="social text-lg-right">
-                        <li><a href="#facebook"><span class="fa fa-facebook" aria-hidden="true"></span></a>
-                        </li>
-                        <li><a href="#linkedin"><span class="fa fa-linkedin" aria-hidden="true"></span></a>
-                        </li>
-                        <li><a href="#twitter"><span class="fa fa-twitter" aria-hidden="true"></span></a>
-                        </li>
-                        <li><a href="#google"><span class="fa fa-google-plus" aria-hidden="true"></span></a>
-                        </li>
-
+                        <li><a href="#facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#google"><i class="fab fa-google-plus-g"></i></a></li>
                     </ul>
                 </div>
             </div>
