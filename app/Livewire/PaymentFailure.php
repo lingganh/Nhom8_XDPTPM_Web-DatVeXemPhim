@@ -8,6 +8,6 @@ class PaymentFailure extends Component
 {
     public function render()
     {
-        return view('livewire.payment-failure');
+        return view('livewire.homepage');
     }
 }

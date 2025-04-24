@@ -47,8 +47,9 @@
     <hr>
 
     <h4>Thanh Toán</h4>
-    <form wire:submit.prevent="vnpay_payment">
+    <form wire:submit.prevent="vnpay_payment" >
         @csrf
+
         <button type="submit" class="btn btn-success" style="margin-left: 270px"  >Thanh toán VNPAY</button>
     </form>
 </div>

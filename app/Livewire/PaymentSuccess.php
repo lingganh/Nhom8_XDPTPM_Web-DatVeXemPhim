@@ -5,12 +5,13 @@ namespace App\Livewire;
 use App\Models\HoaDon;
 use App\Models\LichChieu;
 use App\Models\Ve;
-use App\Models\SanPham; // Import model SanPham
-use App\Models\CT_HoaDon; // Import model CT_HoaDon
-use Illuminate\Support\Facades\Mail;
+use App\Models\SanPham;
+use App\Models\CT_HoaDon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Livewire\Component;
-
+use Illuminate\Support\Facades\Mail;
 class PaymentSuccess extends Component
 {
     public $hoaDon;
@@ -26,7 +27,7 @@ class PaymentSuccess extends Component
         $selectedFood = session('selected_food');
 
         // Tạo hóa đơn
-        $idHD=rand(66,10000);
+        $idHD = rand(66, 10000);
         $this->hoaDon = HoaDon::create([
             'idHD' => $idHD,
             'idKH' => $customerId,
@@ -37,24 +38,36 @@ class PaymentSuccess extends Component
         $lichChieu = LichChieu::findOrFail($lichChieuId);
         $phongChieuId = $lichChieu->PC_id;
 
+        $ticketDetails = ''; // Khởi tạo chuỗi để chứa thông tin vé
+
         foreach ($selectedSeats as $seatId) {
             $ticketCode = Str::random(10);
             $ve = Ve::create([
-                'idHD' =>$idHD,
+                'idHD' => $idHD,
                 'idLC' => $lichChieuId,
                 'PC_id' => $phongChieuId,
                 'idG' => $seatId,
                 'ticket_code' => $ticketCode,
                 'user_id' => $customerId,
-                'trang_thai' =>'Đã thanh toán',
-                'giaVe' =>  75000 ,
-
+                'trang_thai' => 'Đã thanh toán',
+                'giaVe' => 75000,
             ]);
+            $veArray[] = [
+                'tenPhim' => $lichChieu->phim->tenPhim,
+                'tenPhong' => $ve->phongchieu->ten_phong,
+                'gioBD' => $lichChieu->gioBD,
+                'ghe' => $ve->idG,
+                'maVe' => $ve->ticket_code,
+            ];
+
             $this->tickets[] = $ve;
+
+
         }
 
         // Lưu thông tin vào bảng ct_hoa_don
         if ($selectedFood) {
+            $foodDetails = [];
             foreach ($selectedFood as $productId => $quantity) {
                 $sanPham = SanPham::findOrFail($productId);
                 CT_HoaDon::create([
@@ -63,10 +76,29 @@ class PaymentSuccess extends Component
                     'SL' => $quantity,
                     'donGia' => $sanPham->donGia,
                 ]);
+                $foodDetails[] = [
+                    'tenSP' => $sanPham->tenSP,
+                    'soLuong' => $quantity,
+                    'donGia' => $sanPham->donGia,
+                    'thanhTien' => $quantity * $sanPham->donGia,
+                ];
             }
+        }else{
+            $foodDetails = [];
         }
+        $user = Auth::user();
+        $subject = 'Xác Nhận Đặt Vé Xem Phim Thành Công!';
+        $messageContent = view('emails.thong_tin_dat_ve', [
+            'hoaDon' => $this->hoaDon,
+            'veArray' => $veArray,
+            'foodDetails' => $foodDetails,
+            'tongTien' => $tongTien,
+        ])->render();
 
-       // Mail::to(auth()->user()->email)->send(new OrderConfirmation($this->hoaDon, $this->tickets));
+        Mail::raw($messageContent, function ($message) use ($user, $subject) {
+            $message->to($user->email, $user->name)
+                ->subject($subject);
+        });
         session()->forget(['lich_chieu_id', 'selected_seats', 'selected_food', 'total_seat_price', 'giaHD', 'vnp_TxnRef']);
     }
 

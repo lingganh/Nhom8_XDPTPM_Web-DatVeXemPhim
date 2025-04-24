@@ -66,8 +66,8 @@ class QrCodePayment extends Component
         return redirect()->away($vnp_Url);
     }
     public function render (Request $request){
-//mảng món ăn
-        $selectedFood = $request->input('food');
+        //mảng món ăn
+        $selectedFood = $request->input('food', []);
         //dd($selectedFood);
         $lichChieuId = session('lich_chieu_id');
         $selectedSeats = session('selected_seats');

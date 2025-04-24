@@ -9,5 +9,6 @@ class PhongChieu extends Model
 {
     use HasFactory;
     protected $table = 'phong_chieu';
+    protected $primaryKey = 'PC_id';
 
 }
