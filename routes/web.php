@@ -21,6 +21,9 @@ use App\Http\Controllers\Frontend\moviesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\movieShowtimeController;
+use App\Http\Controllers\Frontend\AboutUsController;
+
+Route::get('/about-us', [AboutUsController::class, 'index'])->name('about');
 
 Route::prefix('backend')->name('backend.')->group(function () {
     Route::get('/moviveShowtime', [movieShowtimeController::class, 'index'])->name('moviveShowtime.index');

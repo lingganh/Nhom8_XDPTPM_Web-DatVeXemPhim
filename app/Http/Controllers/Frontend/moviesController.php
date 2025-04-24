@@ -25,6 +25,12 @@ class moviesController extends Controller
         $today = Carbon::today();
         $endDate = $today->copy()->addDays(6);
 
+        //dd([
+           // 'Today' => $today->toDateString(),
+            //'EndDate' => $endDate->toDateString(),
+         //   'All Lịch Chiếu' => $film->lichChieu->pluck('ngayChieu'),
+        //]);
+
         // Lấy lịch chiếu trong 7 ngày
         $lichChieuTrong7Ngay = $film->lichChieu->filter(function ($lich) use ($today, $endDate) {
             $ngay = Carbon::parse($lich->ngayChieu);

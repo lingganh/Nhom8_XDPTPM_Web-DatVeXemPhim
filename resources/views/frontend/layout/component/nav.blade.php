@@ -26,7 +26,7 @@
                         <a class="nav-link" href="{{route('user.movieIndex')}}">Phim</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Về Chúng Tôi</a>
+                        <a class="nav-link" href="{{ route('about') }}">Về Chúng Tôi</a>
                     </li>
 
 
