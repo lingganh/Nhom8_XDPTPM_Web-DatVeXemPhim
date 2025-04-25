@@ -20,7 +20,7 @@ class CheckRole
         if (Auth::check() && Auth::user()->role == 2) {
             return redirect()->route('usergroup.index')->with('error', 'Bạn không có quyền này , nếu cần phân quyền hãy liên hệ với superAdmin!');
         }
-
+        return $next($request);
 
     }
 }
