@@ -12,5 +12,6 @@ class Comment extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
+
     protected $fillable = ['name', 'email', 'phone', 'message','created_at','updated_at'];
 }

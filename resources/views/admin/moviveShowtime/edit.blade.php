@@ -1,7 +1,7 @@
 @extends('admin.dashboard.layout')
 
 @section('content')
-    <div class="wrapper">
+    <div class="wrapper mt-4">
         <h2>Sửa Lịch Chiếu</h2>
 
         <form action="{{ route('admin.moviveShowtime.update', $lich->idLC) }}" method="POST">
@@ -14,6 +14,17 @@
                     @foreach($phims as $phim)
                         <option value="{{ $phim->M_id }}" {{ $phim->M_id == $lich->M_id ? 'selected' : '' }}>
                             {{ $phim->tenPhim }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label>Chọn phòng chiếu</label>
+                <select name="PC_id" class="form-control" required>
+                    @foreach($phongs as $phong)
+                        <option value="{{ $phong->PC_id }}" {{ $phong->PC_id == $lich->PC_id ? 'selected' : '' }}>
+                            {{ $phong->ten_phong }}
                         </option>
                     @endforeach
                 </select>

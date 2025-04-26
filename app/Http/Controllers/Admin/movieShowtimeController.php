@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Carbon\Carbon;
 use App\Models\Film;
 use Illuminate\Http\Request;
 use App\Models\LichChieu;
+use App\Models\PhongChieu;
+use Illuminate\Pagination\LengthAwarePaginator;
 class movieShowtimeController
 {
 
@@ -13,16 +15,76 @@ class movieShowtimeController
 
     }
 
-    public function index(){
-        $lichchieu = LichChieu::with('phim')->orderBy('ngayChieu', 'desc')->paginate(10);
-        return view('admin.moviveShowtime.index', compact('lichchieu'));
+    public function index(Request $request)
+    {
+        $now = \Carbon\Carbon::now();
 
+        $query = LichChieu::with(['phim', 'phongChieu'])->orderBy('ngayChieu', 'desc');
 
+        // Lọc theo tên phim
+        if ($request->filled('keyword')) {
+            $query->whereHas('phim', function ($q) use ($request) {
+                $q->where('tenPhim', 'like', '%' . $request->keyword . '%');
+            });
+        }
+
+        // Lọc theo ngày chiếu
+        if ($request->filled('ngayChieu')) {
+            $query->whereDate('ngayChieu', $request->ngayChieu);
+        }
+
+        // Lọc theo phòng chiếu
+        if ($request->filled('phong')) {
+            $query->where('PC_id', $request->phong);
+        }
+
+        $lichchieu = $query->get();
+
+        // Gán trạng thái cho mỗi lịch chiếu
+        $lichchieu->transform(function ($lich) use ($now) {
+            $start = \Carbon\Carbon::parse($lich->gioBD);
+            $end = $start->copy()->addMinutes($lich->thoiLuong);
+
+            if ($now->lt($start)) {
+                $lich->phan_loai = 'Sắp chiếu';
+            } elseif ($now->between($start, $end)) {
+                $lich->phan_loai = 'Đang chiếu';
+            } else {
+                $lich->phan_loai = 'Đã chiếu';
+            }
+
+            return $lich;
+        });
+
+        // Lọc theo trạng thái sau khi đã gán
+        if ($request->filled('trangThai')) {
+            $lichchieu = $lichchieu->filter(function ($lich) use ($request) {
+                return $lich->phan_loai == $request->trangThai;
+            });
+        }
+
+        // Phân trang thủ công nếu dùng collection sau filter
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $perPage = 10;
+        $paged = new \Illuminate\Pagination\LengthAwarePaginator(
+            $lichchieu->forPage($currentPage, $perPage),
+            $lichchieu->count(),
+            $perPage,
+            $currentPage,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
+
+        return view('admin.moviveShowtime.index', ['lichchieu' => $paged]);
     }
+
+
+
     public function create()
     {
         $phims = Film::all(['M_id', 'tenPhim', 'thoiLuong']);
-        return view('admin.moviveShowtime.create', compact('phims'));
+        $phongs = PhongChieu::all(['PC_id', 'ten_phong']);
+        return view('admin.moviveShowtime.create', compact('phims', 'phongs'));
+
 
     }
     public function store(Request $request)
@@ -32,6 +94,12 @@ class movieShowtimeController
             'ngayChieu' => 'required|date',
             'gioBD' => 'required|date_format:H:i',
             //'thoiLuong' => 'required|integer|min:1'
+        ]);
+        LichChieu::create([
+            'M_id' => $request->M_id,
+            'PC_id' => $request->PC_id,
+            'ngayChieu' => $request->ngayChieu,
+            'gioBD' => $request->gioBD,
         ]);
 
         LichChieu::create([
@@ -58,7 +126,8 @@ class movieShowtimeController
     {
         $lich = LichChieu::findOrFail($idLC);
         $phims = Film::all(['M_id', 'tenPhim']);
-        return view('admin.moviveShowtime.edit', compact('lich', 'phims'));
+        $phongs = PhongChieu::all(['PC_id', 'ten_phong']);
+        return view('admin.moviveShowtime.edit', compact('lich', 'phims', 'phongs'));
     }
 
     public function update(Request $request, $idLC)
