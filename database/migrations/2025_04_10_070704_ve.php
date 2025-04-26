@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Foreign key cho bảng users
             $table->foreignId('idLC') ;
 
-            $table->string('PC_id'); // Foreign key cho bảng phòng chiếu (kiểu dữ liệu phải khớp với bảng ghe)
-            $table->string('idG'); // Foreign key cho bảng ghế (kiểu dữ liệu phải khớp với bảng ghe)
+            $table->integer('PC_id'); // SỬA THÀNH INTEGER ĐỂ KHỚP VỚI BẢNG GHE
+            $table->string('idG');
             $table->decimal('giaVe')->nullable();
             $table->string('trangThai')->nullable();
 
@@ -30,8 +30,6 @@ return new class extends Migration
             $table->string('ticket_code')->nullable();
 
         });
-
-
     }
 
     /**

@@ -61,7 +61,7 @@
             <h1>Đăng Ký</h1>
 
             @csrf
-            <input name="name" type="text" placeholder="Tên " />
+            <input name="name" type="text" placeholder="Tên của bạn " />
             <input name="email" type="email" placeholder="Email" />
             <input name="password" type="password" placeholder="Password" />
             <input name="password_confirmation" type="password" placeholder="Confirmation Password" />

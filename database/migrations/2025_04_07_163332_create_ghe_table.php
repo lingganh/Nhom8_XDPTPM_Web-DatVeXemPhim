@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ghe', function (Blueprint $table) {
-            $table->string('PC_id');
-            $table->string('idG');
+            $table->integer('PC_id');            $table->string('idG');
             $table->string('status')->nullable();
 
             $table->primary(['idG', 'PC_id']);

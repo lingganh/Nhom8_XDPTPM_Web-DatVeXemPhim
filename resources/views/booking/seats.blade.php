@@ -65,7 +65,7 @@
                 </div>
                 <div class="legend">
                     <div class="legend-item">
-                        <div class="legend-color" style="background-color: #fff;"></div>
+                        <div class="legend-color" style="background-color: #efe8e8;"></div>
                         <span>Ghế trống</span>
                     </div>
                     <div class="legend-item">
