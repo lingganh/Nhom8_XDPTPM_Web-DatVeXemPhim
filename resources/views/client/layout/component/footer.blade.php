@@ -28,36 +28,32 @@
                             <div class="col-md-3 col-sm-6 sub-two-right mt-5">
                                 <h6>Phim</h6>
                                 <ul>
-                                    <li><a href="#">Phim</a></li>
-                                    <li><a href="#">Băng Hình</a></li>
-                                    <li><a href="#">Phim Tiếng Anh</a></li>
-                                    <li><a href="#">Tailor</a></li>
-                                    <li><a href="#">Phim Sắp Chiếu</a></li>
-                                    <li><a href="Contact_Us.html">Liên Hệ chúng tôi</a></li>
+                                    <li><a href="{{route('user.movieIndex')}}">Phim</a></li>
+                                    <li><a href="{{ route('comments_web.index') }}">Liên Hệ chúng tôi</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-3 col-sm-6 sub-two-right mt-5">
                                 <h6>thông tin</h6>
                                 <ul>
                                     <li><a href="/"> Trang Chủ </a> </li>
-                                    <li><a href="/">Quay Lại</a> </li>
-                                    <li><a href="{{ route('user.movieIndex') }}">Phim</a> </li>
-                                    <li><a href="#">Blogs</a> </li>
+                                    <li><a href="{{route('user.movieIndex')}}">Phim</a> </li>
+                                    <li><a href="{{ route('about') }}">Blogs</a> </li>
                                     <li><a href="{{ route('signin.index') }}">Đăng Nhập </a></li>
-                                    <li><a href="{{ route('comments_web.index') }}">Liên Hệ </a></li>
+
                                 </ul>
                             </div>
                             <div class="col-md-3 col-sm-6 sub-two-right mt-5">
-                                <h6>Các hãng phim</h6>
+                                <h6>Chấp nhận thanh toán </h6>
                                 <ul>
-                                    <li><a href="movies.html">Pháp</a></li>
-                                    <li><a href="movies.html">Vương Quốc Anh</a></li>
-                                    <li><a href="movies.html">Áo </a></li>
-                                    <li><a href="movies.html">Trung Quốc </a></li>
-                                    <li><a href="movies.html">Hàn Quốc</a></li>
-                                    <li><a href="movies.html">Nhật Bản</a></li>
+                                    <li><a href="/"> Trang Chủ </a> </li>
+                                    <li><a href="{{route('user.movieIndex')}}">Phim</a> </li>
+                                    <li><a href="{{ route('about') }}">Blogs</a> </li>
+                                    <li><a href="{{ route('signin.index') }}">Đăng Nhập </a></li>
+
                                 </ul>
                             </div>
+
+
                             <div class="col-md-3 col-sm-6 sub-two-right mt-5">
                                 <h6>Bản Tin</h6>
                                 <form action="#" class="subscribe mb-3" method="post">

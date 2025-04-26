@@ -28,7 +28,15 @@
                 <label for="thoiLuong" class="form-label">Thời lượng (phút)</label>
                 <input type="number" name="thoiLuong" id="thoiLuong" class="form-control" readonly>
             </div>
-
+            <div class="form-group">
+                <label for="PC_id">Phòng chiếu</label>
+                <select name="PC_id" class="form-control" required>
+                    <option value="">-- Chọn phòng chiếu --</option>
+                    @foreach($phongs as $phong)
+                        <option value="{{ $phong->PC_id }}">{{ $phong->ten_phong }}</option>
+                    @endforeach
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Lưu</button>
             <a href="{{ route('admin.moviveShowtime.index') }}" class="btn btn-secondary">Quay lại</a>
         </form>
