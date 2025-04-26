@@ -44,19 +44,20 @@
                                 </ul>
                             </div>
                             <div class="col-md-3 col-sm-6 sub-two-right mt-5 text-white">
-                                <h6>Chấp nhận thanh toán</h6>
+                                <h6>Thanh toán</h6>
                                 <ul class="list-unstyled payment-icons">
-                                    <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJgM8gqqd2SheNICowBUdQvqvdbOLEucY9lw&s" alt="Visa" /></li>
-                                    <li><img src="https://cdn-media.sforum.vn/storage/app/media/ctvseo_phung/khong-lien-ket-duoc-vi-shopeepay/khong-lien-ket-duoc-vi-shopeepay-thumbnail.jpg" alt="ShopeePay" /></li>
-                                    <li><img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-VNPAY-QR-1.png" alt="VNPay" /></li>
-                                    <li><img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="MoMo" /></li>
-                                </ul>
+                                    <ul style="font-size:50px ;">
+                                        <i class="fab fa-cc-visa footer-icon"></i><br>
+                                        <i class="fab fa-cc-mastercard footer-icon"></i><br>
+                                        <i class="fab fa-cc-paypal footer-icon"></i> </ul>
+
+                                 </ul>
                             </div>
 
                             <div class="col-md-3 col-sm-6 sub-two-right mt-5">
                                 <h6>Liên hệ với chúng tôi </h6>
                                 <ul>
-                                    <li><a href="{{ route('comments_web.index') }}">Góp ý </a></li>
+                                    <li><a href="{{ route('comments_web.index') }}"> Liên Hệ </a></li>
                                 </ul>
                             </div>
 
