@@ -13,8 +13,7 @@
         {
             Schema::create('lich_chieu', function (Blueprint $table) {
                 $table->id('idLC')->primary();
-                $table->string('PC_id');
-                $table->unsignedInteger('M_id')->nullable();
+                $table->unsignedBigInteger('PC_id')->nullable();                 $table->unsignedInteger('M_id')->nullable();
                 $table->date('ngayChieu')->nullable();
                 $table->dateTime('gioBD')->nullable();
                 $table->integer('thoiLuong')->nullable();

@@ -67,7 +67,7 @@
 
             <input name="email" type="email" placeholder="Email" />
             <input name="password" type="password" placeholder="Mật Khẩu" />
-            <a href="#">Quên mật khẩu?</a>
+            <a href="{{ route('password.request.form') }}">Quên mật khẩu?</a>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>

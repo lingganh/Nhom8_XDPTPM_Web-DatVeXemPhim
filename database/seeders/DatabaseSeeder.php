@@ -79,17 +79,17 @@ class   DatabaseSeeder extends Seeder
         // Gọi các Seeder khác
         $this->call([
 
-            CTHoaDonSeeder::class,
-             GheSeeder::class,
+
+
             HoaDonSeeder::class,
             StatisticSeeder::class,
             SanPhamSeeder::class,
             PhimSeeder::class,
-
             PhongChieuSeeder::class,
-
+            GheSeeder::class,
 
             LichChieuSeeder::class,
+            CTHoaDonSeeder::class,
 
             VeTableSeeder::class,
 

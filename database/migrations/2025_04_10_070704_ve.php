@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Foreign key cho bảng users
             $table->foreignId('idLC') ;
 
-            $table->integer('PC_id'); // SỬA THÀNH INTEGER ĐỂ KHỚP VỚI BẢNG GHE
+            $table->unsignedBigInteger('PC_id');
             $table->string('idG');
             $table->decimal('giaVe')->nullable();
             $table->string('trangThai')->nullable();

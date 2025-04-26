@@ -120,13 +120,16 @@ Route::post('/register',  [SignInController::class, 'register']);
 Route::get('/verify-otp', [SignInController::class, 'showVerifyForm'])->name('verify-otp');
 Route::post('/verify', [SignInController::class, 'verifyOtp'])->name('verify');
 Route::post('/resend-otp',  [SignInController::class, 'resendOtp'])->name('resend-otp');
-
+Route::get('/forgot-password', [SignInController::class, 'showForgotPasswordForm'])->name('password.request.form');
+Route::post('/forgot-password', [SignInController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('/reset-password/{token}/{email}', [SignInController::class, 'showResetPasswordForm'])->name('password.reset.form');
+Route::post('/reset-password', [SignInController::class, 'resetPassword'])->name('password.update');
 Route::get('logoutuser', [SignInController:: class, 'logout'])->name('logout.user');
 //Test
 Route::get('/test-email', function () {
     $details = ['message' => 'Email test từ Laravel'];
     \Mail::raw($details['message'], function ($message) {
-        $message->to('dueling0809@gmail.com')
+        $message->to('dieulinh120411@gmail.com')
             ->subject('Test Email');
     });
     return 'Đã gửi email thành công!';

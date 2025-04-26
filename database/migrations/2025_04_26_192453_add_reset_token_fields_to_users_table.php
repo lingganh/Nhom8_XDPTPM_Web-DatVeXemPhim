@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ghe', function (Blueprint $table) {
-            $table->unsignedBigInteger('PC_id');
-            $table->string('idG');
-            $table->string('status')->nullable();
-
-            $table->primary(['idG', 'PC_id']);
+        Schema::table('users', function (Blueprint $table) {
+            //
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ghe');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

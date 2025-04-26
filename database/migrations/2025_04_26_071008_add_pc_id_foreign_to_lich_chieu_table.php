@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ghe', function (Blueprint $table) {
-            $table->unsignedBigInteger('PC_id');
-            $table->string('idG');
-            $table->string('status')->nullable();
-
-            $table->primary(['idG', 'PC_id']);
+        Schema::table('lich_chieu', function (Blueprint $table) {
+            $table->foreign('PC_id')
+                ->references('PC_id')
+                ->on('phong_chieu')
+                ->onDelete('set null');
         });
     }
 
@@ -25,6 +24,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ghe');
+        Schema::table('lich_chieu', function (Blueprint $table) {
+            $table->dropForeign(['PC_id']);
+        });
     }
 };
