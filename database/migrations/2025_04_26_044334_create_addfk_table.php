@@ -24,7 +24,7 @@ return new class extends Migration
         Schema::create('ghe', function (Blueprint $table) {
 
             $table->foreign('PC_id')->references('PC_id')->on('phong_chieu')->onDelete('cascade');
-         });
+        });
         Schema::create('ct_hoa_don', function (Blueprint $table) {
 
             $table->foreign('idHD')->references('idHD')->on('hoa_don')->onDelete('cascade');

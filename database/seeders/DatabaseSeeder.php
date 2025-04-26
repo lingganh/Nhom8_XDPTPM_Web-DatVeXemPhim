@@ -80,8 +80,7 @@ class   DatabaseSeeder extends Seeder
         $this->call([
 
             CTHoaDonSeeder::class,
-            CTPhieuNhapSeeder::class,
-            GheSeeder::class,
+             GheSeeder::class,
             HoaDonSeeder::class,
             StatisticSeeder::class,
             SanPhamSeeder::class,

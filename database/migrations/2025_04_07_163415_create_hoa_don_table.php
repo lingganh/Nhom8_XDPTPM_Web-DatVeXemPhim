@@ -17,6 +17,8 @@ return new class extends Migration
             $table->decimal('tongTien')->nullable();
             $table->dateTime('NgayXuat')->nullable();
         });
+
+
     }
 
     /**
@@ -25,5 +27,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('hoa_don');
+
     }
 };
