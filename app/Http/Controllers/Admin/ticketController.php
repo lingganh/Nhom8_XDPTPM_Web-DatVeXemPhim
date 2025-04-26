@@ -30,9 +30,10 @@ class ticketController
                 })
                 ->orWhereHas('lichChieu.phim', function ($q) use ($query) {
                     $q->where('tenPhim', 'like', '%' . $query . '%');
-                })
+                })->orderByDesc('created_at')
+                ->paginate(15);
 
-             ;
+
         }
 
         if ($date) {
